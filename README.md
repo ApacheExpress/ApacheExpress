@@ -25,6 +25,7 @@ and is battle proven.
 And comes with HTTP/2 as well as TLS support out of the box 🤓
 (If you don't care, [Noze.io](http://noze.io) might be something for you.)
 
+
 ### What is an Apache module?
 
 Well, Apache is a highly modular and efficient server framework. The httpd
@@ -110,6 +111,43 @@ wrapper library making the Apache API a little 'Swiftier'.
 Also remember that you can use this not only to deliver dynamic content,
 but you can also use it to add new authentication modules to Apache,
 or write new filter modules (say one which converts XML to JSON on demand).
+
+
+### Know what? This looks awkwardly difficult ...
+
+Man, I know. You are referring to the standard
+[Noze.io](http://noze.io/)
+HTTP server example, right? Noze.io:
+
+```Swift
+import http
+
+http.createServer { req, res in 
+  res.writeHead(200, [ "Content-Type": "text/html" ])
+  res.end("<h1>Hello World</h1>")
+}
+.listen(1337)
+```
+
+Fair enough. So we integrated a tiny subset of 
+[Noze.io](http://noze.io/)
+to allow you to do just that. This is what it looks like:
+
+```Swift
+func expressMain() {
+  apache.onRequest { req, res in
+    res.writeHead(200, [ "Content-Type": "text/html" ])
+    try res.end("<h1>Hello World</h1>")
+  }
+}
+```
+
+And is configured like this in the Apache conf:
+
+    <LocationMatch /express/*>
+      SetHandler de.zeezide.TinyExpress
+    </LocationMatch>
+
 
 ### This is wicked! How can I try it?
 
