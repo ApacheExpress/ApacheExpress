@@ -32,5 +32,8 @@ extern struct ZzApacheRequest ZzApacheRequestCreate(void * __nonnull raw)
 extern void apz_log_rerror_(const char *file, int line, int module_index,
                             int level, apr_status_t status,
                             const request_rec *r, const char *s);
+extern void apz_log_error_ (const char *file, int line, int module_index,
+                            int level, apr_status_t status,
+                            const server_rec *r, const char *s);
 
 #endif /* __ZzApache_H__ */

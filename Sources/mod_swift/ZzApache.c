@@ -26,6 +26,11 @@ void apz_log_rerror_(const char *file, int line, int module_index,
                      int level, apr_status_t status,
                      const request_rec *r, const char *s)
 {
-  ap_log_rerror_(file, line, module_index, level, status, r,
-                 "%s", s);
+  ap_log_rerror_(file, line, module_index, level, status, r, "%s", s);
+}
+void apz_log_error_(const char *file, int line, int module_index,
+                    int level, apr_status_t status,
+                    const server_rec *r, const char *s)
+{
+  ap_log_error_(file, line, module_index, level, status, r, "%s", s);
 }
