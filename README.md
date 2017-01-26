@@ -147,7 +147,7 @@ Try this: [Developing modules for the Apache HTTP Server 2.4](https://httpd.apac
 - This doesn't use `apxs` because that is badly b0rked on both 10.11 and 10.12.
 - It uses a lot of hardcoded load and lookup pathes, remember, it is a demo!
 - It has some leaks and issues, e.g. modules are not properly unloaded.
-- Yes, you can link against arbitrary Swift dylibs, 
+- Sure, you can link against arbitrary Swift dylibs, 
   [mustache](Sources/mustache/) is an example for exactly that.
 - However, you currently cannot use the Swift Package Manager to create
   dylibs (AFAIK). So while in theory that would work, you need to do the
@@ -160,7 +160,7 @@ Try this: [Developing modules for the Apache HTTP Server 2.4](https://httpd.apac
   In other words: it is pure luck that 
   [this works](Sources/mod_swift/mod_swift.c#L47) and is ABI compatible with C.
 - If you would want to debug the stuff in Xcode - `/usr/sbin/httpd` is under
-  [macOS SPI](https://support.apple.com/en-us/HT204899).
+  [macOS SIP](https://support.apple.com/en-us/HT204899).
 - On macOS 10.11 starting Apache with -X crashes a few seconds after the last
   request was received. Maybe just SIGPIPE or sth. 10.12 looks fine.
 - Unloading is an issue. I think the Apple and GNUstep Objective-C
