@@ -82,8 +82,32 @@ class ZzTable {
   }
   
   subscript(_ key : String) -> String? {
-    guard let v = apr_table_get(table, key) else { return nil }
-    return String(cString: v)
+    // case-insensitive!
+    // set - needs a pool
+    set {
+      if let v = newValue {
+        apr_table_set(table, key, v)
+      }
+      else {
+        apr_table_unset(table, key)
+      }
+    }
+    get {
+      guard let v = apr_table_get(table, key) else { return nil }
+      return String(cString: v)
+    }
+  }
+  
+  var isEmpty : Bool {
+    return apr_is_empty_table(table) != 0
+  }
+  
+  func removeAll() {
+    apr_table_clear(table)
+  }
+  
+  func removeValue(forKey key: String) {
+    apr_table_unset(table, key)
   }
 }
 
