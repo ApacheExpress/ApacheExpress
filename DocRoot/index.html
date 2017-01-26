@@ -38,9 +38,18 @@
         Welcome to our mod_swift demo.
       </p>
       <ul>
-        <li><a href="HelloWorld.mustache">helloworld.mustache</a></li>
-        <li><a href="helloworld/">/helloworld/</a></li>
-        <li><a href="helloworld/testit.html">/helloworld/testit.html</a></li>
+        <li><a href="HelloWorld.mustache">helloworld.mustache</a>
+               (raw Apache handler calling Mustache template in docroot)
+        </li>
+        <li><a href="express/hello">/express/hello</a>
+               (TinyExpress invoking http.Server style onRequest callback)
+        </li>
+        <li><a href="helloworld/">/helloworld/</a>
+               (raw Apache debug handler w/o a mapped docroot file)
+        </li>
+        <li><a href="helloworld/testit.html">/helloworld/testit.html</a>
+               (raw Apache debug handler w/ a mapped docroot file)
+        </li>
       </ul>
       
       <p>
