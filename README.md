@@ -3,7 +3,7 @@
        align="right" width="128" height="128" />
 </h2>
 
-![Apache 2.4](https://img.shields.io/badge/apache-2.4-yellow.svg)
+![Apache 2](https://img.shields.io/badge/apache-2-yellow.svg)
 ![Swift3](https://img.shields.io/badge/swift-3-blue.svg)
 ![macOS](https://img.shields.io/badge/os-macOS-green.svg?style=flat)
 
