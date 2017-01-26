@@ -8,7 +8,7 @@ import Apache2
 
 // MARK: - Public API
 
-enum http {
+public enum http {
 }
 
 
@@ -25,8 +25,8 @@ enum http_internal {
     var handle           : OpaquePointer? = nil
     var didHandleRequest = true
     
-    var request  : http.IncomingMessage? = nil
-    var response : http.ServerResponse?  = nil
+    var request  : IncomingMessage? = nil
+    var response : ServerResponse?  = nil
     
     init(handle: UnsafeMutablePointer<request_rec>, server: ApacheServer) {
       self.server = server
@@ -36,8 +36,8 @@ enum http_internal {
       self.handle = OpaquePointer(handle)
       
       // All this is a little weird and probably should be done differently ;->
-      request  = http.IncomingMessage(apacheRequest: self)
-      response = http.ServerResponse (apacheRequest: self)
+      request  = IncomingMessage(apacheRequest: self)
+      response = ServerResponse (apacheRequest: self)
     }
     
     var handlerResult : Int32 {

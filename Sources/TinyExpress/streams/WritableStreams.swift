@@ -7,29 +7,29 @@ import Darwin
 
 // Basic Noze.io like stream protocols. But those in here are not
 // asynchronous.
-enum streams {
+public enum streams {
   
   // TBD: protocols cannot be nested?
 
 }
 
-typealias DoneCB = () -> Void
+public typealias DoneCB = () -> Void
 
-protocol StreamType {
+public protocol StreamType {
 }
 
-protocol WritableStreamType : StreamType {
+public protocol WritableStreamType : StreamType {
   func end()
 }
 
-protocol GWritableStreamType : class, WritableStreamType {
+public protocol GWritableStreamType : class, WritableStreamType {
   
   associatedtype WriteType
   
   func writev(buckets b: [ [ WriteType ] ], done: DoneCB?) throws
 }
 
-protocol WritableByteStreamType : WritableStreamType {
+public protocol WritableByteStreamType : WritableStreamType {
 
   func writev(buckets chunks: [ [ UInt8 ] ], done: DoneCB?) throws
   
@@ -38,7 +38,7 @@ protocol WritableByteStreamType : WritableStreamType {
 
 // MARK: - Simple Output Stream
 
-class FileOutputStream : GWritableStreamType, WritableByteStreamType {
+public class FileOutputStream : GWritableStreamType, WritableByteStreamType {
   
   enum Error : Swift.Error {
     case WriteFailed
@@ -56,7 +56,7 @@ class FileOutputStream : GWritableStreamType, WritableByteStreamType {
     return !(handle == stdin || handle == stdout || handle == stderr)
   }
   
-  func end() {
+  public func end() {
     guard canEnd else { return }
     fclose(handle)
     handle = nil
@@ -67,7 +67,7 @@ class FileOutputStream : GWritableStreamType, WritableByteStreamType {
     fflush(handle)
   }
   
-  func writev(buckets: [ [ UInt8 ] ], done: DoneCB?) throws {
+  public func writev(buckets: [ [ UInt8 ] ], done: DoneCB?) throws {
     guard !buckets.isEmpty        else { return }
     guard !buckets.first!.isEmpty else { return }
     guard handle != nil else { throw Error.Closed }
