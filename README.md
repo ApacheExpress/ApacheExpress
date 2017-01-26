@@ -148,6 +148,32 @@ And is configured like this in the Apache conf:
       SetHandler de.zeezide.TinyExpress
     </LocationMatch>
 
+Now you are saying, this is all nice and pretty. But what about Connect?
+I want to write and reuse middleware!
+Here you go:
+
+```Swift
+func expressMain() {
+  let app = connect()
+  
+  app.use { req, res, next in
+    console.info("Request is passing Connect middleware ...")
+    res.setHeader("Content-Type", "text/html; charset=utf-8")
+    // Note: we do not close the request, we continue with the next middleware
+    try next()
+  }
+  
+  app.use("/express/connect") { req, res, next in
+    try res.write("<p>This is a random cow:</p><pre>")
+    try res.write(vaca())
+    try res.write("</pre>")
+    res.end()
+  }
+}
+```
+
+Yes. All that is running within Apache.
+
 
 ### This is wicked! How can I try it?
 
@@ -182,6 +208,8 @@ Try this: [Developing modules for the Apache HTTP Server 2.4](https://httpd.apac
 - The code is 
   [properly formatted](http://www.alwaysrightinstitute.com/swifter-space/),
   max width 80 chars, 2-space indent.
+- TinyExpress is just code copy/pasted in from Noze.io. It may very well be
+  non-sensical in the context of Apache :-)
 - This doesn't use `apxs` because that is badly b0rked on both 10.11 and 10.12.
 - It uses a lot of hardcoded load and lookup pathes, remember, it is a demo!
 - It has some leaks and issues, e.g. modules are not properly unloaded.
@@ -241,3 +269,5 @@ and
 We like feedback, GitHub stars, cool contract work,
 presumably any form of praise you can think of.
 We don't like people who are wrong.
+
+There is a `#mod_swift` channel on the [Noze.io Slack](http://slack.noze.io).

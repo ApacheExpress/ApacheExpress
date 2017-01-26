@@ -4,8 +4,8 @@
 //
 
 // Note: nesting that in the http enum or extension crashes swiftc ...
-typealias RequestEventCB =
-            ( http.IncomingMessage, http.ServerResponse ) throws -> Void
+public typealias RequestEventCB =
+            ( IncomingMessage, ServerResponse ) throws -> Void
 
 extension http {
   
