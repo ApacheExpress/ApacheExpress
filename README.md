@@ -132,8 +132,8 @@ You can also run everything directly from within Xcode.
 
 Don't be afraid, the Apache invoked here doesn't interfere with your system
 Apache at all (but uses it, Apache is part of all macOS installs).
-It uses the [apache.conf](apache.conf) included in this repro,
-runs against the [DocRoot](DocRoot/) included in this repro
+It uses the [apache.conf](apache.conf) included in this repo,
+runs against the [DocRoot](DocRoot/) included in this repo
 and loads the libraries from the Xcode build dir (hardcoded to SRCROOT/.libs).
 
 You want an intro into Apache module programming?
