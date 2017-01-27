@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E834530B1E3B9E0300174774 /* CookieParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E834530A1E3B9E0300174774 /* CookieParser.swift */; };
+		E834530D1E3B9E2600174774 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E834530C1E3B9E2600174774 /* Logger.swift */; };
+		E834530F1E3B9E6100174774 /* timespec.swift in Sources */ = {isa = PBXBuildFile; fileRef = E834530E1E3B9E6100174774 /* timespec.swift */; };
+		E83453111E3B9E9700174774 /* timeval_any.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83453101E3B9E9700174774 /* timeval_any.swift */; };
+		E83453151E3B9F1F00174774 /* leftpad_module.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83453131E3B9F1F00174774 /* leftpad_module.swift */; };
 		E85190741E3807FE0011F91F /* ZzApache.c in Sources */ = {isa = PBXBuildFile; fileRef = E85190721E3807FE0011F91F /* ZzApache.c */; };
 		E85190751E3807FE0011F91F /* ZzApache.h in Headers */ = {isa = PBXBuildFile; fileRef = E85190731E3807FE0011F91F /* ZzApache.h */; };
 		E8529C821E37D281005822BD /* mod_swift.c in Sources */ = {isa = PBXBuildFile; fileRef = E8529C811E37D281005822BD /* mod_swift.c */; };
@@ -56,6 +61,20 @@
 		E89DE6631E3A7C2A009D1890 /* Stringify.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89DE65E1E3A7C2A009D1890 /* Stringify.swift */; };
 		E89DE6661E3A7C75009D1890 /* fs_module.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89DE6651E3A7C75009D1890 /* fs_module.swift */; };
 		E89DE6671E3A8023009D1890 /* libFreddy.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E89DE62A1E3A7079009D1890 /* libFreddy.dylib */; };
+		E89DE6781E3A8814009D1890 /* Express.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89DE66B1E3A8814009D1890 /* Express.swift */; };
+		E89DE6791E3A8814009D1890 /* ExpressIncomingMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89DE66C1E3A8814009D1890 /* ExpressIncomingMessage.swift */; };
+		E89DE67A1E3A8814009D1890 /* ExpressJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89DE66D1E3A8814009D1890 /* ExpressJSON.swift */; };
+		E89DE67B1E3A8814009D1890 /* MiddlewareObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89DE66E1E3A8814009D1890 /* MiddlewareObject.swift */; };
+		E89DE67C1E3A8814009D1890 /* express_module.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89DE66F1E3A8814009D1890 /* express_module.swift */; };
+		E89DE67D1E3A8814009D1890 /* ExpressMustache.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89DE6701E3A8814009D1890 /* ExpressMustache.swift */; };
+		E89DE67F1E3A8814009D1890 /* Render.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89DE6721E3A8814009D1890 /* Render.swift */; };
+		E89DE6801E3A8814009D1890 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89DE6731E3A8814009D1890 /* Route.swift */; };
+		E89DE6811E3A8814009D1890 /* RouteKeeper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89DE6741E3A8814009D1890 /* RouteKeeper.swift */; };
+		E89DE6821E3A8814009D1890 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89DE6751E3A8814009D1890 /* Router.swift */; };
+		E89DE6831E3A8814009D1890 /* ExpressServerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89DE6761E3A8814009D1890 /* ExpressServerResponse.swift */; };
+		E89DE6841E3A8814009D1890 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89DE6771E3A8814009D1890 /* Settings.swift */; };
+		E89DE6861E3A8CDB009D1890 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89DE6851E3A8CDB009D1890 /* URL.swift */; };
+		E89DE6891E3A8EB7009D1890 /* process_module.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89DE6881E3A8EB7009D1890 /* process_module.swift */; };
 		E8F4F5A21E3A2E0F00EF24B4 /* IncomingMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F4F5A01E3A2E0F00EF24B4 /* IncomingMessage.swift */; };
 		E8F4F5A31E3A2E0F00EF24B4 /* ServerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F4F5A11E3A2E0F00EF24B4 /* ServerResponse.swift */; };
 		E8F4F5A51E3A2E3F00EF24B4 /* http_module.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F4F5A41E3A2E3F00EF24B4 /* http_module.swift */; };
@@ -95,6 +114,13 @@
 
 /* Begin PBXFileReference section */
 		E81606A01E36411A0097BBA6 /* apache.conf */ = {isa = PBXFileReference; lastKnownFileType = text; path = apache.conf; sourceTree = "<group>"; };
+		E83453091E3B7D8600174774 /* views */ = {isa = PBXFileReference; lastKnownFileType = folder; path = views; sourceTree = "<group>"; };
+		E834530A1E3B9E0300174774 /* CookieParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CookieParser.swift; sourceTree = "<group>"; };
+		E834530C1E3B9E2600174774 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		E834530E1E3B9E6100174774 /* timespec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = timespec.swift; sourceTree = "<group>"; };
+		E83453101E3B9E9700174774 /* timeval_any.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = timeval_any.swift; sourceTree = "<group>"; };
+		E83453131E3B9F1F00174774 /* leftpad_module.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = leftpad_module.swift; sourceTree = "<group>"; };
+		E83453141E3B9F1F00174774 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		E83C01A51E39069500B05D41 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		E85190721E3807FE0011F91F /* ZzApache.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ZzApache.c; path = Sources/mod_swift/ZzApache.c; sourceTree = "<group>"; };
 		E85190731E3807FE0011F91F /* ZzApache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZzApache.h; path = Sources/mod_swift/ZzApache.h; sourceTree = "<group>"; };
@@ -159,6 +185,21 @@
 		E89DE65D1E3A7C2A009D1890 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		E89DE65E1E3A7C2A009D1890 /* Stringify.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stringify.swift; sourceTree = "<group>"; };
 		E89DE6651E3A7C75009D1890 /* fs_module.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = fs_module.swift; sourceTree = "<group>"; };
+		E89DE66B1E3A8814009D1890 /* Express.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Express.swift; sourceTree = "<group>"; };
+		E89DE66C1E3A8814009D1890 /* ExpressIncomingMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpressIncomingMessage.swift; sourceTree = "<group>"; };
+		E89DE66D1E3A8814009D1890 /* ExpressJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpressJSON.swift; sourceTree = "<group>"; };
+		E89DE66E1E3A8814009D1890 /* MiddlewareObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiddlewareObject.swift; sourceTree = "<group>"; };
+		E89DE66F1E3A8814009D1890 /* express_module.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = express_module.swift; sourceTree = "<group>"; };
+		E89DE6701E3A8814009D1890 /* ExpressMustache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpressMustache.swift; sourceTree = "<group>"; };
+		E89DE6711E3A8814009D1890 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		E89DE6721E3A8814009D1890 /* Render.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Render.swift; sourceTree = "<group>"; };
+		E89DE6731E3A8814009D1890 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		E89DE6741E3A8814009D1890 /* RouteKeeper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteKeeper.swift; sourceTree = "<group>"; };
+		E89DE6751E3A8814009D1890 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		E89DE6761E3A8814009D1890 /* ExpressServerResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpressServerResponse.swift; sourceTree = "<group>"; };
+		E89DE6771E3A8814009D1890 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		E89DE6851E3A8CDB009D1890 /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
+		E89DE6881E3A8EB7009D1890 /* process_module.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = process_module.swift; sourceTree = "<group>"; };
 		E8A2A6191E366FAC00B315BA /* module.map */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.map; sourceTree = "<group>"; };
 		E8CDDB1311EAF0D80037981F /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		E8EE1EC51E3774F000B5FBF8 /* DocRoot */ = {isa = PBXFileReference; lastKnownFileType = folder; path = DocRoot; sourceTree = "<group>"; };
@@ -217,6 +258,7 @@
 				E8CDDB1311EAF0D80037981F /* README.md */,
 				E81606A01E36411A0097BBA6 /* apache.conf */,
 				E8EE1EC51E3774F000B5FBF8 /* DocRoot */,
+				E83453091E3B7D8600174774 /* views */,
 				E86219751E38E47500286FD1 /* Sources */,
 				E89DE6251E3A6FC5009D1890 /* Embedded Libraries */,
 				E86219761E38E49A00286FD1 /* misc */,
@@ -232,6 +274,15 @@
 				E869AC051E38C83100A35CE7 /* Base.xcconfig */,
 			);
 			name = "Build Configuration";
+			sourceTree = "<group>";
+		};
+		E83453121E3B9F1F00174774 /* leftpad */ = {
+			isa = PBXGroup;
+			children = (
+				E83453141E3B9F1F00174774 /* README.md */,
+				E83453131E3B9F1F00174774 /* leftpad_module.swift */,
+			);
+			path = leftpad;
 			sourceTree = "<group>";
 		};
 		E8529C801E37D249005822BD /* mod_swift */ = {
@@ -389,8 +440,10 @@
 			children = (
 				E89DE6481E3A730C009D1890 /* CORS.swift */,
 				E89DE6491E3A730C009D1890 /* MethodOverride.swift */,
+				E834530C1E3B9E2600174774 /* Logger.swift */,
 				E89DE64A1E3A730C009D1890 /* Pause.swift */,
 				E89DE64B1E3A730C009D1890 /* Session.swift */,
+				E834530A1E3B9E0300174774 /* CookieParser.swift */,
 			);
 			name = middleware;
 			sourceTree = "<group>";
@@ -399,6 +452,8 @@
 			isa = PBXGroup;
 			children = (
 				E89DE6571E3A79CA009D1890 /* time.swift */,
+				E834530E1E3B9E6100174774 /* timespec.swift */,
+				E83453101E3B9E9700174774 /* timeval_any.swift */,
 			);
 			path = xsys;
 			sourceTree = "<group>";
@@ -423,6 +478,34 @@
 			path = fs;
 			sourceTree = "<group>";
 		};
+		E89DE66A1E3A8814009D1890 /* express */ = {
+			isa = PBXGroup;
+			children = (
+				E89DE6711E3A8814009D1890 /* README.md */,
+				E89DE66F1E3A8814009D1890 /* express_module.swift */,
+				E89DE66B1E3A8814009D1890 /* Express.swift */,
+				E89DE6751E3A8814009D1890 /* Router.swift */,
+				E89DE6741E3A8814009D1890 /* RouteKeeper.swift */,
+				E89DE6731E3A8814009D1890 /* Route.swift */,
+				E89DE6721E3A8814009D1890 /* Render.swift */,
+				E89DE6771E3A8814009D1890 /* Settings.swift */,
+				E89DE66E1E3A8814009D1890 /* MiddlewareObject.swift */,
+				E89DE6701E3A8814009D1890 /* ExpressMustache.swift */,
+				E89DE66C1E3A8814009D1890 /* ExpressIncomingMessage.swift */,
+				E89DE6761E3A8814009D1890 /* ExpressServerResponse.swift */,
+				E89DE66D1E3A8814009D1890 /* ExpressJSON.swift */,
+			);
+			path = express;
+			sourceTree = "<group>";
+		};
+		E89DE6871E3A8EB7009D1890 /* process */ = {
+			isa = PBXGroup;
+			children = (
+				E89DE6881E3A8EB7009D1890 /* process_module.swift */,
+			);
+			path = process;
+			sourceTree = "<group>";
+		};
 		E8A2A6181E366FAC00B315BA /* Module Maps */ = {
 			isa = PBXGroup;
 			children = (
@@ -435,13 +518,16 @@
 		E8F4F5991E3A233E00EF24B4 /* TinyExpress */ = {
 			isa = PBXGroup;
 			children = (
+				E83453121E3B9F1F00174774 /* leftpad */,
 				E89DE6561E3A79CA009D1890 /* xsys */,
 				E86B394E1E3A3E9D0044CE55 /* streams */,
 				E89DE6011E3A4CDC009D1890 /* console */,
 				E8F4F59F1E3A2E0F00EF24B4 /* http */,
 				E89DE6641E3A7C75009D1890 /* fs */,
+				E89DE6871E3A8EB7009D1890 /* process */,
 				E89DE6591E3A7C2A009D1890 /* json */,
 				E89DE6091E3A67E5009D1890 /* connect */,
+				E89DE66A1E3A8814009D1890 /* express */,
 			);
 			name = TinyExpress;
 			path = ../TinyExpress;
@@ -458,6 +544,7 @@
 				E8F4F5A11E3A2E0F00EF24B4 /* ServerResponse.swift */,
 				E89DE6521E3A7575009D1890 /* Cookies.swift */,
 				E89DE6541E3A762C009D1890 /* HttpMisc.swift */,
+				E89DE6851E3A8CDB009D1890 /* URL.swift */,
 			);
 			path = http;
 			sourceTree = "<group>";
@@ -673,36 +760,55 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E89DE6821E3A8814009D1890 /* Router.swift in Sources */,
 				E8F4F5A21E3A2E0F00EF24B4 /* IncomingMessage.swift in Sources */,
 				E89DE6631E3A7C2A009D1890 /* Stringify.swift in Sources */,
+				E89DE6861E3A8CDB009D1890 /* URL.swift in Sources */,
+				E89DE67B1E3A8814009D1890 /* MiddlewareObject.swift in Sources */,
+				E89DE6841E3A8814009D1890 /* Settings.swift in Sources */,
 				E89DE6661E3A7C75009D1890 /* fs_module.swift in Sources */,
 				E86CE8181E38EE0D005C79AF /* MustacheHandler.swift in Sources */,
+				E89DE67F1E3A8814009D1890 /* Render.swift in Sources */,
+				E834530D1E3B9E2600174774 /* Logger.swift in Sources */,
 				E89DE60D1E3A67E5009D1890 /* connect_module.swift in Sources */,
 				E89DE6581E3A79CA009D1890 /* time.swift in Sources */,
 				E89DE60C1E3A67E5009D1890 /* Connect.swift in Sources */,
 				E89BF50E1E38C7BC00789982 /* APIExtensions.swift in Sources */,
 				E89DE6531E3A7575009D1890 /* Cookies.swift in Sources */,
+				E89DE6791E3A8814009D1890 /* ExpressIncomingMessage.swift in Sources */,
 				E89DE64D1E3A730C009D1890 /* MethodOverride.swift in Sources */,
 				E89DE6601E3A7C2A009D1890 /* JSONWritableStream.swift in Sources */,
+				E89DE67A1E3A8814009D1890 /* ExpressJSON.swift in Sources */,
 				E89DE6081E3A5362009D1890 /* ApacheConsole.swift in Sources */,
 				E8F4F5A51E3A2E3F00EF24B4 /* http_module.swift in Sources */,
 				E89DE64E1E3A730C009D1890 /* Pause.swift in Sources */,
 				E86B394D1E3A3D970044CE55 /* MessageBase.swift in Sources */,
+				E89DE67C1E3A8814009D1890 /* express_module.swift in Sources */,
+				E89DE6781E3A8814009D1890 /* Express.swift in Sources */,
 				E89DE6051E3A4CDC009D1890 /* console_module.swift in Sources */,
 				E86B39501E3A3E9D0044CE55 /* WritableStreams.swift in Sources */,
 				E89DE6041E3A4CDC009D1890 /* Console.swift in Sources */,
+				E89DE6831E3A8814009D1890 /* ExpressServerResponse.swift in Sources */,
 				E89DE65F1E3A7C2A009D1890 /* JsonFile.swift in Sources */,
 				E89DE5FD1E3A44A1009D1890 /* Server.swift in Sources */,
 				E89DE64F1E3A730C009D1890 /* Session.swift in Sources */,
 				E89DE64C1E3A730C009D1890 /* CORS.swift in Sources */,
 				E89DE6001E3A4773009D1890 /* ExpressMain.swift in Sources */,
+				E834530B1E3B9E0300174774 /* CookieParser.swift in Sources */,
 				E86219741E38CE3A00286FD1 /* RequestInfoHandler.swift in Sources */,
+				E89DE6801E3A8814009D1890 /* Route.swift in Sources */,
+				E83453111E3B9E9700174774 /* timeval_any.swift in Sources */,
+				E89DE6811E3A8814009D1890 /* RouteKeeper.swift in Sources */,
+				E83453151E3B9F1F00174774 /* leftpad_module.swift in Sources */,
 				E8F4F5A31E3A2E0F00EF24B4 /* ServerResponse.swift in Sources */,
+				E834530F1E3B9E6100174774 /* timespec.swift in Sources */,
+				E89DE6891E3A8EB7009D1890 /* process_module.swift in Sources */,
 				E89DE6511E3A7312009D1890 /* TypeIs.swift in Sources */,
 				E89DE6551E3A762C009D1890 /* HttpMisc.swift in Sources */,
 				E89DE6611E3A7C2A009D1890 /* json_module.swift in Sources */,
 				E89BF50D1E38C7BC00789982 /* mods_demo.swift in Sources */,
 				E8F4F5A71E3A2E5000EF24B4 /* TinyExpressHandler.swift in Sources */,
+				E89DE67D1E3A8814009D1890 /* ExpressMustache.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1168,6 +1274,7 @@
 				E89DE6151E3A6DA8009D1890 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E89DE62B1E3A7079009D1890 /* Build configuration list for PBXNativeTarget "Freddy" */ = {
 			isa = XCConfigurationList;
@@ -1176,6 +1283,7 @@
 				E89DE62D1E3A7079009D1890 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

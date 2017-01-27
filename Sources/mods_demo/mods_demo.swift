@@ -26,7 +26,7 @@ var module = Apache2.module(name: "mods_demo")
 
 
 // And `ApacheMain` is called by mod_swift to configure the module!
-@_silgen_name("ApacheMain")
+@_cdecl("ApacheMain")
 func ApacheMain(cmd: UnsafeMutablePointer<cmd_parms>) {
   // Setup module struct
   module.register_hooks = register_hooks

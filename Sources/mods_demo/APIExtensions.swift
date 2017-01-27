@@ -177,6 +177,54 @@ extension ZzApacheRequest { // Output
   
 }
 
+extension ZzApacheRequest { // Misc wrappers for http_core
+  
+  var allowOptions        : Int32      { return ap_allow_options  (raw)    }
+  var allowOverrides      : Int32      { return ap_allow_overrides(raw)    }
+  var serverPort          : apr_port_t { return ap_get_server_port(raw)    }
+  var requestBodyLimit    : apr_off_t  { return ap_get_limit_req_body(raw) }
+  var xmlRequestBodyLimit : apr_size_t { return ap_get_limit_xml_body(raw) }
+  
+  var isRecursionLimitExceeded : Bool {
+    return ap_is_recursion_limit_exceeded(raw) != 0
+  }
+  
+  // docs say: don't use this ;-> (cause Userdir)
+  var documentRoot    : String { return String(cString: ap_document_root(raw)) }
+ 
+  var remoteLoginName : String? {
+    guard let s = ap_get_remote_logname(raw) else { return nil }
+    return String(cString: s)
+  }
+  
+  var serverName : String { return String(cString: ap_get_server_name(raw)) }
+  
+  var serverNameForURL : String {
+    return String(cString: ap_get_server_name_for_url(raw))
+  }
+  
+  func doesConfigDefineExist(_ name: String) -> Bool {
+    return ap_exists_config_define(name) != 0
+  }
+}
+
+extension ZzApacheRequest { // Auth wrappers for http_core
+  
+  var authType : String? {
+    guard let s = ap_auth_type(raw) else { return nil }
+    return String(cString: s)
+  }
+
+  var authName : String? { // the realm
+    guard let s = ap_auth_name(raw) else { return nil }
+    return String(cString: s)
+  }
+  
+  var satisfies : Int32 { // SATISFY_ANY, SATISFY_ALL, SATISFY_NOSPEC
+    return ap_satisfies(raw)
+  }
+}
+
 extension ZzApacheRequest { // Logging
   
   func log(file:    String = #file,
