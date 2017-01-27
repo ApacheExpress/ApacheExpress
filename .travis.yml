@@ -1,0 +1,13 @@
+language:  generic
+
+notifications:
+    slack: nozeio:LIFY1Jtkx0FRcLq3u1WliHRZ
+
+matrix:
+    include:
+        - os:   osx
+          osx_image: xcode8
+
+script:
+    make all
+
