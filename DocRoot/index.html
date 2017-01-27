@@ -38,20 +38,48 @@
         Welcome to our mod_swift demo.
       </p>
       <ul>
-        <li><a href="HelloWorld.mustache">helloworld.mustache</a>
-               (raw Apache handler calling Mustache template in docroot)
+        <li>Raw Apache Handlers
+          <ul>
+            <li><a href="HelloWorld.mustache">helloworld.mustache</a>
+              (raw Apache handler calling Mustache template in docroot)
+            </li>
+            
+            <li><a href="helloworld/">/helloworld/</a>
+              (raw Apache debug handler w/o a mapped docroot file)
+            </li>
+            <li><a href="helloworld/testit.html">/helloworld/testit.html</a>
+              (raw Apache debug handler w/ a mapped docroot file)
+            </li>
+          </ul>
         </li>
-        <li><a href="express/hello">/express/hello</a>
-               (TinyExpress invoking http.Server style onRequest callback)
+        
+        <li>http.Server Handlers
+          <ul>
+            <li><a href="server/hello">/server/hello</a></li>
+          </ul>
         </li>
-        <li><a href="express/connect">/express/connect</a>
-               (TinyExpress invoking Connect middleware)
+        
+        <li>Connect
+          <ul>
+            <li><a href="connect/hello">/connect/hello</a></li>
+          </ul>
         </li>
-        <li><a href="helloworld/">/helloworld/</a>
-               (raw Apache debug handler w/o a mapped docroot file)
-        </li>
-        <li><a href="helloworld/testit.html">/helloworld/testit.html</a>
-               (raw Apache debug handler w/ a mapped docroot file)
+        
+        <li>Apache Express
+          <ul>
+            <li><a href="express/">/express/</a>
+                   (template driven index page w/ session vars)
+            </li>
+            <li><a href="express/cookies">/express/cookies</a>
+                   (parse cookies and return them as JSON)
+            </li>
+            <li><a href="express/json">/express/json</a>
+                   (return a Swift array of dicts as JSON)
+            </li>
+            <li><a href="express/cows">/express/cows</a>
+                   (show a random cow)
+            </li>
+          </ul>
         </li>
       </ul>
       
