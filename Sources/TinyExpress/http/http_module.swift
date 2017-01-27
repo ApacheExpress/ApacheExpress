@@ -64,7 +64,13 @@ enum http_internal {
       guard let handle = handle else { return nil }
       return UnsafeMutablePointer<request_rec>(handle)
     }
-
+    
+    func pathRelativeToServerRoot(filename: String) -> String? {
+      guard let th = typedHandle else { return nil }
+      guard let abspath = ap_server_root_relative(th.pointee.pool, filename)
+       else { return nil }
+      return String(cString: abspath)
+    }
   }
 
 }

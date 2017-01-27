@@ -157,7 +157,7 @@ public class Session {
 
 // MARK: - IncomingMessage extension
 
-private let requestKey = "io.noze.connect.session"
+fileprivate let requestKey = "io.noze.connect.session"
 
 public extension IncomingMessage {
   
@@ -223,6 +223,7 @@ public extension SessionStore {
   }
 }
 
+// FIXME: Apache: Need to make this thread-safe for Apache!
 public class InMemorySessionStore : SessionStore {
   
   var store : [ String : Session ] = [:]

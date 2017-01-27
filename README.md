@@ -116,20 +116,6 @@ or write new filter modules (say one which converts XML to JSON on demand).
 
 ### Know what? This looks awkwardly difficult ...
 
-Man, I know. You are referring to the standard
-[Noze.io](http://noze.io/)
-HTTP server example, right? Noze.io:
-
-```Swift
-import http
-
-http.createServer { req, res in 
-  res.writeHead(200, [ "Content-Type": "text/html" ])
-  res.end("<h1>Hello World</h1>")
-}
-.listen(1337)
-```
-
 Fair enough. So we integrated a tiny subset of 
 [Noze.io](http://noze.io/)
 to allow you to do just that. This is what it looks like:
@@ -173,7 +159,30 @@ func expressMain() {
 }
 ```
 
+And Express? Sure, the Apache Express is about to leave:
+```Swift
+let app = express(cookieParser(), session())
+
+app.get("/express/cookies") { req, res, _ in
+  // returns all cookies as JSON
+  try res.json(req.cookies)
+}
+
+app.get("/express/") { req, res, _ in
+  let tagline = arc4random_uniform(UInt32(taglines.count))
+  
+  let values : [ String : Any ] = [
+    "tagline"     : taglines[Int(tagline)],
+    "viewCount"   : req.session["viewCount"] ?? 0,
+    "cowOfTheDay" : cows.vaca()
+  ]
+  try res.render("index", values)
+}
+```
+
 Yes. All that is running within Apache.
+The working example can be found here:
+[ExpressMain.swift](Sources/mods_demo/ExpressMain.swift#L9).
 
 
 ### This is wicked! How can I try it?
