@@ -13,13 +13,13 @@ public enum streams {
 
 }
 
-public typealias DoneCB = () -> Void
+public typealias DoneCB = () throws -> Void
 
 public protocol StreamType {
 }
 
 public protocol WritableStreamType : StreamType {
-  func end()
+  func end() throws
 }
 
 public protocol GWritableStreamType : class, WritableStreamType {
@@ -56,7 +56,7 @@ public class FileOutputStream : GWritableStreamType, WritableByteStreamType {
     return !(handle == stdin || handle == stdout || handle == stderr)
   }
   
-  public func end() {
+  public func end() throws {
     guard canEnd else { return }
     fclose(handle)
     handle = nil
@@ -78,12 +78,12 @@ public class FileOutputStream : GWritableStreamType, WritableByteStreamType {
       try bucket.withUnsafeBufferPointer { bp in
         let rc = fwrite(bp.baseAddress, bp.count, 1, handle)
         guard rc == 1 else {
-          if let cb = done { cb() }
+          if let cb = done { try cb() }
           throw Error.WriteFailed
         }
       }
     }
-    if let cb = done { cb() }
+    if let cb = done { try cb() }
   }
   
 }
@@ -102,13 +102,13 @@ extension GWritableStreamType {
   {
     if let chunk = chunk {
       try writev(buckets: [ chunk ]) {
-        if let cb = doneWriting { cb() }
-        self.end() // only end after everything has been written
+        if let cb = doneWriting { try cb() }
+        try self.end() // only end after everything has been written
       }
     }
     else {
-      if let cb = doneWriting { cb() } // nothing to write, immediately done
-      end()
+      if let cb = doneWriting { try cb() } // nothing to write, immediately done
+      try end()
     }
   }
 }
@@ -127,8 +127,8 @@ extension GWritableStreamType where WriteType == UInt8 {
   func end(_ chunk: String, doneWriting: DoneCB? = nil) throws {
     let bucket = Array<UInt8>(chunk.utf8) // aaargh
     try writev(buckets: [ bucket ]) {
-      if let cb = doneWriting { cb() }
-      self.end()
+      if let cb = doneWriting { try cb() }
+      try self.end()
     }
   }
 }

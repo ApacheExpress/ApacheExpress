@@ -46,7 +46,7 @@ func expressMain() {
       try res.write("<p>This is a random cow:</p><pre>")
       try res.write(vaca())
       try res.write("</pre>")
-      res.end()
+      try res.end()
     }
   }
   

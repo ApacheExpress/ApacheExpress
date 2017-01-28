@@ -26,9 +26,9 @@ public class ServerResponse : MessageBase,
   
   // MARK: - End Handlers
   
-  public func end() {
-    // I don't think we need this here. We end when we return from the
-    // handler.
+  var finishListeners = [ ( ServerResponse ) -> Void ]()
+  
+  func emitFinish() {
     while !finishListeners.isEmpty {
       let copy = finishListeners
       finishListeners.removeAll()
@@ -39,12 +39,12 @@ public class ServerResponse : MessageBase,
     }
   }
   
-  var finishListeners = [ ( ServerResponse ) -> Void ]()
-  
   public func onceFinish(handler: @escaping ( ServerResponse ) -> Void) {
     finishListeners.append(handler)
   }
-  
+  public func onFinish(handler: @escaping ( ServerResponse ) -> Void) {
+    finishListeners.append(handler)
+  }
   
   // MARK: - Headers
   
@@ -57,6 +57,23 @@ public class ServerResponse : MessageBase,
   
   // MARK: - Output Stream
   
+  public func end() throws {
+    guard let th = apacheRequest.typedHandle else {
+      throw(Error.ApacheHandleGone)
+    }
+    
+    let brigade = apacheRequest.createBrigade()
+    let eof = apr_bucket_eos_create(brigade?.pointee.bucket_alloc)
+    apz_brigade_insert_tail(brigade, eof)
+    let rv = ap_pass_brigade(th.pointee.output_filters, brigade)
+    
+    emitFinish()
+    
+    if rv != APR_SUCCESS {
+      throw Error.WriteFailed // TODO: Improve me ;-)
+    }
+  }
+  
   public func writev(buckets chunks: [ [ UInt8 ] ], done: DoneCB?) throws {
     if statusCode == nil {
       writeHead(200)
@@ -66,18 +83,23 @@ public class ServerResponse : MessageBase,
     guard !chunks.first!.isEmpty else { return }
     
     guard let h = apacheRequest.typedHandle else {
-      if let cb = done { cb() }
+      if let cb = done { try cb() }
       throw(Error.ApacheHandleGone)
     }
     
-    // TBD: This actually doesn't seem to be recommended for Apache 2.
-    //      See: "Introduction to Buckets and Brigades" 
+    let brigade = apacheRequest.createBrigade()
+    
+    // Note: What we really want here is a special bucket_type that can extract
+    //       the buffer from the Swift object on-demand.
     for chunk in chunks {
       try chunk.withUnsafeBufferPointer { bp in
         var count = Int32(bp.count)
         var ptr   = bp.baseAddress
         
-        let rc = ap_rwrite(ptr, count, h)
+        // This flushes to the filter if the internal write buffer becomes
+        // too large.
+        let rc = apz_fwrite(h.pointee.output_filters, brigade,
+                            ptr, apr_size_t(count))
         if rc < 0 {
           throw Error.WriteFailed // TODO: improve me ;-)
         }
@@ -86,7 +108,14 @@ public class ServerResponse : MessageBase,
         ptr = ptr?.advanced(by: Int(rc))
       }
     }
-    if let cb = done { cb() }
+    
+    let rv = ap_pass_brigade(h.pointee.output_filters, brigade)
+    
+    if let cb = done { try cb() }
+    
+    if rv != APR_SUCCESS {
+      throw Error.WriteFailed // TODO: Improve me ;-)
+    }
   }
   
   // MARK: - CustomStringConvertible

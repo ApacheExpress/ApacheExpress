@@ -87,7 +87,7 @@ public class Connect {
     let endNext : Next = { _ in
       // essentially the final handler
       response.writeHead(404)
-      response.end()
+      try response.end()
     }
     
     guard !matchingMiddleware.isEmpty else { return try endNext() }

@@ -36,4 +36,12 @@ extern void apz_log_error_ (const char *file, int line, int module_index,
                             int level, apr_status_t status,
                             const server_rec *r, const char *s);
 
+
+#pragma mark Bucket Brigade Helpers
+
+extern apr_status_t apz_fwrite(struct ap_filter_t *f, apr_bucket_brigade *bb,
+                               const void *data, apr_size_t nbyte);
+
+extern void apz_brigade_insert_tail(apr_bucket_brigade *bb, apr_bucket *b);
+
 #endif /* __ZzApache_H__ */

@@ -14,7 +14,7 @@ public extension ServerResponse {
     guard let app = self.app else {
       console.error("No app object assigned to response: \(self)")
       res.writeHead(500)
-      res.end()
+      try res.end()
       return
     }
     
@@ -22,7 +22,7 @@ public extension ServerResponse {
     guard let engine = app.engines[viewEngine] else {
       console.error("Did not find view engine: \(viewEngine)")
       res.writeHead(500)
-      res.end()
+      try res.end()
       return
     }
     
@@ -43,7 +43,7 @@ public extension ServerResponse {
                         
       guard let path = pathOrNot else {
         res.writeHead(404)
-        res.end()
+        try res.end()
         return
       }
       
@@ -55,14 +55,14 @@ public extension ServerResponse {
         if let error = v0 {
           console.error("template error: \(error)")
           res.writeHead(500)
-          res.end()
+          try res.end()
           return
         }
         
         guard let result = v1 else {
           console.warn("template returned no content: \(template) \(results)")
           res.writeHead(204)
-          res.end()
+          try res.end()
           return
         }
 
@@ -75,7 +75,7 @@ public extension ServerResponse {
         
         res.writeHead(200)
         try res.write(s)
-        res.end()
+        try res.end()
       }
     }
   }

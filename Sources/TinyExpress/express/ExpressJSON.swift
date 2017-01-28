@@ -17,7 +17,7 @@ public extension ServerResponse {
       setHeader("Content-Type", "application/json; charset=utf-8")
     }
     try writeJSON(object: object)
-    end()
+    try end()
   }
 }
 

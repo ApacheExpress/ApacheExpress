@@ -34,3 +34,17 @@ void apz_log_error_(const char *file, int line, int module_index,
 {
   ap_log_error_(file, line, module_index, level, status, r, "%s", s);
 }
+
+#pragma mark Bucket Brigade Helpers
+
+apr_status_t apz_fwrite(struct ap_filter_t *f, apr_bucket_brigade *bb,
+                        const void *data, apr_size_t nbyte)
+{
+  // ap_fwrite is a macro in Apache. We could get it working in pure Swift,
+  // but it requires a lot of casting :->
+  return apr_brigade_write(bb, ap_filter_flush, f, data, nbyte);
+}
+
+void apz_brigade_insert_tail(apr_bucket_brigade *bb, apr_bucket *b) {
+  APR_BRIGADE_INSERT_TAIL(bb, b);
+}

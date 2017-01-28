@@ -28,7 +28,7 @@ public func cors(allowOrigin  origin  : String,
       // FIXME: not sure this is a good idea, should probably bubble up too      
       res.setHeader("Allow", sMethods)
       res.writeHead(200)
-      res.end()
+      try res.end()
     }
     else {
       try next()

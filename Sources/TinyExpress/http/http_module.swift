@@ -71,6 +71,13 @@ enum http_internal {
        else { return nil }
       return String(cString: abspath)
     }
+    
+    func createBrigade() -> UnsafeMutablePointer<apr_bucket_brigade>? {
+      guard let th = typedHandle else { return nil }
+      
+      return apr_brigade_create(th.pointee.pool,
+                                th.pointee.connection.pointee.bucket_alloc)
+    }
   }
 
 }

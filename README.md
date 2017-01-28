@@ -249,6 +249,7 @@ Try this: [Developing modules for the Apache HTTP Server 2.4](https://httpd.apac
 - Apache varargs funcs are not available since Swift doesn't support such. We
   provide a wrapper for `ap_log_rerror_`, other funcs would need to be wrapped
   the same way.
+- Apache also uses quite a few `#define`s, e.g. `ap_fwrite`
 - The Apache C headers are prone to crash `swiftc`. Which is why we wrap the
   Apache `request_rec` in an additional struct.
 

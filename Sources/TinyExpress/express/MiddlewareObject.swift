@@ -29,7 +29,7 @@ public extension MiddlewareObject {
         console.warn("No middleware called end: " +
                      "\(self) \(req.method) \(req.url)")
         res.writeHead(404)
-        res.end()
+        try res.end()
       }
     }
   }
