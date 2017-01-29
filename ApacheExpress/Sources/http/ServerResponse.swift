@@ -60,6 +60,7 @@ public class ServerResponse : MessageBase,
   
   public func end() throws {
     guard let th = apacheRequest.typedHandle else {
+      console.error("Could not end Apache request ...")
       throw(Error.ApacheHandleGone)
     }
     
@@ -85,6 +86,7 @@ public class ServerResponse : MessageBase,
     
     guard let h = apacheRequest.typedHandle else {
       if let cb = done { try cb() }
+      console.error("Could not write to Apache request ...")
       throw(Error.ApacheHandleGone)
     }
     

@@ -17,9 +17,10 @@ programming language.
 The demo includes a 
 [C module to load Swift modules](mod_swift/README.md),
 a [basic demo module](mods_baredemo/README.md),
-the [ApacheExpress](ApacheExpress/README.md) framework which provides an Express like
-API for mod_swift,
+the [ApacheExpress](ApacheExpress/README.md) framework which provides an Express 
+like API for mod_swift,
 a [demo for ApacheExpress](mods_expressdemo/README.md),
+a [Todo MVC](mods_todomvc/README.md) backend,
 and a few supporting libraries
 (such as Freddy or Noze.io [Mustache](ThirdParty/mustache/README.md)).
 
@@ -135,7 +136,7 @@ func expressMain() {
 And is configured like this in the Apache conf:
 
     <LocationMatch /express/*>
-      SetHandler de.zeezide.TinyExpress
+      SetHandler de.zeezide.ApacheExpress
     </LocationMatch>
 
 Now you are saying, this is all nice and pretty. But what about Connect?
@@ -221,7 +222,7 @@ Try this: [Developing modules for the Apache HTTP Server 2.4](https://httpd.apac
 - The code is 
   [properly formatted](http://www.alwaysrightinstitute.com/swifter-space/),
   max width 80 chars, 2-space indent.
-- TinyExpress is just code copy/pasted in from Noze.io. It may very well be
+- ApacheExpress is just code copy/pasted in from Noze.io. It may very well be
   non-sensical in the context of Apache :-)
 - This doesn't use `apxs` because that is badly b0rked on both 10.11 and 10.12.
 - It uses a lot of hardcoded load and lookup pathes, remember, it is a demo!
