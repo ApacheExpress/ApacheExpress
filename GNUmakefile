@@ -1,7 +1,7 @@
 # makefile
 
 all :
-	xcodebuild -scheme mods_demo build
+	xcodebuild -scheme Demos -workspace UseMe.xcworkspace build
 
 clean :
 	rm -f httpd.pid
@@ -13,5 +13,5 @@ clean-derived:
 distclean : clean 
 
 run : all
-	httpd -X -d $(PWD) -f apache.conf
+	( EXPRESS_VIEWS=mods_expressdemo/views httpd -X -d $(PWD) -f apache.conf )
 	

@@ -15,10 +15,13 @@ in the
 [Swift 3](http://swift.org/)
 programming language.
 The demo includes a 
-[C module to load Swift modules](Sources/mod_swift/),
-an [example Swift Apache module](Sources/mods_demo/)
-as well as a standalone [Mustache parser Swift library](Sources/mustache/README.md)
-used by it.
+[C module to load Swift modules](mod_swift/README.md),
+a [basic demo module](mods_baredemo/README.md),
+the [ApacheExpress](ApacheExpress/README.md) framework which provides an Express like
+API for mod_swift,
+a [demo for ApacheExpress](mods_expressdemo/README.md),
+and a few supporting libraries
+(such as Freddy or Noze.io [Mustache](ThirdParty/mustache/README.md)).
 
 **Server Side Swift the [right](http://www.alwaysrightinstitute.com/) way**.
 Instead of reinventing the HTTP server, hook into something that just works
@@ -141,7 +144,7 @@ Here you go:
 
 ```Swift
 func expressMain() {
-  let app = connect()
+  let app = apache.connect()
   
   app.use { req, res, next in
     console.info("Request is passing Connect middleware ...")
@@ -161,7 +164,7 @@ func expressMain() {
 
 And Express? Sure, the Apache Express is about to leave:
 ```Swift
-let app = express(cookieParser(), session())
+let app = apache.express(cookieParser(), session())
 
 app.get("/express/cookies") { req, res, _ in
   // returns all cookies as JSON
@@ -249,6 +252,7 @@ Try this: [Developing modules for the Apache HTTP Server 2.4](https://httpd.apac
 - Apache varargs funcs are not available since Swift doesn't support such. We
   provide a wrapper for `ap_log_rerror_`, other funcs would need to be wrapped
   the same way.
+- Apache also uses quite a few `#define`s, e.g. `ap_fwrite`
 - The Apache C headers are prone to crash `swiftc`. Which is why we wrap the
   Apache `request_rec` in an additional struct.
 

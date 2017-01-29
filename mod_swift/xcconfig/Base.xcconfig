@@ -1,0 +1,63 @@
+//
+// Copyright (C) 2017 ZeeZide GmbH, All Rights Reserved
+// Created by Helge Hess on 23/01/2017.
+//
+
+// Note: those get prefixed with the SDK, nice
+HEADER_SEARCH_PATHS  = /usr/include/apache2 /usr/include/apr-1
+
+MODSWIFT_ROOT_DIR   = $(SRCROOT)/..
+MODSWIFT_TARGET_DIR = $(MODSWIFT_ROOT_DIR)/.libs
+
+LIBRARY_SEARCH_PATHS = $(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx $(MODSWIFT_TARGET_DIR)
+
+// This is where we place all binaries we build as part of this thing. It goes
+// into the `.libs` directory at the toplevel.
+// TBD: Can this live in the workspace, so that the projects have their own
+//      settings, but if they are used as part of the workspace get a common
+//      target dir?
+CONFIGURATION_BUILD_DIR = $(MODSWIFT_TARGET_DIR)
+
+// -------------------------- Base config -----------------------------
+
+// Signing
+CODE_SIGN_IDENTITY                 = -
+DEVELOPMENT_TEAM                   =
+
+// Include
+ALWAYS_SEARCH_USER_PATHS           = NO
+
+// Language
+GCC_C_LANGUAGE_STANDARD            = gnu99
+GCC_NO_COMMON_BLOCKS               = YES
+CLANG_ENABLE_MODULES               = YES
+CLANG_ENABLE_OBJC_ARC              = YES
+ENABLE_STRICT_OBJC_MSGSEND         = YES
+
+// Warnings
+CLANG_WARN_BOOL_CONVERSION         = YES
+CLANG_WARN_CONSTANT_CONVERSION     = YES
+CLANG_WARN_DIRECT_OBJC_ISA_USAGE   = YES_ERROR
+CLANG_WARN_EMPTY_BODY              = YES
+CLANG_WARN_ENUM_CONVERSION         = YES
+CLANG_WARN_INT_CONVERSION          = YES
+CLANG_WARN_OBJC_ROOT_CLASS         = YES_ERROR
+CLANG_WARN_UNREACHABLE_CODE        = YES
+CLANG_WARN__DUPLICATE_METHOD_MATCH = YES
+CLANG_WARN_INFINITE_RECURSION      = YES
+CLANG_WARN_SUSPICIOUS_MOVE         = YES
+GCC_WARN_64_TO_32_BIT_CONVERSION   = YES
+GCC_WARN_ABOUT_RETURN_TYPE         = YES_ERROR
+GCC_WARN_UNDECLARED_SELECTOR       = YES
+GCC_WARN_UNINITIALIZED_AUTOS       = YES_AGGRESSIVE
+GCC_WARN_UNUSED_FUNCTION           = YES
+GCC_WARN_UNUSED_VARIABLE           = YES
+CLANG_ANALYZER_NONNULL             = YES
+
+// Analyzer
+CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES
+
+SWIFT_VERSION = 3.0
+
+
+SDKROOT = macosx
