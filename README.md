@@ -144,7 +144,7 @@ Here you go:
 
 ```Swift
 func expressMain() {
-  let app = connect()
+  let app = apache.connect()
   
   app.use { req, res, next in
     console.info("Request is passing Connect middleware ...")
@@ -164,7 +164,7 @@ func expressMain() {
 
 And Express? Sure, the Apache Express is about to leave:
 ```Swift
-let app = express(cookieParser(), session())
+let app = apache.express(cookieParser(), session())
 
 app.get("/express/cookies") { req, res, _ in
   // returns all cookies as JSON

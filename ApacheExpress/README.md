@@ -18,7 +18,8 @@ programming language.
 
 ## ApacheExpress
 
-TODO: Cleanup the README. Link to mods_expressdemo.
+TODO: Cleanup the README.
+[mods_expressdemo](../mods_expressdemo/README.md)
 
 ### Know what? This looks awkwardly difficult ...
 
