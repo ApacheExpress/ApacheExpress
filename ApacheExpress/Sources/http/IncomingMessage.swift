@@ -56,16 +56,42 @@ public class IncomingMessage : MessageBase, CustomStringConvertible {
   }
 }
 
+fileprivate extension request_rec {
+  
+  var isMethodWithContent : Bool {
+    switch method_number {
+      case M_GET, M_DELETE, M_OPTIONS, M_CONNECT:
+        return false
+      default:
+        return true
+    }
+  }
+  
+}
+
 public extension IncomingMessage {
   
   public func readBody(bufsize: Int = 4096) throws -> [ UInt8 ] {
     guard let th = apacheRequest.typedHandle
-     else { throw Error.ApacheHandleGone }
+     else {
+      console.error("Could not read request body ...")
+      throw Error.ApacheHandleGone
+    }
     
-    let rc = ap_setup_client_block(th, REQUEST_CHUNKED_ERROR)
-    guard rc == 0 else { throw Error.ReadFailed }
+    // Hm. Otherwise the read fails for non-empty methods. What is the proper
+    // check here whether there can be a body? Content-length and TE?
+    guard th.pointee.isMethodWithContent else { return [] }
     
-    guard ap_should_client_block(th) != 0 else { throw Error.ApacheHandleGone }
+    let rc = ap_setup_client_block(th, REQUEST_CHUNKED_DECHUNK)
+    guard rc == 0 else {
+      console.error("Could not setup request body read for \(method) ...")
+      throw Error.ReadFailed
+    }
+    
+    guard ap_should_client_block(th) != 0 else {
+      console.error("Could not read request body of \(method) ...")
+      throw Error.ReadFailed
+    }
     
     var bytes   = [ UInt8 ]()
     // If there is a content-length, reserve capacity
