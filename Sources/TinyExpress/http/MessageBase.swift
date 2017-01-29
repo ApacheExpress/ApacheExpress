@@ -12,6 +12,7 @@ public class MessageBase {
   enum Error : Swift.Error {
     case ApacheHandleGone
     case WriteFailed
+    case ReadFailed
   }
   
   public var extra = [ String : Any ]()
