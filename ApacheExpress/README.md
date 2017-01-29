@@ -39,7 +39,7 @@ func expressMain() {
 And is configured like this in the Apache conf:
 
     <LocationMatch /express/*>
-      SetHandler de.zeezide.TinyExpress
+      SetHandler de.zeezide.ApacheExpress
     </LocationMatch>
 
 Now you are saying, this is all nice and pretty. But what about Connect?

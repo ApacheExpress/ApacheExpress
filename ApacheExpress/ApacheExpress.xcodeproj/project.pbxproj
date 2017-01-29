@@ -41,7 +41,7 @@
 		E85EF1EB1E3E5500007A8C48 /* QueryString.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85EF1B41E3E5500007A8C48 /* QueryString.swift */; };
 		E85EF1EC1E3E5500007A8C48 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85EF1B51E3E5500007A8C48 /* Server.swift */; };
 		E85EF1ED1E3E5500007A8C48 /* ServerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85EF1B61E3E5500007A8C48 /* ServerResponse.swift */; };
-		E85EF1EE1E3E5500007A8C48 /* TinyExpressHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85EF1B71E3E5500007A8C48 /* TinyExpressHandler.swift */; };
+		E85EF1EE1E3E5500007A8C48 /* ApacheExpressHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85EF1B71E3E5500007A8C48 /* ApacheExpressHandler.swift */; };
 		E85EF1EF1E3E5500007A8C48 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85EF1B81E3E5500007A8C48 /* URL.swift */; };
 		E85EF1F01E3E5500007A8C48 /* json_module.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85EF1BA1E3E5500007A8C48 /* json_module.swift */; };
 		E85EF1F11E3E5500007A8C48 /* JsonFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85EF1BB1E3E5500007A8C48 /* JsonFile.swift */; };
@@ -128,7 +128,7 @@
 		E85EF1B41E3E5500007A8C48 /* QueryString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryString.swift; sourceTree = "<group>"; };
 		E85EF1B51E3E5500007A8C48 /* Server.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
 		E85EF1B61E3E5500007A8C48 /* ServerResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerResponse.swift; sourceTree = "<group>"; };
-		E85EF1B71E3E5500007A8C48 /* TinyExpressHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TinyExpressHandler.swift; sourceTree = "<group>"; };
+		E85EF1B71E3E5500007A8C48 /* ApacheExpressHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApacheExpressHandler.swift; sourceTree = "<group>"; };
 		E85EF1B81E3E5500007A8C48 /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		E85EF1BA1E3E5500007A8C48 /* json_module.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = json_module.swift; sourceTree = "<group>"; };
 		E85EF1BB1E3E5500007A8C48 /* JsonFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonFile.swift; sourceTree = "<group>"; };
@@ -275,7 +275,7 @@
 			isa = PBXGroup;
 			children = (
 				E85EF1B01E3E5500007A8C48 /* http_module.swift */,
-				E85EF1B71E3E5500007A8C48 /* TinyExpressHandler.swift */,
+				E85EF1B71E3E5500007A8C48 /* ApacheExpressHandler.swift */,
 				E85EF1B51E3E5500007A8C48 /* Server.swift */,
 				E85EF1B21E3E5500007A8C48 /* IncomingMessage.swift */,
 				E85EF1B61E3E5500007A8C48 /* ServerResponse.swift */,
@@ -473,7 +473,7 @@
 				E85EF1EA1E3E5500007A8C48 /* MessageBase.swift in Sources */,
 				E85EF1D81E3E5500007A8C48 /* Express.swift in Sources */,
 				E85EF1E01E3E5500007A8C48 /* Render.swift in Sources */,
-				E85EF1EE1E3E5500007A8C48 /* TinyExpressHandler.swift in Sources */,
+				E85EF1EE1E3E5500007A8C48 /* ApacheExpressHandler.swift in Sources */,
 				E85EF1F01E3E5500007A8C48 /* json_module.swift in Sources */,
 				E85EF1CC1E3E5500007A8C48 /* connect_module.swift in Sources */,
 				E85EF1D41E3E5500007A8C48 /* ApacheConsole.swift in Sources */,
