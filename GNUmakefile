@@ -13,5 +13,5 @@ clean-derived:
 distclean : clean 
 
 run : all
-	httpd -X -d $(PWD) -f apache.conf
+	( EXPRESS_VIEWS=mods_expressdemo/views httpd -X -d $(PWD) -f apache.conf )
 	
