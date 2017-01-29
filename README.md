@@ -15,10 +15,13 @@ in the
 [Swift 3](http://swift.org/)
 programming language.
 The demo includes a 
-[C module to load Swift modules](Sources/mod_swift/),
-an [example Swift Apache module](Sources/mods_demo/)
-as well as a standalone [Mustache parser Swift library](Sources/mustache/README.md)
-used by it.
+[C module to load Swift modules](mod_swift/README.md),
+a [basic demo module](mods_baredemo/README.md),
+the [ApacheExpress](ApacheExpress/README.md) framework which provides an Express like
+API for mod_swift,
+a [demo for ApacheExpress](mods_expressdemo/README.md),
+and a few supporting libraries
+(such as Freddy or Noze.io [Mustache](ThirdParty/mustache/README.md)).
 
 **Server Side Swift the [right](http://www.alwaysrightinstitute.com/) way**.
 Instead of reinventing the HTTP server, hook into something that just works
