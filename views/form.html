@@ -1,0 +1,45 @@
+{{> header}}
+
+  <style>
+    p.help-text {
+      font-size:  0.7em;
+      font-style: italic;
+    }
+    
+    form label {
+      font-size: 0.8em;
+    }
+    
+    form label input {
+      display:      block;
+      width:        100%;
+      font-size:    1em;
+      border:       1px solid #AAA;
+      padding:      0.5em;
+    }
+  </style>
+
+  <form action="/express/form" method="POST">
+    <label>
+      User
+      <input name="u" type="text" placeholder="username"
+             value="{{user}}" />
+    </label>
+    <p class="help-text" id="userHelpText">Your username should be cool.</p>
+       
+    <br />
+    
+    <label>
+      Password
+      <input name="p" type="password" placeholder="password" />
+    </label>
+    <p class="help-text" id="passwordHelpText"
+       >Your password must have at least 1337 Emoji.</p>
+       
+    <br />
+    
+    <input type="submit" class="button" value="Submit" />
+  </form>
+  
+  <pre>{{debug}}</pre>
+{{> footer}}

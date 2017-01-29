@@ -30,15 +30,15 @@ public class IncomingMessage : MessageBase, CustomStringConvertible {
   }
   
   var url : String {
-    guard let h = apacheRequest.typedHandle else { return "" }
-    return h.pointee.oURI
+    guard let th = apacheRequest.typedHandle else { return "" }
+    return th.pointee.oURI
   }
 
   // MARK: - Headers
   
   final override var _headersTable : OpaquePointer? {
-    guard let h = apacheRequest.typedHandle else { return nil }
-    return h.pointee.headers_in
+    guard let th = apacheRequest.typedHandle else { return nil }
+    return th.pointee.headers_in
   }
   
   // MARK: - CustomStringConvertible
@@ -52,5 +52,38 @@ public class IncomingMessage : MessageBase, CustomStringConvertible {
     s += "\(method) \(url)"
     s += ">"
     return s
+  }
+}
+
+extension IncomingMessage {
+  
+  func readBody(bufsize: Int = 4096) throws -> [ UInt8 ] {
+    guard let th = apacheRequest.typedHandle
+     else { throw Error.ApacheHandleGone }
+    
+    let rc = ap_setup_client_block(th, REQUEST_CHUNKED_ERROR)
+    guard rc == 0 else { throw Error.ReadFailed }
+    
+    guard ap_should_client_block(th) != 0 else { throw Error.ApacheHandleGone }
+    
+    var bytes   = [ UInt8 ]()
+    // If there is a content-length, reserve capacity
+    
+    let buffer  = UnsafeMutablePointer<Int8>.allocate(capacity: bufsize)
+    defer { buffer.deallocate(capacity: bufsize) }
+    
+    while true {
+      let rc = ap_get_client_block(th, buffer, bufsize)
+      guard rc != 0 else { break } // EOF
+      guard rc >  0 else { throw Error.ReadFailed }
+
+      // hm
+      buffer.withMemoryRebound(to: UInt8.self, capacity: rc) { buffer in
+        let bp = UnsafeBufferPointer(start: buffer, count: rc)
+        bytes.append(contentsOf: bp)
+      }
+    }
+    
+    return bytes
   }
 }

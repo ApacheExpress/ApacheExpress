@@ -23,6 +23,8 @@
 		E862198B1E38E53700286FD1 /* MustacheRenderingContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86219841E38E53700286FD1 /* MustacheRenderingContext.swift */; };
 		E862198D1E38E53700286FD1 /* SimpleKVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86219861E38E53700286FD1 /* SimpleKVC.swift */; };
 		E862198E1E38E58C00286FD1 /* libmustache.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E862197B1E38E50F00286FD1 /* libmustache.dylib */; };
+		E86AA5F91E3D8008003F6A97 /* QueryString.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86AA5F81E3D8008003F6A97 /* QueryString.swift */; };
+		E86AA5FB1E3D801F003F6A97 /* BodyParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86AA5FA1E3D801F003F6A97 /* BodyParser.swift */; };
 		E86B394D1E3A3D970044CE55 /* MessageBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86B394C1E3A3D970044CE55 /* MessageBase.swift */; };
 		E86B39501E3A3E9D0044CE55 /* WritableStreams.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86B394F1E3A3E9D0044CE55 /* WritableStreams.swift */; };
 		E86CE8181E38EE0D005C79AF /* MustacheHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86CE8171E38EE0D005C79AF /* MustacheHandler.swift */; };
@@ -137,6 +139,8 @@
 		E86219851E38E53700286FD1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		E86219861E38E53700286FD1 /* SimpleKVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleKVC.swift; sourceTree = "<group>"; };
 		E869AC051E38C83100A35CE7 /* Base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Base.xcconfig; path = xcconfig/Base.xcconfig; sourceTree = "<group>"; };
+		E86AA5F81E3D8008003F6A97 /* QueryString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryString.swift; sourceTree = "<group>"; };
+		E86AA5FA1E3D801F003F6A97 /* BodyParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BodyParser.swift; sourceTree = "<group>"; };
 		E86B394C1E3A3D970044CE55 /* MessageBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageBase.swift; sourceTree = "<group>"; };
 		E86B394F1E3A3E9D0044CE55 /* WritableStreams.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = WritableStreams.swift; sourceTree = "<group>"; };
 		E86CE8171E38EE0D005C79AF /* MustacheHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MustacheHandler.swift; sourceTree = "<group>"; };
@@ -438,6 +442,7 @@
 		E89DE6471E3A72F9009D1890 /* middleware */ = {
 			isa = PBXGroup;
 			children = (
+				E86AA5FA1E3D801F003F6A97 /* BodyParser.swift */,
 				E89DE6481E3A730C009D1890 /* CORS.swift */,
 				E89DE6491E3A730C009D1890 /* MethodOverride.swift */,
 				E834530C1E3B9E2600174774 /* Logger.swift */,
@@ -544,6 +549,7 @@
 				E8F4F5A11E3A2E0F00EF24B4 /* ServerResponse.swift */,
 				E89DE6521E3A7575009D1890 /* Cookies.swift */,
 				E89DE6541E3A762C009D1890 /* HttpMisc.swift */,
+				E86AA5F81E3D8008003F6A97 /* QueryString.swift */,
 				E89DE6851E3A8CDB009D1890 /* URL.swift */,
 			);
 			path = http;
@@ -772,6 +778,7 @@
 				E834530D1E3B9E2600174774 /* Logger.swift in Sources */,
 				E89DE60D1E3A67E5009D1890 /* connect_module.swift in Sources */,
 				E89DE6581E3A79CA009D1890 /* time.swift in Sources */,
+				E86AA5F91E3D8008003F6A97 /* QueryString.swift in Sources */,
 				E89DE60C1E3A67E5009D1890 /* Connect.swift in Sources */,
 				E89BF50E1E38C7BC00789982 /* APIExtensions.swift in Sources */,
 				E89DE6531E3A7575009D1890 /* Cookies.swift in Sources */,
@@ -793,6 +800,7 @@
 				E89DE5FD1E3A44A1009D1890 /* Server.swift in Sources */,
 				E89DE64F1E3A730C009D1890 /* Session.swift in Sources */,
 				E89DE64C1E3A730C009D1890 /* CORS.swift in Sources */,
+				E86AA5FB1E3D801F003F6A97 /* BodyParser.swift in Sources */,
 				E89DE6001E3A4773009D1890 /* ExpressMain.swift in Sources */,
 				E834530B1E3B9E0300174774 /* CookieParser.swift in Sources */,
 				E86219741E38CE3A00286FD1 /* RequestInfoHandler.swift in Sources */,
