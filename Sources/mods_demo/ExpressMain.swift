@@ -56,7 +56,7 @@ func expressMain() {
     let app = express()
     
     // app.use(logger("dev")) - no use in Apache
-    // app.use(bodyParser.urlencoded()) - TODO!!!
+    app.use(bodyParser.urlencoded())
     app.use(cookieParser())
     app.use(session())
     // app.use(serveStatic(__dirname + "/public"))
@@ -93,7 +93,23 @@ func expressMain() {
       try next()
     }
     
+    // MARK: - Form Handling
     
+    app.get("/express/form") { _, res, _ in
+      try res.render("form")
+    }
+    app.post("/express/form") { req, res, _ in
+      let user = req.body[string: "u"]
+      print("USER IS: \(user)")
+      
+      let options : [ String : Any ] = [
+        "user"      : user,
+        "nouser"    : user.isEmpty,
+        "viewCount" : req.session["viewCount"] ?? 0
+      ]
+      try res.render("form", options)
+    }
+
     // MARK: - JSON & Cookies
     
     app.get("/express/json") { _, res, _ in
