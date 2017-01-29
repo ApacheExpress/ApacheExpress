@@ -35,7 +35,7 @@ fileprivate func register_hooks(pool: OpaquePointer?) {
 
 
 // This is our module structure for Apache
-var module = Apache2.module(name: "mods_expressdemo")
+var module = Apache2.module(name: "mods_todomvc")
 
 
 // And `ApacheMain` is called by mod_swift to configure the module!
@@ -48,7 +48,7 @@ func ApacheMain(cmd: UnsafeMutablePointer<cmd_parms>) {
   apache = http_internal.ApacheServer(handle: cmd.pointee.server)
   
   // Let Apache know about our module
-  let error = ap_add_loaded_module(&module,cmd.pointee.pool, "mods_expressdemo")
+  let error = ap_add_loaded_module(&module, cmd.pointee.pool, "mods_todomvc")
   assert(error == nil, "Could not add Swift module!")
   
   // Note: we are lazy and do not register a cleanup

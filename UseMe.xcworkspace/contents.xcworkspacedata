@@ -27,6 +27,9 @@
       location = "group:mods_expressdemo/mods_expressdemo.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:mods_todomvc/mods_todomvc.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:ApacheExpress/ApacheExpress.xcodeproj">
    </FileRef>
    <Group
