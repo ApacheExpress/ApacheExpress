@@ -1,7 +1,7 @@
 # makefile
 
 all :
-	xcodebuild -scheme mods_demo build
+	xcodebuild -scheme Demos -workspace UseMe.xcworkspace build
 
 clean :
 	rm -f httpd.pid

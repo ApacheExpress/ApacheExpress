@@ -1,0 +1,36 @@
+//
+// Copyright (C) 2017 ZeeZide GmbH, All Rights Reserved
+// Created by Helge Hess on 23/01/2017.
+//
+
+#include "../mod_swift/xcconfig/Base.xcconfig"
+
+// Module
+
+OTHER_CFLAGS = $(inherited) -Wno-nullability-completeness -DDARWIN -DSIGPROCMASK_SETS_THREAD_MASK -DDARWIN_10
+
+// Note: Apache headers use documentation but using a different style
+CLANG_WARN_DOCUMENTATION_COMMENTS = NO
+
+
+// Note: The Apache API is part of the server itself and only becomes available
+//       when the module is loaded into the server.
+// Absolute pathes to Swift static libs because rpath. No idea :-)
+OTHER_LDFLAGS = $(inherited) -rpath $(TOOLCHAIN_DIR)/usr/lib/swift/macosx -rpath $(MODSWIFT_TARGET_DIR) -undefined dynamic_lookup -lswiftFoundation -lswiftDarwin -lswiftCore
+
+LD_RUNPATH_SEARCH_PATHS = $(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx/
+
+DYLIB_INSTALL_NAME_BASE = /usr/libexec/apache2
+
+// this is for frameworks:
+//   ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES
+
+
+// Ok, this is a little crazy. When using the Apache2 modmap, the linker can't
+// resolve -lswiftDarwin.a anymore even though it seems to pass in a proper -L
+// Fix: specify absolute path to .a above
+SWIFT_INCLUDE_PATHS = $(inherited) $(SRCROOT)/../mod_swift/Apache2 $(TOOLCHAIN_DIR)/usr/lib/swift
+
+
+// This is required for Apache to be able to find the shared libary
+DYLIB_INSTALL_NAME_BASE = @rpath
