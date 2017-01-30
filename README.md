@@ -186,7 +186,8 @@ app.get("/express/") { req, res, _ in
 
 Yes. All that is running within Apache.
 The working example can be found here:
-[ExpressMain.swift](Sources/mods_demo/ExpressMain.swift#L9).
+[ExpressMain.swift](mods_expressdemo/Sources/ExpressMain.swift#L9).
+The [TodoMVC](mods_todomvc/Sources/TodoMVCMain.swift) is pretty neat too.
 
 
 ### This is wicked! How can I try it?
