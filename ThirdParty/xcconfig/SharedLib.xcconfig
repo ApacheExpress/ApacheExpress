@@ -1,0 +1,15 @@
+//
+// Copyright (C) 2017 ZeeZide GmbH, All Rights Reserved
+// Created by Helge Hess on 29/01/2017.
+//
+
+// This puts the build results into toplevel/.libs
+#include "../../mod_swift/xcconfig/Base.xcconfig"
+
+// This is required for Apache to be able to find the shared libary
+DYLIB_INSTALL_NAME_BASE = @rpath
+
+// We are only level deeper
+MODSWIFT_ROOT_DIR       = $(SRCROOT)/../..
+MODSWIFT_TARGET_DIR     = $(MODSWIFT_ROOT_DIR)/.libs
+CONFIGURATION_BUILD_DIR = $(MODSWIFT_TARGET_DIR)

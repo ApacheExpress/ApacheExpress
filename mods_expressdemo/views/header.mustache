@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>mod_swift - Apache Modules for Swift</title>
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type' />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
+
+    <meta name="description" content="Apache Modules in Swift">
+    <meta name="author" content="Helge Hess" />
+    
+    <link rel="stylesheet" type="text/css" href="http://noze.io/style.css" />
+
+    <style>
+      pre.zzsource {
+        padding: 1em;
+        border: 1px dotted #AAA;
+        font-family: monospace;
+        font-size: 0.8em;
+      }
+      div.callout {
+        margin: 1em;
+        padding: 0em 1em 0em 1em;
+        border: 1px solid #AAA;
+      }
+      div.alert {
+        background-color: #F8E7E3;
+      }
+      div.callout h5 {
+        font-weight: normal;
+        font-size:   1em;
+      }
+    </style>
+  <head>
+
+  <body>
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"
+            ><img src="http://zeezide.com/img/mod_swift.svg" /></a>
+          
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Apache Express</a></h1>
+            <p class="site-description">{{tagline}}</p>
+          </div>
+          
+          <nav>
+            <a href="http://www.zeezide.de/">ZeeZide</a>
+            <a href="http://noze.io/">Noze.io</a>
+            <a href="http://www.alwaysrightinstitute.com/">ARI</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    {{#nouser}}
+      <div class="callout alert">
+        <h5>Missing User</h5>
+        <p>Pleaze provide a username!</p>
+      </div>
+    {{/nouser}}
+
+    <div id="main" role="main" class="container">

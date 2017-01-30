@@ -15,10 +15,14 @@ in the
 [Swift 3](http://swift.org/)
 programming language.
 The demo includes a 
-[C module to load Swift modules](Sources/mod_swift/),
-an [example Swift Apache module](Sources/mods_demo/)
-as well as a standalone [Mustache parser Swift library](Sources/mustache/README.md)
-used by it.
+[C module to load Swift modules](mod_swift/README.md),
+a [basic demo module](mods_baredemo/README.md),
+the [ApacheExpress](ApacheExpress/README.md) framework which provides an Express 
+like API for mod_swift,
+a [demo for ApacheExpress](mods_expressdemo/README.md),
+a [Todo MVC](mods_todomvc/README.md) backend,
+and a few supporting libraries
+(such as Freddy or Noze.io [Mustache](ThirdParty/mustache/README.md)).
 
 **Server Side Swift the [right](http://www.alwaysrightinstitute.com/) way**.
 Instead of reinventing the HTTP server, hook into something that just works
@@ -132,7 +136,7 @@ func expressMain() {
 And is configured like this in the Apache conf:
 
     <LocationMatch /express/*>
-      SetHandler de.zeezide.TinyExpress
+      SetHandler de.zeezide.ApacheExpress
     </LocationMatch>
 
 Now you are saying, this is all nice and pretty. But what about Connect?
@@ -141,7 +145,7 @@ Here you go:
 
 ```Swift
 func expressMain() {
-  let app = connect()
+  let app = apache.connect()
   
   app.use { req, res, next in
     console.info("Request is passing Connect middleware ...")
@@ -161,7 +165,7 @@ func expressMain() {
 
 And Express? Sure, the Apache Express is about to leave:
 ```Swift
-let app = express(cookieParser(), session())
+let app = apache.express(cookieParser(), session())
 
 app.get("/express/cookies") { req, res, _ in
   // returns all cookies as JSON
@@ -201,8 +205,8 @@ works w/ -X issues).
 Note: This would also work on Linux, but I didn't bother to port it, let me
       know if there is some actual interest.
 
-To explore and hack the code, just open the `mod_swift.xcodeproj`.
-You can also run everything directly from within Xcode.
+To explore and hack the code, just open the `UseMe.xcworkspace`.
+You can run everything directly from within Xcode.
 
 Don't be afraid, the Apache invoked here doesn't interfere with your system
 Apache at all (but uses it, Apache is part of all macOS installs).
@@ -218,7 +222,7 @@ Try this: [Developing modules for the Apache HTTP Server 2.4](https://httpd.apac
 - The code is 
   [properly formatted](http://www.alwaysrightinstitute.com/swifter-space/),
   max width 80 chars, 2-space indent.
-- TinyExpress is just code copy/pasted in from Noze.io. It may very well be
+- ApacheExpress is just code copy/pasted in from Noze.io. It may very well be
   non-sensical in the context of Apache :-)
 - This doesn't use `apxs` because that is badly b0rked on both 10.11 and 10.12.
 - It uses a lot of hardcoded load and lookup pathes, remember, it is a demo!
@@ -249,6 +253,7 @@ Try this: [Developing modules for the Apache HTTP Server 2.4](https://httpd.apac
 - Apache varargs funcs are not available since Swift doesn't support such. We
   provide a wrapper for `ap_log_rerror_`, other funcs would need to be wrapped
   the same way.
+- Apache also uses quite a few `#define`s, e.g. `ap_fwrite`
 - The Apache C headers are prone to crash `swiftc`. Which is why we wrap the
   Apache `request_rec` in an additional struct.
 

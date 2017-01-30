@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:README.md">
+   </FileRef>
+   <FileRef
+      location = "group:LICENSE">
+   </FileRef>
+   <FileRef
+      location = "group:DocRoot">
+   </FileRef>
+   <Group
+      location = "container:"
+      name = "Apache Configuration">
+      <FileRef
+         location = "group:apache.conf">
+      </FileRef>
+   </Group>
+   <FileRef
+      location = "group:mod_swift/mod_swift.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:mods_baredemo/mods_baredemo.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:mods_expressdemo/mods_expressdemo.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:mods_todomvc/mods_todomvc.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:ApacheExpress/ApacheExpress.xcodeproj">
+   </FileRef>
+   <Group
+      location = "container:"
+      name = "ThirdParty">
+      <FileRef
+         location = "group:ThirdParty/cows/cows.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:ThirdParty/Freddy/freddy.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:ThirdParty/mustache/mustache.xcodeproj">
+      </FileRef>
+   </Group>
+</Workspace>

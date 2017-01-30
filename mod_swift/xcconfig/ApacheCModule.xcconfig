@@ -1,0 +1,28 @@
+//
+// Copyright (C) 2017 ZeeZide GmbH, All Rights Reserved
+// Created by Helge Hess on 23/01/2017.
+//
+
+// Module
+
+EXECUTABLE_EXTENSION = so
+EXECUTABLE_PREFIX    =
+
+// Note: those get prefixed with the SDK, nice
+HEADER_SEARCH_PATHS  = /usr/include/apache2 /usr/include/apr-1
+
+
+OTHER_CFLAGS = $(inherited) -Wno-nullability-completeness -DDARWIN -DSIGPROCMASK_SETS_THREAD_MASK -DDARWIN_10
+
+// Note: Apache headers use documentation but using a different style
+CLANG_WARN_DOCUMENTATION_COMMENTS = NO
+
+
+// Note: The Apache API is part of the server itself and only becomes available
+//       when the module is loaded into the server.
+OTHER_LDFLAGS = $(inherited) -undefined dynamic_lookup
+
+
+DYLIB_INSTALL_NAME_BASE = /usr/libexec/apache2
+
+#include "Base.xcconfig"
