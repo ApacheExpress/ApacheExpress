@@ -205,8 +205,8 @@ works w/ -X issues).
 Note: This would also work on Linux, but I didn't bother to port it, let me
       know if there is some actual interest.
 
-To explore and hack the code, just open the `mod_swift.xcodeproj`.
-You can also run everything directly from within Xcode.
+To explore and hack the code, just open the `UseMe.xcworkspace`.
+You can run everything directly from within Xcode.
 
 Don't be afraid, the Apache invoked here doesn't interfere with your system
 Apache at all (but uses it, Apache is part of all macOS installs).
