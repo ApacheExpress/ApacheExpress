@@ -134,7 +134,7 @@
 					};
 				};
 			};
-			buildConfigurationList = E83AF8E31E3E40420039F300 /* Build configuration list for PBXProject "Freddy" */;
+			buildConfigurationList = E83AF8E31E3E40420039F300 /* Build configuration list for PBXProject "freddy" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -262,11 +262,9 @@
 			baseConfigurationReference = E83AF93F1E3E488E0039F300 /* SharedLib.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = 4GXF3JAMM4;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				EXECUTABLE_PREFIX = lib;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -278,11 +276,9 @@
 			baseConfigurationReference = E83AF93F1E3E488E0039F300 /* SharedLib.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = 4GXF3JAMM4;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				EXECUTABLE_PREFIX = lib;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -291,7 +287,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E83AF8E31E3E40420039F300 /* Build configuration list for PBXProject "Freddy" */ = {
+		E83AF8E31E3E40420039F300 /* Build configuration list for PBXProject "freddy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E83AF8EA1E3E40420039F300 /* Debug */,
