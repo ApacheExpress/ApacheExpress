@@ -3,11 +3,17 @@
 // Created by Helge Hess on 26/01/2017.
 //
 
-import Darwin
+#if os(Linux)
+  import Glibc
+
+  public typealias struct_tm = Glibc.tm
+#else
+  import Darwin
+
+  public typealias struct_tm = Darwin.tm
+#endif
 
 // MARK: - Time Helpers
-
-public typealias struct_tm = Darwin.tm
 
 /// Unix timestamp. `time_t` has the Y2038 issue and its granularity is limited
 /// to seconds.

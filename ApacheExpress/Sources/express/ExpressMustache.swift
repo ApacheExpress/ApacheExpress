@@ -58,14 +58,22 @@ fileprivate class ExpressMustacheContext : MustacheDefaultRenderingContext {
 
 // Dirutil helper
 
-import func Darwin.dirname
+#if os(Linux)
+  import func Glibc.dirname
+#else
+  import func Darwin.dirname
+#endif
 
 enum path {
   
   static func dirname(_ p: String) -> String {
     return p.withCString { cstr in
       let mp = UnsafeMutablePointer(mutating: cstr)
-      return String(cString: Darwin.dirname(mp)) // wrong on Linux
+      #if os(Linux)
+        return String(cString: Glibc.dirname(mp)) // wrong on Linux
+      #else
+        return String(cString: Darwin.dirname(mp)) // wrong on Linux
+      #endif
     }
   }
   

@@ -6,7 +6,11 @@
 //  Copyright © 2016 ZeeZide GmbH. All rights reserved.
 //
 
-import Darwin
+#if os(Linux)
+  import Glibc
+#else
+  import Darwin
+#endif
 
 /// Stuff common to any of the three(?) Unix time value structures:
 /// - timeval_t  (sec/microsec granularity)
