@@ -6,7 +6,7 @@
 //  Copyright © 2016 ZeeZide GmbH. All rights reserved.
 //
 
-public extension ApacheServer {
+public extension http.Server {
 
   public func express(middleware: Middleware...) -> Express {
     let app = Express()

@@ -6,8 +6,6 @@
 import ZzApache
 import Apache2
 
-typealias ApacheServer = http_internal.ApacheServer
-
 public extension http_internal.ApacheServer {
 
   // The main entry point to generate ApacheExpress.http server callbacks
