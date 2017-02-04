@@ -68,7 +68,7 @@ extension command_rec {
     self.func.take2   = cb
     self.cmd_data     = nil // userdata
     self.req_override = reqOverride
-    self.args_how     = TAKE2
+    self.args_how     = Apache2.TAKE2
     self.errmsg       = UnsafePointer(strdup(info)) // TODO: dealloc
   }
 
@@ -82,7 +82,7 @@ extension command_rec {
 // MARK: - `ApacheMain` is called by mod_swift to configure the module!
 
 @_cdecl("ApacheMain")
-func ApacheMain(cmd: UnsafeMutablePointer<cmd_parms>) {
+public func ApacheMain(cmd: UnsafeMutablePointer<cmd_parms>) {
   // Setup module struct
   module.register_hooks    = register_hooks
   

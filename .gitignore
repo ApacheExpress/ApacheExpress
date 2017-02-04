@@ -77,3 +77,6 @@ Release
 *.pid
 *.xcscmblueprint
 
+*~
+*.o
+

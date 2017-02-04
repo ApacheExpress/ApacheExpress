@@ -6,24 +6,29 @@
 #ifndef __ZzApache_H__
 #define __ZzApache_H__
 
-#include <apr_errno.h>
-#include <apr_tables.h>
-#include <apr_time.h>
-#include <apr_uri.h>
-
 #include <httpd.h>
-#include <http_config.h> // `module`
 
+#if defined(__clang__)
+#  if __linux__
+#    define ZzNonNull // hm? shouldn't that work on Linux? (3.8.0)
+#  else
+#    define ZzNonNull __nonnull
+#  endif
+#  define ZzSwiftName(__X__) __attribute__((swift_name(__X__)))
+#else
+#  define ZzNonNull
+#  define ZzSwiftName(__X__)
+#endif
 
 #pragma mark ZzApacheRequest
 
 struct ZzApacheRequest {
   // own struct which hides the swiftc-crash-prone Apache C structure
-  request_rec * __nonnull raw;
+  request_rec * ZzNonNull raw;
 };
 
-extern struct ZzApacheRequest ZzApacheRequestCreate(void * __nonnull raw)
-                __attribute__((swift_name("ZzApacheRequest.init(raw:)")));
+extern struct ZzApacheRequest ZzApacheRequestCreate(void * ZzNonNull raw)
+                ZzSwiftName("ZzApacheRequest.init(raw:)");
 
 
 #pragma mark Logging

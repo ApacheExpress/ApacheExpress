@@ -6,7 +6,16 @@
 //  Copyright © 2016 ZeeZide GmbH. All rights reserved.
 //
 
-import func Darwin.arc4random_uniform
+#if os(Linux)
+  import func Glibc.rand
+  // Looks like todays Linux Swift doesn't have arc4random either.
+  // Emulate it (badly).
+  fileprivate func arc4random_uniform(_ v : UInt32) -> UInt32 { // sigh
+    return UInt32(rand() % Int32(v))
+  }
+#else
+  import func Darwin.arc4random_uniform
+#endif
 
 func uniqueRandomArray<T>(_ array: [ T ]) -> () -> T {
   let ura = UniqueRandomArray(array)
@@ -28,7 +37,7 @@ class UniqueRandomArray<T> {
       remainingItems = originalArray // all consumed, reset
     }
     
-    let idx = Int(Darwin.arc4random_uniform(UInt32(remainingItems.count)))
+    let idx = Int(arc4random_uniform(UInt32(remainingItems.count)))
     return remainingItems.remove(at: idx)
   }
 }

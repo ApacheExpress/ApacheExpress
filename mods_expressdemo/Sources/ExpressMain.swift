@@ -3,7 +3,6 @@
 // Created by Helge Hess on 23/01/2017.
 //
 
-import Darwin
 import ApacheExpress
 import cows
 
@@ -148,3 +147,16 @@ func expressMain() {
     }
   }
 }
+
+// helper
+
+#if os(Linux)
+  import func Glibc.rand
+  // Looks like todays Linux Swift doesn't have arc4random either.
+  // Emulate it (badly).
+  fileprivate func arc4random_uniform(_ v : UInt32) -> UInt32 { // sigh
+    return UInt32(rand() % Int32(v))
+  }
+#else
+  import func Darwin.arc4random_uniform
+#endif

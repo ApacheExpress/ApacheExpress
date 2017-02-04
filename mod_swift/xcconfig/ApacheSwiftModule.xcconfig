@@ -33,4 +33,4 @@ DYLIB_INSTALL_NAME_BASE = /usr/libexec/apache2
 // Ok, this is a little crazy. When using the Apache2 modmap, the linker can't
 // resolve -lswiftDarwin.a anymore even though it seems to pass in a proper -L
 // Fix: specify absolute path to .a above
-SWIFT_INCLUDE_PATHS = $(inherited) $(SRCROOT)/../mod_swift/Apache2 $(TOOLCHAIN_DIR)/usr/lib/swift
+SWIFT_INCLUDE_PATHS = $(inherited) $(SRCROOT)/../mod_swift/Apache2/xcode8 $(TOOLCHAIN_DIR)/usr/lib/swift

@@ -4,6 +4,7 @@
 //
 
 import ZzApache
+import ApachePortableRuntime
 import Apache2
 
 
@@ -153,11 +154,11 @@ extension ZzApacheRequest {
   var notes         : ZzTable { return ZzTable(raw.pointee.notes)           }
   var bodyTable     : ZzTable { return ZzTable(raw.pointee.body_table)      }
   
-  var status        : apr_status_t   { return raw.pointee.status       }
-  var requestTime   : apr_time_t     { return raw.pointee.request_time }
-  var finfo         : apr_finfo_t    { return raw.pointee.finfo        }
+  var status        : apr_status_t       { return raw.pointee.status       }
+  var requestTime   : Apache2.apr_time_t { return raw.pointee.request_time }
+  var finfo         : apr_finfo_t        { return raw.pointee.finfo        }
   
-  var pool          : OpaquePointer! { return raw.pointee.pool         }
+  var pool          : OpaquePointer!     { return raw.pointee.pool         }
 
   /* TODO:
    struct ap_conf_vector_t *per_dir_config;
@@ -248,8 +249,8 @@ extension module {
     self.init()
     
     // Replica of STANDARD20_MODULE_STUFF (could also live as a C support fn)
-    version       = MODULE_MAGIC_NUMBER_MAJOR
-    minor_version = MODULE_MAGIC_NUMBER_MINOR
+    version       = ZzApache.MODULE_MAGIC_NUMBER_MAJOR
+    minor_version = Apache2.MODULE_MAGIC_NUMBER_MINOR
     module_index  = -1
     self.name     = UnsafePointer(strdup(name)) // leak
     dynamic_load_handle = nil
@@ -336,7 +337,7 @@ final class ApacheDictionaryConfig
                      _ dirname: UnsafeMutablePointer<Int8>?)
               -> UnsafeMutableRawPointer?
   {
-    let path = dirname != nil ? String(cString: dirname!) : nil
+    //let path = dirname != nil ? String(cString: dirname!) : nil
     
     let cfg = ApacheDictionaryConfig()
     // print("create dir cfg, path: \(path ?? "-")")
