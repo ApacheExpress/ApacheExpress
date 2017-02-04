@@ -1,0 +1,54 @@
+//
+// Copyright (C) 2017 ZeeZide GmbH, All Rights Reserved
+// Created by Helge Hess on 2017-02-02.
+//
+
+// Homebrew Module map for APR and Apache, Apache 2.4
+// Install: brew install homebrew/apache/httpd24
+
+module ApachePortableRuntime [system] [extern_c] {
+  
+  header "/usr/local/opt/apr/libexec/include/apr-1/apr.h"
+  header "/usr/local/opt/apr/libexec/include/apr-1/apr_tables.h"
+  header "/usr/local/opt/apr/libexec/include/apr-1/apr_pools.h"
+  header "/usr/local/opt/apr/libexec/include/apr-1/apr_network_io.h"
+  header "/usr/local/opt/apr/libexec/include/apr-1/apr_file_io.h"
+  header "/usr/local/opt/apr/libexec/include/apr-1/apr_general.h"
+  header "/usr/local/opt/apr/libexec/include/apr-1/apr_mmap.h"
+  header "/usr/local/opt/apr/libexec/include/apr-1/apr_errno.h"
+  header "/usr/local/opt/apr/libexec/include/apr-1/apr_ring.h"
+  header "/usr/local/opt/apr/libexec/include/apr-1/apr_strings.h"
+  header "/usr/local/opt/apr/libexec/include/apr-1/apr_time.h"
+  
+  // apr-util
+  header "/usr/local/opt/apr-util/libexec/include/apr-1/apu.h"
+  header "/usr/local/opt/apr-util/libexec/include/apr-1/apr_buckets.h"
+  
+  export *
+  
+}
+
+module Apache2 [system] [extern_c] {
+
+  header "/usr/local/opt/httpd24/include/httpd/httpd.h"
+  header "/usr/local/opt/httpd24/include/httpd/http_protocol.h"
+  header "/usr/local/opt/httpd24/include/httpd/http_config.h"
+  header "/usr/local/opt/httpd24/include/httpd/http_core.h"
+  header "/usr/local/opt/httpd24/include/httpd/http_log.h"
+
+  export ApachePortableRuntime
+
+  export *  
+
+  use ApachePortableRuntime
+}
+
+module ZzApache [system] {
+  
+  header "../../Sources/ZzApache.h"
+  
+  export *
+
+  use ApachePortableRuntime
+  use Apache2
+}
