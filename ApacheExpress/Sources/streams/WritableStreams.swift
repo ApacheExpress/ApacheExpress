@@ -3,8 +3,6 @@
 // Created by Helge Hess on 26/01/2017.
 //
 
-import Darwin
-
 // Basic Noze.io like stream protocols. But those in here are not
 // asynchronous.
 public enum streams {
@@ -37,6 +35,12 @@ public protocol WritableByteStreamType : WritableStreamType {
 
 
 // MARK: - Simple Output Stream
+
+#if os(Linux)
+  import Glibc
+#else
+  import Darwin
+#endif
 
 public class FileOutputStream : GWritableStreamType, WritableByteStreamType {
   

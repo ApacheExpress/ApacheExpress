@@ -3,7 +3,12 @@
 // Created by Helge Hess on 26/01/2017.
 //
 
-import Darwin
+#if os(Linux)
+  import var Glibc.stdout
+  import var Glibc.stderr
+#else
+  import Darwin
+#endif
 
 public enum console {
   

@@ -3,7 +3,14 @@
 // Created by Helge Hess on 26/01/2017.
 //
 
-import Darwin
+#if os(Linux)
+  import Glibc
+  fileprivate let xstat = stat
+#else
+  import Darwin
+  fileprivate let xstat = stat
+#endif
+
 import Foundation
 
 public enum fs {
@@ -61,8 +68,12 @@ public enum fs {
   
   // MARK: - Stat
   
-  public typealias stat_struct = Darwin.stat
-
+  #if os(Linux)
+    public typealias stat_struct = Glibc.stat
+  #else
+    public typealias stat_struct = Darwin.stat
+  #endif
+  
   public static func stat(_ path: String,
                           cb: ( Swift.Error?, stat_struct? ) -> Void)
   {
@@ -77,7 +88,7 @@ public enum fs {
   
   public static func statSync(_ path: String) throws -> stat_struct {
     var info = stat_struct()
-    let rc   = Darwin.stat(path, &info)
+    let rc   = xstat(path, &info)
     if rc != 0 { throw Error.StatError }
     return info
   }

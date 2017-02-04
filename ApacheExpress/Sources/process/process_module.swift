@@ -3,7 +3,23 @@
 // Created by Helge Hess on 26/01/2017.
 //
 
-import Darwin
+#if os(Linux)
+  import func Glibc.getpid
+  import func Glibc.chdir
+  import func Glibc.getcwd
+  import func Glibc.free
+  import func Glibc.getenv
+  import func Glibc.strstr
+  fileprivate let xchdir = Glibc.chdir
+#else
+  import func Darwin.getpid
+  import func Darwin.chdir
+  import func Darwin.getcwd
+  import func Darwin.free
+  import func Darwin.getenv
+  import func Darwin.strstr
+  fileprivate let xchdir = Darwin.chdir
+#endif
 import class Foundation.ProcessInfo
 
 public enum process {
@@ -35,12 +51,12 @@ public enum process {
   }
 
   public static func chdir(path: String) throws {
-    let rc = Darwin.chdir(path)
+    let rc = xchdir(path)
     guard rc == 0 else { throw Error.CouldNotChangedWorkingDirectory }
   }
   
   public static func cwd() -> String {
-    let rc = Darwin.getcwd(nil /* malloc */, 0)
+    let rc = getcwd(nil /* malloc */, 0)
     assert(rc != nil, "process has no cwd??")
     defer { free(rc) }
     guard rc != nil else { return "" }

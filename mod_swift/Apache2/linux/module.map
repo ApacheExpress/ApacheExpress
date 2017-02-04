@@ -1,0 +1,56 @@
+//
+// Copyright (C) 2017 ZeeZide GmbH, All Rights Reserved
+// Created by Helge Hess on 23/01/2017.
+//
+
+// Linux Module map for APR and Apache, Ubuntu Trusty
+
+module ApachePortableRuntime [system] [extern_c] {
+  
+  header "/usr/include/apr-1.0/apr.h"
+  header "/usr/include/apr-1.0/apr_tables.h"
+  header "/usr/include/apr-1.0/apr_pools.h"
+  header "/usr/include/apr-1.0/apr_network_io.h"
+  header "/usr/include/apr-1.0/apr_file_io.h"
+  header "/usr/include/apr-1.0/apr_general.h"
+  header "/usr/include/apr-1.0/apr_mmap.h"
+  header "/usr/include/apr-1.0/apr_errno.h"
+  header "/usr/include/apr-1.0/apr_ring.h"
+  header "/usr/include/apr-1.0/apr_strings.h"
+  header "/usr/include/apr-1.0/apr_time.h"
+
+  header "/usr/include/apr-1.0/apr_thread_proc.h"
+  
+  // apr-util
+  header "/usr/include/apr-1.0/apu.h"
+  header "/usr/include/apr-1.0/apr_buckets.h"
+  
+  export *
+  
+}
+
+module Apache2 [system] [extern_c] {
+
+  header "/usr/include/apache2/httpd.h"
+  header "/usr/include/apache2/http_protocol.h"
+  header "/usr/include/apache2/http_config.h"
+  header "/usr/include/apache2/http_core.h"
+  header "/usr/include/apache2/http_log.h"
+
+  export ApachePortableRuntime
+
+  export *  
+
+  use ApachePortableRuntime
+  use SwiftGlibc.POSIX.termios
+}
+
+module ZzApache [system] [extern_c] {
+  
+  header "../../Sources/ZzApache.h"
+  
+  export *
+  
+  use ApachePortableRuntime
+  use Apache2
+}
