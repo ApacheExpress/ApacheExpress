@@ -41,7 +41,7 @@ run : all
 	( EXPRESS_VIEWS=mods_expressdemo/views httpd -X -d $(PWD) -f apache-brew.conf )
 else
 run : all
-	( EXPRESS_VIEWS=mods_expressdemo/views httpd -X -d $(PWD) -f apache.conf )
+	( LD_LIBRARY_PATH="$(PWD)/.libs:$(LD_LIBRARY_PATH)" EXPRESS_VIEWS=mods_expressdemo/views apache2 -X -d $(PWD) -f apache-ubuntu.conf )
 endif
 
 endif
