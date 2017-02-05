@@ -49,4 +49,9 @@ extern apr_status_t apz_fwrite(struct ap_filter_t *f, apr_bucket_brigade *bb,
 
 extern void apz_brigade_insert_tail(apr_bucket_brigade *bb, apr_bucket *b);
 
+
+#pragma mark Module Helpers
+
+extern apr_status_t apz_register_swift_module(void *cmd, void *module);
+
 #endif /* __ZzApache_H__ */

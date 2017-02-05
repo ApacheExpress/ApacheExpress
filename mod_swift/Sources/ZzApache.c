@@ -12,13 +12,15 @@
 #include <apr_strings.h>
 
 #include <stdio.h>
+#include <assert.h>
 
 struct ZzApacheRequest ZzApacheRequestCreate(void *raw) {
   struct ZzApacheRequest rq;
   rq.raw = raw;
-  printf("called raw %p\n", raw);
+  // printf("called raw %p\n", raw);
   return rq;
 }
+
 
 #pragma mark Logging
 
@@ -35,6 +37,7 @@ void apz_log_error_(const char *file, int line, int module_index,
   ap_log_error_(file, line, module_index, level, status, r, "%s", s);
 }
 
+
 #pragma mark Bucket Brigade Helpers
 
 apr_status_t apz_fwrite(struct ap_filter_t *f, apr_bucket_brigade *bb,
@@ -47,4 +50,33 @@ apr_status_t apz_fwrite(struct ap_filter_t *f, apr_bucket_brigade *bb,
 
 void apz_brigade_insert_tail(apr_bucket_brigade *bb, apr_bucket *b) {
   APR_BRIGADE_INSERT_TAIL(bb, b);
+}
+
+
+#pragma mark Module Helpers
+
+// LoadModule keeps an own array of loaded modules. We don't, at least not yet.
+
+static apr_status_t apz_unload_swift_module(void *_m) {
+  module *module = _m;
+  ap_remove_loaded_module(module);
+  return APR_SUCCESS;
+}
+
+apr_status_t apz_register_swift_module(void *_cmd, void *_m) {
+  cmd_parms *cmd    = _cmd;
+  module    *module = _m;
+  
+  // TODO: LoadModule also sets the 'dynamic_load_handle' in the module.
+  
+  // Let Apache know about our module
+  const char *error = ap_add_loaded_module(module, cmd->pool, module->name);
+  assert(error == NULL); // "Could not add Swift module!"
+  
+  apr_pool_cleanup_register(cmd->pool, module, apz_unload_swift_module,
+                            apr_pool_cleanup_null);
+  
+  ap_single_module_configure(cmd->pool, cmd->server, module);
+  
+  return APR_SUCCESS;
 }

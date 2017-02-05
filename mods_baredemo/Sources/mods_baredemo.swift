@@ -105,9 +105,6 @@ public func ApacheMain(cmd: UnsafeMutablePointer<cmd_parms>) {
   module.cmds = UnsafePointer(commands)
   
   // Let Apache know about our module
-  let error = ap_add_loaded_module(&module, cmd.pointee.pool, "mods_baredemo")
-  assert(error == nil, "Could not add Swift module!")
-  
-  // Note: we are lazy and do not register a cleanup
-  ap_single_module_configure(cmd.pointee.pool, cmd.pointee.server, &module);
+  let rc = apz_register_swift_module(cmd, &module)
+  assert(rc == APR_SUCCESS, "Could not add Swift module!")
 }
