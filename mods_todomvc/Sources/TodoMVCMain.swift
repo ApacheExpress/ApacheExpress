@@ -7,7 +7,6 @@
 // - test:
 //     http://todobackend.com/specs/index.html?http://localhost:8042/todomvc/
 
-import Darwin
 import ApacheExpress
 
 // A global used in the model layer, yeah, lame.

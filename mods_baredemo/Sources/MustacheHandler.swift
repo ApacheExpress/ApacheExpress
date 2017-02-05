@@ -33,7 +33,7 @@ func MustacheHandler(p: UnsafeMutablePointer<request_rec>?) -> Int32 {
   guard let fn = req.filename else { return HTTP_NOT_FOUND }
 
   // load file
-  guard let template = try? String(contentsOfFile: fn) else {
+  guard let template = try? loadString(path: fn) else {
     print("could not load template?!")
     return HTTP_INTERNAL_SERVER_ERROR
   }
@@ -72,7 +72,7 @@ class ApacheMustacheContext : MustacheDefaultRenderingContext {
     let ext         = ".mustache"
     let partialPath = viewPath + "/" + (n.hasSuffix(ext) ? n : (n + ext))
     
-    guard let template = try? String(contentsOfFile: partialPath) else {
+    guard let template = try? loadString(path: partialPath) else {
       // TODO: use Apache error logger
       print("ERROR: could not load partial: \(n): \(partialPath)")
       return nil
@@ -84,14 +84,40 @@ class ApacheMustacheContext : MustacheDefaultRenderingContext {
   }
 }
 
+import Foundation
+
+// Why? Because Swift on Linux 3.0.2 doesn't have that (aborts) ...
+fileprivate func loadString(path: String) throws -> String {
+  #if os(Linux)
+    let url  = URL(fileURLWithPath: path)
+    var data = try Data(contentsOf: url)
+    data.append(0) // 0 terminator
+    return data.withUnsafeBytes { (ptr : UnsafePointer<UInt8>) -> String in
+      return String(cString: ptr)
+    }
+  #else
+    return try String(contentsOfFile: path)
+  #endif
+}
 
 // Dirutil helper
+
+#if os(Linux)
+  import func Glibc.dirname
+#else
+  import func Darwin.dirname
+#endif
+
 enum path {
 
   static func dirname(_ p: String) -> String {
     return p.withCString { cstr in
       let mp = UnsafeMutablePointer(mutating: cstr)
-      return String(cString: Darwin.dirname(mp)) // wrong on Linux
+      #if os(Linux)
+        return String(cString: Glibc.dirname(mp)) // wrong on Linux
+      #else
+        return String(cString: Darwin.dirname(mp)) // wrong on Linux
+      #endif
     }
   }
   

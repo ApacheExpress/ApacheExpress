@@ -4,6 +4,7 @@
 //
 
 import ZzApache
+import ApachePortableRuntime
 import Apache2
 
 
@@ -153,11 +154,11 @@ extension ZzApacheRequest {
   var notes         : ZzTable { return ZzTable(raw.pointee.notes)           }
   var bodyTable     : ZzTable { return ZzTable(raw.pointee.body_table)      }
   
-  var status        : apr_status_t   { return raw.pointee.status       }
-  var requestTime   : apr_time_t     { return raw.pointee.request_time }
-  var finfo         : apr_finfo_t    { return raw.pointee.finfo        }
+  var status        : apr_status_t       { return raw.pointee.status       }
+  var requestTime   : Apache2.apr_time_t { return raw.pointee.request_time }
+  var finfo         : apr_finfo_t        { return raw.pointee.finfo        }
   
-  var pool          : OpaquePointer! { return raw.pointee.pool         }
+  var pool          : OpaquePointer!     { return raw.pointee.pool         }
 
   /* TODO:
    struct ap_conf_vector_t *per_dir_config;
@@ -248,8 +249,8 @@ extension module {
     self.init()
     
     // Replica of STANDARD20_MODULE_STUFF (could also live as a C support fn)
-    version       = MODULE_MAGIC_NUMBER_MAJOR
-    minor_version = MODULE_MAGIC_NUMBER_MINOR
+    version       = ZzApache.MODULE_MAGIC_NUMBER_MAJOR
+    minor_version = Apache2.MODULE_MAGIC_NUMBER_MINOR
     module_index  = -1
     self.name     = UnsafePointer(strdup(name)) // leak
     dynamic_load_handle = nil
@@ -259,3 +260,89 @@ extension module {
   }
   
 }
+
+
+// MARK: - Config Helpers
+
+protocol ApacheModuleConfig : class {
+
+  func merge(with new: Self) -> Self?
+  
+}
+
+extension ApacheModuleConfig {
+
+  static func merge(base: Self?, new: Self?) -> Self? {
+    // print("merge dir cfg: \(base) \(new)")
+    if base == nil { return new  }
+    if new  == nil { return base }
+    return base!.merge(with: new!)
+  }
+  
+  static func merge(_ pool: OpaquePointer?,
+                    _ base: UnsafeMutableRawPointer?,
+                    _ new:  UnsafeMutableRawPointer?)
+              -> UnsafeMutableRawPointer?
+  {
+    let baseCfg = Self.fromOpaque(base)
+    let newCfg  = Self.fromOpaque(new)
+    let merged  = Self.merge(base: baseCfg, new: newCfg)
+    // TODO: dealloc in pool
+    return merged?.passRetained()
+  }
+  
+  static func fromOpaque(_ ptr : UnsafeMutableRawPointer?) -> Self? {
+    guard let ptr = ptr else { return nil }
+    return Unmanaged<Self>.fromOpaque(ptr).takeUnretainedValue()
+  }
+  
+  func passRetained() -> UnsafeMutableRawPointer {
+    return Unmanaged.passRetained(self).toOpaque()
+  }
+  
+}
+
+final class ApacheDictionaryConfig
+            : ApacheModuleConfig, CustomStringConvertible
+{
+  
+  var values = [ String : String ]()
+  
+  func merge(with new: ApacheDictionaryConfig) -> ApacheDictionaryConfig? {
+    let merged = ApacheDictionaryConfig()
+    merged.values = values
+    for (k, v) in new.values {
+      merged.values.updateValue(v, forKey: k)
+    }
+    // print("merge \(self) + \(new) dir cfg: \(merged)")
+    return merged
+  }
+  
+  subscript(_ key : String) -> String? {
+    get { return values[key] }
+    set { values[key] = newValue }
+  }
+  
+  
+  // MARK: - Logging
+  
+  var description : String {
+    return "<ApacheConfig: \(values)>"
+  }
+
+
+  // MARK: - Callbacks
+  
+  static func create(_ pool: OpaquePointer?,
+                     _ dirname: UnsafeMutablePointer<Int8>?)
+              -> UnsafeMutableRawPointer?
+  {
+    //let path = dirname != nil ? String(cString: dirname!) : nil
+    
+    let cfg = ApacheDictionaryConfig()
+    // print("create dir cfg, path: \(path ?? "-")")
+    // TODO: dealloc in pool
+    return cfg.passRetained()
+  }
+}
+

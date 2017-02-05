@@ -3,20 +3,13 @@
 // Created by Helge Hess on 23/01/2017.
 //
 
-module ZzApache [system] {
-  
-  header "../Sources/ZzApache.h"
-  
-  export *
-}
+// Xcode Module map for APR and Apache
 
 module ApachePortableRuntime [system] [extern_c] {
   
   header "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/apr-1/apr.h"
-  header "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/apr-1/apu.h"
   header "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/apr-1/apr_tables.h"
   header "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/apr-1/apr_pools.h"
-  header "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/apr-1/apr_buckets.h"
   header "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/apr-1/apr_network_io.h"
   header "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/apr-1/apr_file_io.h"
   header "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/apr-1/apr_general.h"
@@ -25,7 +18,11 @@ module ApachePortableRuntime [system] [extern_c] {
   header "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/apr-1/apr_ring.h"
   header "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/apr-1/apr_strings.h"
   header "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/apr-1/apr_time.h"
-  
+
+  // apr-util
+  header "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/apr-1/apu.h"
+  header "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/apr-1/apr_buckets.h"
+
   export *
   
 }
@@ -44,5 +41,19 @@ module Apache2 [system] [extern_c] {
   header "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/apache2/http_core.h"
   header "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/apache2/http_log.h"
 
-  export *  
+  export ApachePortableRuntime
+
+  export *
+  
+  use ApachePortableRuntime
+}
+
+module ZzApache [system] {
+  
+  header "../../Sources/ZzApache.h"
+  
+  export *
+  
+  use ApachePortableRuntime
+  use Apache2
 }

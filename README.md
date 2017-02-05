@@ -6,6 +6,7 @@
 ![Apache 2](https://img.shields.io/badge/apache-2-yellow.svg)
 ![Swift3](https://img.shields.io/badge/swift-3-blue.svg)
 ![macOS](https://img.shields.io/badge/os-macOS-green.svg?style=flat)
+![tuxOS](https://img.shields.io/badge/os-tuxOS-green.svg?style=flat)
 ![Travis](https://travis-ci.org/AlwaysRightInstitute/mod_swift.svg?branch=master)
 
 **mod_swift** is a technology demo which shows how to write native modules
@@ -201,10 +202,13 @@ Easy! Just clone this repository, make and run it:
 Then open [http://localhost:8042/](http://localhost:8042/) and voilà,
 you should see a webpage delivered by Apache.
 
-Well, you need to have macOS and Xcode 8, preferably 10.12 (though 10.11 also
-works w/ -X issues).
-Note: This would also work on Linux, but I didn't bother to port it, let me
-      know if there is some actual interest.
+It works out of the box on macOS 10.11+ with Xcode 8 
+and the builtin system Apache (no Apache install required!),
+with the Homebrew Apache 2.4 on macOS (`brew install homebrew/apache/httpd24`),
+and on Linux (tested with Ubuntu 16.04).
+
+On Linux you need to hack `/usr/include/apr-1.0/apr.h` and add a
+`typedef int pid_t;` just below the MingW section to make swiftc behave.
 
 To explore and hack the code, just open the `UseMe.xcworkspace`.
 You can run everything directly from within Xcode.

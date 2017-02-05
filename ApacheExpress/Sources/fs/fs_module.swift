@@ -3,7 +3,14 @@
 // Created by Helge Hess on 26/01/2017.
 //
 
-import Darwin
+#if os(Linux)
+  import Glibc
+  fileprivate let xstat = stat
+#else
+  import Darwin
+  fileprivate let xstat = stat
+#endif
+
 import Foundation
 
 public enum fs {
@@ -54,15 +61,28 @@ public enum fs {
     let enc = enc.lowercased()
     guard enc == "utf8" else { return nil }
     
-    guard let s = try? String(contentsOfFile: path) else { return nil }
-    return s
+    #if os(Linux) // Linux 3.0.2 compiles but doesn't have contentsOfFile ...
+      let url  = Foundation.URL(fileURLWithPath: path)
+      guard var data = try? Data(contentsOf: url) else { return nil }
+      data.append(0) // 0 terminator
+      return data.withUnsafeBytes { (ptr : UnsafePointer<UInt8>) -> String in
+        return String(cString: ptr)
+      }
+    #else
+      guard let s = try? String(contentsOfFile: path) else { return nil }
+      return s
+    #endif
   }
   
   
   // MARK: - Stat
   
-  public typealias stat_struct = Darwin.stat
-
+  #if os(Linux)
+    public typealias stat_struct = Glibc.stat
+  #else
+    public typealias stat_struct = Darwin.stat
+  #endif
+  
   public static func stat(_ path: String,
                           cb: ( Swift.Error?, stat_struct? ) -> Void)
   {
@@ -77,7 +97,7 @@ public enum fs {
   
   public static func statSync(_ path: String) throws -> stat_struct {
     var info = stat_struct()
-    let rc   = Darwin.stat(path, &info)
+    let rc   = xstat(path, &info)
     if rc != 0 { throw Error.StatError }
     return info
   }

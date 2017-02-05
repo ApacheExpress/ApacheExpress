@@ -3,7 +3,7 @@
 // Created by Helge Hess on 26/01/2017.
 //
 
-public extension ApacheServer {
+public extension http.Server {
   
   public func connect(middleware: Middleware...) -> Connect {
     let app = Connect()

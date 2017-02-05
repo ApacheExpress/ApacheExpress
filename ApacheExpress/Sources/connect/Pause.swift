@@ -6,7 +6,11 @@
 //  Copyright © 2016 ZeeZide GmbH. All rights reserved.
 //
 
-import Darwin
+#if os(Linux)
+  import Glibc
+#else
+  import Darwin
+#endif
 
 /// Middleware to simulate latency.
 ///

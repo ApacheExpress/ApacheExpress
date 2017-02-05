@@ -6,7 +6,11 @@
 //  Copyright © 2016 ZeeZide GmbH. All rights reserved.
 //
 
-import Darwin
+#if os(Linux)
+  import Glibc
+#else
+  import Darwin
+#endif
 
 public let HTTPDateFormat = "%a, %d %b %Y %H:%M:%S GMT" // TBD: %Z emits UTC
 

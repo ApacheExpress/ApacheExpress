@@ -15,7 +15,7 @@ func RequestInfoHandler(p: UnsafeMutablePointer<request_rec>?) -> Int32 {
   //   guard p != nil else { return DECLINED }
   
   var req = ZzApacheRequest(raw: p!) // var because we set the contentType
-  
+    
   req.log(level: APLOG_DEBUG,
           "SWIFT \(#function): handler \(req.handler)" +
           " (\(req.method) on \(req.uri)[\(req.unparsedURI)])")
@@ -48,6 +48,12 @@ func RequestInfoHandler(p: UnsafeMutablePointer<request_rec>?) -> Int32 {
   req.puts("Args:           \(req.args)\r\n")
   req.puts("User-Agent:     \(req.headersIn["User-agent"] ?? "-")\r\n")
   req.puts("Depth:          \(req.headersIn["Depth"]      ?? "-")\r\n")
+
+  // module configuration
+  req.puts("Answer:         \(req.ourConfig["answer"]     ?? "-")\r\n")
+
+  // TODO: need HTML escape here
+  // req.puts("Config:         \(p!.pointee.ourConfig)\r\n")
   
   if let fn = req.filename {
     req.puts("  Valid:        \(req.finfo.valid)\r\n") // bitmask

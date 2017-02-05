@@ -21,7 +21,10 @@
 		E83AF9331E3E43190039F300 /* mod_swift.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mod_swift.c; path = Sources/mod_swift.c; sourceTree = "<group>"; };
 		E83AF9341E3E43190039F300 /* ZzApache.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ZzApache.c; path = Sources/ZzApache.c; sourceTree = "<group>"; };
 		E83AF9351E3E43190039F300 /* ZzApache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZzApache.h; path = Sources/ZzApache.h; sourceTree = "<group>"; };
-		E83AF93A1E3E43870039F300 /* module.map */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.map; sourceTree = "<group>"; };
+		E83BC5AB1E45E73E002886AE /* module.map */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.map; sourceTree = "<group>"; };
+		E83BC5AD1E45E73E002886AE /* module.map */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.map; sourceTree = "<group>"; };
+		E83BC5AE1E45E73E002886AE /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		E83BC5B01E45E73E002886AE /* module.map */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.map; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,9 +81,36 @@
 		E83AF9391E3E43870039F300 /* Apache2 */ = {
 			isa = PBXGroup;
 			children = (
-				E83AF93A1E3E43870039F300 /* module.map */,
+				E83BC5AE1E45E73E002886AE /* README.md */,
+				E83BC5AF1E45E73E002886AE /* xcode8 */,
+				E83BC5AA1E45E73E002886AE /* brew */,
+				E83BC5AC1E45E73E002886AE /* linux */,
 			);
 			path = Apache2;
+			sourceTree = "<group>";
+		};
+		E83BC5AA1E45E73E002886AE /* brew */ = {
+			isa = PBXGroup;
+			children = (
+				E83BC5AB1E45E73E002886AE /* module.map */,
+			);
+			path = brew;
+			sourceTree = "<group>";
+		};
+		E83BC5AC1E45E73E002886AE /* linux */ = {
+			isa = PBXGroup;
+			children = (
+				E83BC5AD1E45E73E002886AE /* module.map */,
+			);
+			path = linux;
+			sourceTree = "<group>";
+		};
+		E83BC5AF1E45E73E002886AE /* xcode8 */ = {
+			isa = PBXGroup;
+			children = (
+				E83BC5B01E45E73E002886AE /* module.map */,
+			);
+			path = xcode8;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
