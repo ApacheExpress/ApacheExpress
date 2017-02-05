@@ -61,8 +61,17 @@ public enum fs {
     let enc = enc.lowercased()
     guard enc == "utf8" else { return nil }
     
-    guard let s = try? String(contentsOfFile: path) else { return nil }
-    return s
+    #if os(Linux) // Linux 3.0.2 compiles but doesn't have contentsOfFile ...
+      let url  = Foundation.URL(fileURLWithPath: path)
+      guard var data = try? Data(contentsOf: url) else { return nil }
+      data.append(0) // 0 terminator
+      return data.withUnsafeBytes { (ptr : UnsafePointer<UInt8>) -> String in
+        return String(cString: ptr)
+      }
+    #else
+      guard let s = try? String(contentsOfFile: path) else { return nil }
+      return s
+    #endif
   }
   
   
