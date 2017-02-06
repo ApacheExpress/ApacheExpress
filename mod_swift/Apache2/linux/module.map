@@ -24,6 +24,7 @@ module ApachePortableRuntime [system] [extern_c] {
   // apr-util
   header "/usr/include/apr-1.0/apu.h"
   header "/usr/include/apr-1.0/apr_buckets.h"
+  header "/usr/include/apr-1.0/apr_dbd.h"
   
   export *
   
@@ -36,6 +37,7 @@ module Apache2 [system] [extern_c] {
   header "/usr/include/apache2/http_config.h"
   header "/usr/include/apache2/http_core.h"
   header "/usr/include/apache2/http_log.h"
+  header "/usr/include/apache2/mod_dbd.h"
 
   export ApachePortableRuntime
 

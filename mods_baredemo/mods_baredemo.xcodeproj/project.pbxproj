@@ -12,6 +12,8 @@
 		E812A9981E3E4B4300F0F36F /* MustacheHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E812A9941E3E4B4300F0F36F /* MustacheHandler.swift */; };
 		E812A9991E3E4B4300F0F36F /* RequestInfoHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E812A9951E3E4B4300F0F36F /* RequestInfoHandler.swift */; };
 		E812A9A21E3E4B6C00F0F36F /* libmustache.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E812A99F1E3E4B5900F0F36F /* libmustache.dylib */; };
+		E8AE4A481E4921FD005EC5D3 /* DatabaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AE4A471E4921FD005EC5D3 /* DatabaseAPI.swift */; };
+		E8AE4A4A1E492207005EC5D3 /* DatabaseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AE4A491E492206005EC5D3 /* DatabaseHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +58,8 @@
 		E81795031E3E864F00A3A6F3 /* DocRoot */ = {isa = PBXFileReference; lastKnownFileType = folder; name = DocRoot; path = ../DocRoot; sourceTree = "<group>"; };
 		E83AF8B81E3E3FB30039F300 /* mods_baredemo.so */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = mods_baredemo.so; sourceTree = BUILT_PRODUCTS_DIR; };
 		E85EF1841E3E4F21007A8C48 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		E8AE4A471E4921FD005EC5D3 /* DatabaseAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DatabaseAPI.swift; path = Sources/DatabaseAPI.swift; sourceTree = "<group>"; };
+		E8AE4A491E492206005EC5D3 /* DatabaseHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DatabaseHandler.swift; path = Sources/DatabaseHandler.swift; sourceTree = "<group>"; };
 		E8DBF3CF1E3E4BE1009A5EA2 /* mod_swift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = mod_swift.xcodeproj; path = ../mod_swift/mod_swift.xcodeproj; sourceTree = "<group>"; };
 		E8DBF3D61E3E4C74009A5EA2 /* apache.conf */ = {isa = PBXFileReference; lastKnownFileType = text; path = apache.conf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -78,7 +82,9 @@
 				E812A9931E3E4B4300F0F36F /* mods_baredemo.swift */,
 				E812A9941E3E4B4300F0F36F /* MustacheHandler.swift */,
 				E812A9951E3E4B4300F0F36F /* RequestInfoHandler.swift */,
+				E8AE4A491E492206005EC5D3 /* DatabaseHandler.swift */,
 				E812A9921E3E4B4300F0F36F /* APIExtensions.swift */,
+				E8AE4A471E4921FD005EC5D3 /* DatabaseAPI.swift */,
 			);
 			name = Sources;
 			sourceTree = "<group>";
@@ -247,7 +253,9 @@
 				E812A9961E3E4B4300F0F36F /* APIExtensions.swift in Sources */,
 				E812A9971E3E4B4300F0F36F /* mods_baredemo.swift in Sources */,
 				E812A9991E3E4B4300F0F36F /* RequestInfoHandler.swift in Sources */,
+				E8AE4A4A1E492207005EC5D3 /* DatabaseHandler.swift in Sources */,
 				E812A9981E3E4B4300F0F36F /* MustacheHandler.swift in Sources */,
+				E8AE4A481E4921FD005EC5D3 /* DatabaseAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
