@@ -191,6 +191,47 @@ The working example can be found here:
 The [TodoMVC](mods_todomvc/Sources/TodoMVCMain.swift) is pretty neat too.
 
 
+### And how do I access MySQL/PostgreSQL/SQLite3?
+
+Funny that you ask. A feature of Apache 2 known to few is
+[mod_dbd](https://httpd.apache.org/docs/2.4/mod/mod_dbd.html).
+Using that you can configure a database connection within the Apache.conf and
+use that within all your Apache modules/handlers.
+It does all the pooling and maintenance required. Like so:
+
+    <IfModule dbd_module>
+      DBDriver  sqlite3
+      DBDParams "/var/data/testdb.sqlite3"
+    </IfModule>
+
+Well, and as part of 
+[mods_baredemo](mods_baredemo/Sources/DatabaseHandler.swift)
+we provide an example on how to use this. It looks like this:
+```swift
+guard let con = req.dbdAcquire()                 else { return ... }
+guard let res = con.select("SELECT * FROM pets") else { return ... }
+
+while let row = res.next() {
+  req.puts("<li>\(row[0])</li>")
+}
+```
+
+Both macOS Apache installations (system and Homebrew) include the SQLite3
+driver, so we included a demo database in the `data` directory.
+On Linux you need to install the drivers you want
+(`sudo apt-get install libaprutil1-dbd-sqlite3 libaprutil1-dbd-pgsql`).
+<br />
+A little more work: Next you need to load `mod_dbd` in the proper
+[apache.conf](apache.conf#L73)
+and
+specify the absolute path to the `data/testdb.sqlite3` database (the path where
+you checked out **mod_swift**).
+<br />
+If you got that right, restart Apache and
+[http://localhost:8042/database/](http://localhost:8042/database/)
+should be able to successfully query stuff.
+
+
 ### This is wicked! How can I try it?
 
 Easy! Just clone this repository, make and run it:
@@ -206,7 +247,7 @@ It works out of the box on macOS 10.11+ with Xcode 8
 and the builtin system Apache (no Apache install required!),
 with the Homebrew Apache 2.4 on macOS (`brew install homebrew/apache/httpd24`),
 and on Linux (tested with Ubuntu 16.04).
-
+ 
 On Linux you need to hack `/usr/include/apr-1.0/apr.h` and add a
 `typedef int pid_t;` just below the MingW section to make swiftc behave.
 
