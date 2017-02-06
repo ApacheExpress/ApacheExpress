@@ -19,6 +19,9 @@
       <FileRef
          location = "group:apache-brew.conf">
       </FileRef>
+      <FileRef
+         location = "group:apache-ubuntu.conf">
+      </FileRef>
    </Group>
    <FileRef
       location = "group:mod_swift/mod_swift.xcodeproj">

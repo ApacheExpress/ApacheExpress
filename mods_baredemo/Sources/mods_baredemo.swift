@@ -13,6 +13,7 @@ import ZzApache
 fileprivate func register_hooks(pool: OpaquePointer?) {
   ap_hook_handler(RequestInfoHandler, nil, nil, APR_HOOK_MIDDLE)
   ap_hook_handler(MustacheHandler,    nil, nil, APR_HOOK_MIDDLE)
+  ap_hook_handler(DatabaseHandler,    nil, nil, APR_HOOK_MIDDLE)
 }
 
 // MARK: - This is our module structure for Apache

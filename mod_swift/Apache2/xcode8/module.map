@@ -22,6 +22,7 @@ module ApachePortableRuntime [system] [extern_c] {
   // apr-util
   header "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/apr-1/apu.h"
   header "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/apr-1/apr_buckets.h"
+  header "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/apr-1/apr_dbd.h"
 
   export *
   
@@ -40,6 +41,8 @@ module Apache2 [system] [extern_c] {
   header "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/apache2/http_config.h"
   header "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/apache2/http_core.h"
   header "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/apache2/http_log.h"
+
+  header "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/apache2/mod_dbd.h"
 
   export ApachePortableRuntime
 
