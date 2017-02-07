@@ -21,6 +21,8 @@
 		E83AF9041E3E40AF0039F300 /* cows.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = cows.swift; path = Sources/cows.swift; sourceTree = "<group>"; };
 		E83AF9051E3E40AF0039F300 /* UniqueRandomArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UniqueRandomArray.swift; path = Sources/UniqueRandomArray.swift; sourceTree = "<group>"; };
 		E83AF93D1E3E46E40039F300 /* SharedLib.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = SharedLib.xcconfig; path = ../xcconfig/SharedLib.xcconfig; sourceTree = "<group>"; };
+		E8C094DC1E49FA1E0041E7E8 /* SharedLib.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = SharedLib.xcconfig; path = ../xcconfig/SharedLib.xcconfig; sourceTree = "<group>"; };
+		E8C094DD1E49FA280041E7E8 /* GNUmakefile */ = {isa = PBXFileReference; lastKnownFileType = text; path = GNUmakefile; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,8 @@
 		E83AF93C1E3E46AD0039F300 /* Configurations */ = {
 			isa = PBXGroup;
 			children = (
+				E8C094DC1E49FA1E0041E7E8 /* SharedLib.xcconfig */,
+				E8C094DD1E49FA280041E7E8 /* GNUmakefile */,
 			);
 			name = Configurations;
 			sourceTree = "<group>";

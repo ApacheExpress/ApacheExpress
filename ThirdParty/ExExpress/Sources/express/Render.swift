@@ -26,13 +26,7 @@ public extension ServerResponse {
       return
     }
     
-    // This should allow 'views' as a relative path.
-    // Also, in Apache it should be a configuration directive.
-    let viewsPath = (app.get("views") as? String)
-                 ?? process.env["EXPRESS_VIEWS"]
-                 ?? apacheRequest.pathRelativeToServerRoot(filename: "views")
-                 ?? process.cwd()
-    
+    let viewsPath      = app.viewDirectory(for: viewEngine, response: self)
     let emptyOpts      : [ String : Any ] = [:]
     let appViewOptions = app.get("view options") ?? emptyOpts
     let viewOptions    = options ?? appViewOptions // TODO: merge if possible

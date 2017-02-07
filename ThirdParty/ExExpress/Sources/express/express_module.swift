@@ -6,6 +6,7 @@
 //  Copyright © 2016 ZeeZide GmbH. All rights reserved.
 //
 
+#if STANDALONE // leave that to the host of ExExpress to avoid ambiguities
 public extension http.Server {
 
   public func express(middleware: Middleware...) -> Express {
@@ -21,3 +22,4 @@ public extension http.Server {
   }
 
 }
+#endif

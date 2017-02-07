@@ -3,19 +3,18 @@
 // Created by Helge Hess on 26/01/2017.
 //
 
+import ExExpress
 import ZzApache
 import Apache2
 
-public class ServerResponse : MessageBase,
-                              GWritableStreamType, WritableByteStreamType,
-                              CustomStringConvertible
+public class ApacheServerResponse : ApacheMessageBase,
+                                    ExExpress.ServerResponse,
+                                    GWritableStreamType,
+                                    CustomStringConvertible
 {
-  
   public var statusCode : Int? = nil
   
-  public func writeHead(_ statusCode: Int,
-                        _ headers: Dictionary<String, Any> = [:])
-  {
+  public func writeHead(_ statusCode: Int, _ headers: Dictionary<String, Any>) {
     self.statusCode = statusCode
     
     // merge in headers
@@ -23,7 +22,6 @@ public class ServerResponse : MessageBase,
       setHeader(key, value)
     }
   }
-  
   
   // MARK: - End Handlers
   

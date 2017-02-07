@@ -3,11 +3,12 @@
 // Created by Helge Hess on 26/01/2017.
 //
 
+import ExExpress
 import ZzApache
 import Apache2
 
 // Base class for IncomingMessage/ServerResponse
-public class MessageBase {
+public class ApacheMessageBase : ExExpress.HttpMessageBaseType {
   
   enum Error : Swift.Error {
     case ApacheHandleGone
@@ -18,7 +19,7 @@ public class MessageBase {
   public var extra = [ String : Any ]()
   
   let apacheRequest : http_internal.ApacheRequest
-  let log           : ConsoleType
+  public let log    : ConsoleType
   
   init(apacheRequest: http_internal.ApacheRequest) {
     self.apacheRequest = apacheRequest

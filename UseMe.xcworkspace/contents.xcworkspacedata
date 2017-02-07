@@ -42,6 +42,12 @@
       location = "container:"
       name = "ThirdParty">
       <FileRef
+         location = "group:ThirdParty/GNUmakefile">
+      </FileRef>
+      <FileRef
+         location = "group:ThirdParty/ExExpress/ExExpress.xcodeproj">
+      </FileRef>
+      <FileRef
          location = "group:ThirdParty/cows/cows.xcodeproj">
       </FileRef>
       <FileRef

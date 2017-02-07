@@ -14,12 +14,27 @@ public enum LogLevel : Int8 { // cannot nest types in generics
     switch self {
       case .Error: return "ERROR: "
       case .Warn:  return "WARN:  "
-      case .Info:  return "INFO: "
+      case .Info:  return "INFO:  "
       case .Trace: return "Trace: "
       case .Log:   return ""
     }
   }
+  var logPrefixAsBytes : [ UInt8 ] {
+    switch self {
+      case .Error: return errorBucket
+      case .Warn:  return warnBucket
+      case .Info:  return infoBucket
+      case .Trace: return traceBucket
+      case .Log:   return []
+    }
+  }
 }
+
+fileprivate let errorBucket = Array("ERROR: ".utf8)
+fileprivate let warnBucket  = Array("WARN:  ".utf8)
+fileprivate let infoBucket  = Array("INFO:  ".utf8)
+fileprivate let traceBucket = Array("Trace: ".utf8)
+
 
 /// Writes UTF-8 to any byte stream.
 public protocol ConsoleType {
@@ -77,15 +92,17 @@ func writeValues<T: GWritableStreamType>(to t: T, _ values : [ Any? ]) throws
   for v in values {
     try t.writev(buckets: spaceBrigade, done: nil)
     
+    let bucket : [ UInt8 ] // arrgh
     if let v = v as? CustomStringConvertible {
-      try t.write(v.description)
+      bucket = Array<UInt8>(v.description.utf8)
     }
     else if let v = v as? String {
-      try t.write(v)
+      bucket = Array<UInt8>(v.utf8)
     }
     else {
-      try t.write("\(v)")
+      bucket = Array<UInt8>("\(v)".utf8)
     }
+    try t.writev(buckets: [ bucket ], done: nil)
   }
 }
 
@@ -120,8 +137,8 @@ class Console<OutStreamType: GWritableStreamType> : ConsoleBase
     guard logLevel.rawValue <= self.logLevel.rawValue else { return }
     
     let s = msgfunc()
-    try! stdout.write(logLevel.logPrefix)
-    try! stdout.write(s)
+    try! stdout.write(logLevel.logPrefixAsBytes)
+    try! stdout.write(Array(s.utf8)) // ouch
     try! writeValues(to: stdout, values)
     try! stdout.writev(buckets: eolBrigade, done: nil)
   }
@@ -162,14 +179,14 @@ class Console2<OutStreamType: GWritableStreamType,
     let s = msgfunc()
     
     if logLevel.rawValue <= stderrLogLevel.rawValue {
-      try! stderr.write(logLevel.logPrefix)
-      try! stderr.write(s)
+      try! stderr.write(logLevel.logPrefixAsBytes)
+      try! stdout.write(Array(s.utf8)) // ouch
       try! writeValues(to: stdout, values)
       try! stderr.writev(buckets: eolBrigade, done: nil)
     }
     else {
-      try! stdout.write(logLevel.logPrefix)
-      try! stdout.write(s)
+      try! stdout.write(logLevel.logPrefixAsBytes)
+      try! stdout.write(Array(s.utf8)) // ouch
       try! writeValues(to: stdout, values)
       try! stdout.writev(buckets: eolBrigade, done: nil)
     }
