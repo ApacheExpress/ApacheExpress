@@ -25,6 +25,7 @@
 		E83AF9251E3E41670039F300 /* MustacheRenderingContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MustacheRenderingContext.swift; path = Sources/MustacheRenderingContext.swift; sourceTree = "<group>"; };
 		E83AF9261E3E41670039F300 /* SimpleKVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SimpleKVC.swift; path = Sources/SimpleKVC.swift; sourceTree = "<group>"; };
 		E83AF9421E3E48BC0039F300 /* SharedLib.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = SharedLib.xcconfig; path = ../xcconfig/SharedLib.xcconfig; sourceTree = "<group>"; };
+		E8C094DF1E49FA670041E7E8 /* GNUmakefile */ = {isa = PBXFileReference; lastKnownFileType = text; path = GNUmakefile; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				E83AF9421E3E48BC0039F300 /* SharedLib.xcconfig */,
+				E8C094DF1E49FA670041E7E8 /* GNUmakefile */,
 			);
 			name = Configurations;
 			sourceTree = "<group>";
@@ -198,7 +200,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -239,7 +241,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 			};

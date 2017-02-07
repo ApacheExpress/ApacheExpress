@@ -3,10 +3,15 @@
 // Created by Helge Hess on 26/01/2017.
 //
 
+import protocol ExExpress.IncomingMessage
+import enum     ExExpress.console
 import ZzApache
 import Apache2
 
-public class IncomingMessage : MessageBase, CustomStringConvertible {
+public class ApacheIncomingMessage : ApacheMessageBase,
+                                     ExExpress.IncomingMessage,
+                                     CustomStringConvertible
+{
 
   public var httpVersion : String {
     guard let h = apacheRequest.typedHandle else { return "" }
@@ -42,36 +47,10 @@ public class IncomingMessage : MessageBase, CustomStringConvertible {
     return th.pointee.headers_in
   }
   
-  // MARK: - CustomStringConvertible
   
-  public var description : String {
-    var s = "<Request"
-    if let h = apacheRequest.handle {
-      s += "[\(h)]: "
-    }
-    else { s += "[gone]: " }
-    s += "\(method) \(url)"
-    s += ">"
-    return s
-  }
-}
-
-fileprivate extension request_rec {
+  // MARK: - Body
   
-  var isMethodWithContent : Bool {
-    switch method_number {
-      case M_GET, M_DELETE, M_OPTIONS, M_CONNECT:
-        return false
-      default:
-        return true
-    }
-  }
-  
-}
-
-public extension IncomingMessage {
-  
-  public func readBody(bufsize: Int = 4096) throws -> [ UInt8 ] {
+  public func readBody(bufsize: Int) throws -> [ UInt8 ] {
     guard let th = apacheRequest.typedHandle
      else {
       console.error("Could not read request body ...")
@@ -113,4 +92,31 @@ public extension IncomingMessage {
     
     return bytes
   }
+
+  
+  // MARK: - CustomStringConvertible
+  
+  public var description : String {
+    var s = "<Request"
+    if let h = apacheRequest.handle {
+      s += "[\(h)]: "
+    }
+    else { s += "[gone]: " }
+    s += "\(method) \(url)"
+    s += ">"
+    return s
+  }
+}
+
+fileprivate extension request_rec {
+  
+  var isMethodWithContent : Bool {
+    switch method_number {
+      case M_GET, M_DELETE, M_OPTIONS, M_CONNECT:
+        return false
+      default:
+        return true
+    }
+  }
+  
 }

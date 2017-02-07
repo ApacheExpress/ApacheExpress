@@ -1,20 +1,30 @@
 //
 // Copyright (C) 2017 ZeeZide GmbH, All Rights Reserved
-// Created by Helge Hess on 26/01/2017.
+// Created by Helge Hess on 23/01/2017.
 //
 
-import ZzApache
-import Apache2
-
-// MARK: - Public API
-
-public enum http {
-}
-
+import enum     ExExpress.http
+import protocol ExExpress.ConsoleType
 
 // MARK: - Private API
 
-public enum http_internal {
+import Apache2
+
+public enum http_internal { // hm, public internal? :-)
+  
+  public final class ApacheServer : http.Server {
+    
+    let handle : UnsafePointer<server_rec>
+    let apLog  : ConsoleType
+    
+    public init(handle: UnsafePointer<server_rec>) {
+      self.handle = handle
+      self.apLog = ApacheConsole(server: handle)
+      super.init()
+    }
+    
+    public override var log : ConsoleType { return apLog }
+  }
 
   // This is a wrapper around the Apache `request_rec` structure.
   //
@@ -25,8 +35,8 @@ public enum http_internal {
     var handle           : OpaquePointer? = nil
     var didHandleRequest = true
     
-    var request  : IncomingMessage? = nil
-    var response : ServerResponse?  = nil
+    var request  : ApacheIncomingMessage? = nil
+    var response : ApacheServerResponse?  = nil
     
     init(handle: UnsafeMutablePointer<request_rec>, server: ApacheServer) {
       self.server = server
@@ -36,8 +46,8 @@ public enum http_internal {
       self.handle = OpaquePointer(handle)
       
       // All this is a little weird and probably should be done differently ;->
-      request  = IncomingMessage(apacheRequest: self)
-      response = ServerResponse (apacheRequest: self)
+      request  = ApacheIncomingMessage(apacheRequest: self)
+      response = ApacheServerResponse (apacheRequest: self)
     }
     
     var handlerResult : Int32 {
@@ -79,5 +89,4 @@ public enum http_internal {
                                 th.pointee.connection.pointee.bucket_alloc)
     }
   }
-
 }

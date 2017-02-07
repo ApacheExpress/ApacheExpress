@@ -31,6 +31,7 @@
 		E83AF91D1E3E413D0039F300 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		E83AF91E1E3E413D0039F300 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		E83AF93F1E3E488E0039F300 /* SharedLib.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = SharedLib.xcconfig; path = ../xcconfig/SharedLib.xcconfig; sourceTree = "<group>"; };
+		E8C094DE1E49FA5A0041E7E8 /* GNUmakefile */ = {isa = PBXFileReference; lastKnownFileType = text; path = GNUmakefile; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				E83AF93F1E3E488E0039F300 /* SharedLib.xcconfig */,
+				E8C094DE1E49FA5A0041E7E8 /* GNUmakefile */,
 			);
 			name = Configurations;
 			sourceTree = "<group>";
@@ -210,7 +212,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -251,7 +253,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 			};

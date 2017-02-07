@@ -21,7 +21,13 @@ fileprivate struct brigades {
   static let jnull      : [[ UInt8 ]] = [[ 110, 117, 108, 108       ]] // null
 }
 
-public extension GWritableStreamType where WriteType == UInt8 {
+// Well, yes. :-) This is all due to generic-protocols-are-not-a-type. We might
+// want to define the methods on both, but then we can end up with ambiguities
+// as many objects do implement both?!
+//
+// public extension GWritableStreamType where WriteType == UInt8 {}
+public extension WritableByteStreamType {
+
   // MARK: - JSON generator
 
   public func writeJSON(string s: String) throws {

@@ -68,6 +68,22 @@ open class Express: SettingsHolder, MiddlewareObject, RouteKeeper {
   public func engine(_ key: String, _ engine: @escaping ExpressEngine) {
     engines[key] = engine
   }
+  
+  
+  // MARK: - Extension Point for Subclasses
+  
+  open func viewDirectory(for engine: String, response: ServerResponse)
+            -> String
+  {
+    // Maybe that should be an array
+    // This should allow 'views' as a relative path.
+    // Also, in Apache it should be a configuration directive.
+    let viewsPath = (get("views") as? String)
+                 ?? process.env["EXPRESS_VIEWS"]
+             //  ?? apacheRequest.pathRelativeToServerRoot(filename: "views")
+                 ?? process.cwd()
+    return viewsPath
+  }
 }
 
 private let appKey    = "io.noze.express.app"

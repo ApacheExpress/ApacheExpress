@@ -21,7 +21,7 @@ public extension http_internal.ApacheServer {
     
     // invoke server callbacks
     do {
-      try emitOnRequest(request: context.request!,
+      try emitOnRequest(request:  context.request!,
                         response: context.response!)
     }
     catch (let error) {
