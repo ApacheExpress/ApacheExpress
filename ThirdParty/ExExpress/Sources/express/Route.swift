@@ -43,7 +43,7 @@ public struct Route: MiddlewareObject {
     // FIXME: all this works a little different in Express.js. Exact matches,
     //        non-path-component matches, regex support etc.
   
-  init(pattern: String?, method: String?, middleware: [Middleware]) {
+  public init(pattern: String?, method: String?, middleware: [Middleware]) {
     // FIXME: urlPrefix should be url or sth
     
     if let m = method { self.methods = [ m ] }
