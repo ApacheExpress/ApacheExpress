@@ -59,8 +59,7 @@ public extension ServerResponse {
   public func send(_ object: JSONEncodable) throws { try json(object) }
   
   var canAssignContentType : Bool {
-    // TODO: fixme for Apache
-    return statusCode == nil && getHeader("Content-Type") == nil
+    return !headersSent && getHeader("Content-Type") == nil
   }
   
   public func format(handlers: [ String : () -> () ]) {
