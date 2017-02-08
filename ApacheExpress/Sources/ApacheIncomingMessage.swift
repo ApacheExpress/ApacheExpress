@@ -63,13 +63,13 @@ public class ApacheIncomingMessage : ApacheMessageBase,
     
     let rc = ap_setup_client_block(th, REQUEST_CHUNKED_DECHUNK)
     guard rc == 0 else {
-      console.error("Could not setup request body read for \(method) ...")
+      console.error("Could not setup request body read for \(method): \(rc)")
       throw Error.ReadFailed
     }
     
     guard ap_should_client_block(th) != 0 else {
-      console.error("Could not read request body of \(method) ...")
-      throw Error.ReadFailed
+      // There is no message to read, this is *fine*. Not an error.
+      return []
     }
     
     var bytes   = [ UInt8 ]()
