@@ -19,4 +19,10 @@ public extension IncomingMessage {
   func readBody() throws -> [ UInt8 ] { // default args
     return try readBody(bufsize: 4096)
   }
+  
+  func readBodyAsString() throws -> String? {
+    var body = try readBody()
+    body.append(0) // oh well, yes this can be done better, but not builtin
+    return String(cString: body)
+  }
 }
