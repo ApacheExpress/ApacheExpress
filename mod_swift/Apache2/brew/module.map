@@ -24,6 +24,7 @@ module ApachePortableRuntime [system] [extern_c] {
   header "/usr/local/opt/apr-util/libexec/include/apr-1/apu.h"
   header "/usr/local/opt/apr-util/libexec/include/apr-1/apr_buckets.h"
   header "/usr/local/opt/apr-util/libexec/include/apr-1/apr_dbd.h"
+  header "/usr/local/opt/apr-util/libexec/include/apr-1/apr_xml.h"
   
   export *
   
