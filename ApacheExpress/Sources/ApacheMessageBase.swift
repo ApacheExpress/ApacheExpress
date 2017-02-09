@@ -6,6 +6,7 @@
 import ExExpress
 import ZzApache
 import Apache2
+import ApachePortableRuntime
 
 // Base class for IncomingMessage/ServerResponse
 public class ApacheMessageBase : ExExpress.HttpMessageBaseType {
@@ -40,6 +41,25 @@ public class ApacheMessageBase : ExExpress.HttpMessageBaseType {
   
   var _headersTable : OpaquePointer? {
     fatalError("subclasses need to override _headersTable ...")
+  }
+
+  public var headers : Dictionary<String, Any> {
+    guard let elements = apr_table_elts(_headersTable) else { return [:] }
+    
+    let count = elements.pointee.nelts
+    guard count > 0 else { return [:] }
+    
+    let ptr = UnsafeRawPointer(elements.pointee.elts)!
+    var tptr = ptr.assumingMemoryBound(to: apr_table_entry_t.self)
+    
+    var headers = Dictionary<String, Any>()
+    for _ in 0..<count {
+      let key = String(cString: tptr.pointee.key)
+      let val = String(cString: tptr.pointee.val)
+      headers[key] = val
+      tptr = tptr.advanced(by: 1)
+    }
+    return headers
   }
   
   public func setHeader(_ name: String, _ value: Any) {
