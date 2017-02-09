@@ -50,7 +50,11 @@ public class ApacheIncomingMessage : ApacheMessageBase,
   
   // MARK: - Body
   
-  public func readBody(bufsize: Int) throws -> [ UInt8 ] {
+  public func readChunks(bufsize: Int,
+                         onRead: ( UnsafeBufferPointer<UInt8> ) throws -> Void)
+                throws
+  {
+    // TODO: Evolve this into an even better streaming source method
     guard let th = apacheRequest.typedHandle
      else {
       console.error("Could not read request body ...")
@@ -59,7 +63,7 @@ public class ApacheIncomingMessage : ApacheMessageBase,
     
     // Hm. Otherwise the read fails for non-empty methods. What is the proper
     // check here whether there can be a body? Content-length and TE?
-    guard th.pointee.isMethodWithContent else { return [] }
+    guard th.pointee.isMethodWithContent else { return }
     
     let rc = ap_setup_client_block(th, REQUEST_CHUNKED_DECHUNK)
     guard rc == 0 else {
@@ -69,11 +73,8 @@ public class ApacheIncomingMessage : ApacheMessageBase,
     
     guard ap_should_client_block(th) != 0 else {
       // There is no message to read, this is *fine*. Not an error.
-      return []
+      return
     }
-    
-    var bytes   = [ UInt8 ]()
-    // If there is a content-length, reserve capacity
     
     let buffer  = UnsafeMutablePointer<Int8>.allocate(capacity: bufsize)
     defer { buffer.deallocate(capacity: bufsize) }
@@ -82,15 +83,13 @@ public class ApacheIncomingMessage : ApacheMessageBase,
       let rc = ap_get_client_block(th, buffer, bufsize)
       guard rc != 0 else { break } // EOF
       guard rc >  0 else { throw Error.ReadFailed }
-
+      
       // hm
-      buffer.withMemoryRebound(to: UInt8.self, capacity: rc) { buffer in
+      try buffer.withMemoryRebound(to: UInt8.self, capacity: rc) { buffer in
         let bp = UnsafeBufferPointer(start: buffer, count: rc)
-        bytes.append(contentsOf: bp)
+        try onRead(bp)
       }
     }
-    
-    return bytes
   }
 
   
