@@ -19,7 +19,6 @@
 		E82359861E49F105000B3120 /* TypeIs.swift in Sources */ = {isa = PBXBuildFile; fileRef = E823594A1E49F105000B3120 /* TypeIs.swift */; };
 		E82359881E49F105000B3120 /* Console.swift in Sources */ = {isa = PBXBuildFile; fileRef = E823594D1E49F105000B3120 /* Console.swift */; };
 		E82359891E49F105000B3120 /* console_module.swift in Sources */ = {isa = PBXBuildFile; fileRef = E823594E1E49F105000B3120 /* console_module.swift */; };
-		E823598A1E49F105000B3120 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = E823594F1E49F105000B3120 /* README.md */; };
 		E823598B1E49F105000B3120 /* Express.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82359511E49F105000B3120 /* Express.swift */; };
 		E823598C1E49F105000B3120 /* express_module.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82359521E49F105000B3120 /* express_module.swift */; };
 		E823598D1E49F105000B3120 /* ExpressIncomingMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82359531E49F105000B3120 /* ExpressIncomingMessage.swift */; };
@@ -27,7 +26,6 @@
 		E823598F1E49F105000B3120 /* ExpressMustache.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82359551E49F105000B3120 /* ExpressMustache.swift */; };
 		E82359901E49F105000B3120 /* ExpressServerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82359561E49F105000B3120 /* ExpressServerResponse.swift */; };
 		E82359911E49F105000B3120 /* MiddlewareObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82359571E49F105000B3120 /* MiddlewareObject.swift */; };
-		E82359921E49F105000B3120 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = E82359581E49F105000B3120 /* README.md */; };
 		E82359931E49F105000B3120 /* Render.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82359591E49F105000B3120 /* Render.swift */; };
 		E82359941E49F105000B3120 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = E823595A1E49F105000B3120 /* Route.swift */; };
 		E82359951E49F105000B3120 /* RouteKeeper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E823595B1E49F105000B3120 /* RouteKeeper.swift */; };
@@ -40,7 +38,6 @@
 		E823599D1E49F105000B3120 /* IncomingMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82359661E49F105000B3120 /* IncomingMessage.swift */; };
 		E823599E1E49F105000B3120 /* HttpMessageBaseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82359671E49F105000B3120 /* HttpMessageBaseType.swift */; };
 		E823599F1E49F105000B3120 /* QueryString.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82359681E49F105000B3120 /* QueryString.swift */; };
-		E82359A01E49F105000B3120 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82359691E49F105000B3120 /* Server.swift */; };
 		E82359A11E49F105000B3120 /* ServerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E823596A1E49F105000B3120 /* ServerResponse.swift */; };
 		E82359A21E49F105000B3120 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = E823596B1E49F105000B3120 /* URL.swift */; };
 		E82359A31E49F105000B3120 /* json_module.swift in Sources */ = {isa = PBXBuildFile; fileRef = E823596D1E49F105000B3120 /* json_module.swift */; };
@@ -48,7 +45,6 @@
 		E82359A51E49F105000B3120 /* JSONWritableStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = E823596F1E49F105000B3120 /* JSONWritableStream.swift */; };
 		E82359A71E49F105000B3120 /* Stringify.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82359711E49F105000B3120 /* Stringify.swift */; };
 		E82359A81E49F105000B3120 /* leftpad_module.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82359731E49F105000B3120 /* leftpad_module.swift */; };
-		E82359A91E49F105000B3120 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = E82359741E49F105000B3120 /* README.md */; };
 		E82359AA1E49F105000B3120 /* process_module.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82359761E49F105000B3120 /* process_module.swift */; };
 		E82359AB1E49F105000B3120 /* WritableStreams.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82359781E49F105000B3120 /* WritableStreams.swift */; };
 		E82359AC1E49F105000B3120 /* time.swift in Sources */ = {isa = PBXBuildFile; fileRef = E823597A1E49F105000B3120 /* time.swift */; };
@@ -131,7 +127,6 @@
 		E82359661E49F105000B3120 /* IncomingMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncomingMessage.swift; sourceTree = "<group>"; };
 		E82359671E49F105000B3120 /* HttpMessageBaseType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpMessageBaseType.swift; sourceTree = "<group>"; };
 		E82359681E49F105000B3120 /* QueryString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryString.swift; sourceTree = "<group>"; };
-		E82359691E49F105000B3120 /* Server.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
 		E823596A1E49F105000B3120 /* ServerResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerResponse.swift; sourceTree = "<group>"; };
 		E823596B1E49F105000B3120 /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		E823596D1E49F105000B3120 /* json_module.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = json_module.swift; sourceTree = "<group>"; };
@@ -293,7 +288,6 @@
 			isa = PBXGroup;
 			children = (
 				E82359641E49F105000B3120 /* http_module.swift */,
-				E82359691E49F105000B3120 /* Server.swift */,
 				E82359671E49F105000B3120 /* HttpMessageBaseType.swift */,
 				E82359661E49F105000B3120 /* IncomingMessage.swift */,
 				E823596A1E49F105000B3120 /* ServerResponse.swift */,
@@ -321,8 +315,8 @@
 		E82359721E49F105000B3120 /* leftpad */ = {
 			isa = PBXGroup;
 			children = (
-				E82359731E49F105000B3120 /* leftpad_module.swift */,
 				E82359741E49F105000B3120 /* README.md */,
+				E82359731E49F105000B3120 /* leftpad_module.swift */,
 			);
 			name = leftpad;
 			path = Sources/leftpad;
@@ -493,7 +487,6 @@
 				E82359AD1E49F105000B3120 /* timespec.swift in Sources */,
 				E82359AC1E49F105000B3120 /* time.swift in Sources */,
 				E823597E1E49F105000B3120 /* Connect.swift in Sources */,
-				E823598A1E49F105000B3120 /* README.md in Sources */,
 				E82359A41E49F105000B3120 /* JsonFile.swift in Sources */,
 				E823598E1E49F105000B3120 /* ExpressJSON.swift in Sources */,
 				E82359951E49F105000B3120 /* RouteKeeper.swift in Sources */,
@@ -516,9 +509,6 @@
 				E82359AA1E49F105000B3120 /* process_module.swift in Sources */,
 				E82359971E49F105000B3120 /* Settings.swift in Sources */,
 				E82359AE1E49F105000B3120 /* timeval_any.swift in Sources */,
-				E82359921E49F105000B3120 /* README.md in Sources */,
-				E82359A91E49F105000B3120 /* README.md in Sources */,
-				E82359A01E49F105000B3120 /* Server.swift in Sources */,
 				E82359851E49F105000B3120 /* Session.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
