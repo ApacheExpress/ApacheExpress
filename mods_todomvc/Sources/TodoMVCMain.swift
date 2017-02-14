@@ -9,13 +9,13 @@
 
 import ApacheExpress
 
-// A global used in the model layer, yeah, lame.
+// A global used in the model layer, yeah, lame. In a real app this wouldn't be
+// part of the model.
 let ourAPI = "http://localhost:8042/todomvc/"
 
 func expressMain() {
-
   let app = apache.express()
-
+  
   // MARK: - Middleware
 
   // app.use(logger("dev"))
@@ -30,8 +30,8 @@ func expressMain() {
     //   Content-Type: application/json
     //   Accept:       text/plain, */*; q=0.01
     //
-    // The tool essentially has the misconception that the API always returns JSON
-    // regardless of the Accept header.
+    // The tool essentially has the misconception that the API always returns
+    // JSON regardless of the Accept header.
     if let ctype = (req.getHeader("Content-Type") as? String) {
       if ctype.hasPrefix("application/json") {
         req.setHeader("Accept", "application/json")
@@ -51,9 +51,12 @@ func expressMain() {
   todos.objects[43] = Todo(id: 43, title: "Buy Mo' Beer", completed: false,
                            order: 2)
 
-
+  
   // MARK: - Routes & Handlers
-
+  
+  // hook up CalDAV support
+  app.use(CalDAVExpress(prefix: "/todomvc", todos: todos))
+  
   app.del("/todomvc/todos/:id") { req, res, _ in
     guard let id = req.params[int: "id"] else { return try res.sendStatus(400) }
     todos.delete(id: id)
