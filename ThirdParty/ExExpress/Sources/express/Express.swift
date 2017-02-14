@@ -6,7 +6,7 @@
 //  Copyright © 2016 ZeeZide GmbH. All rights reserved.
 //
 
-open class Express: SettingsHolder, MiddlewareObject, RouteKeeper {
+open class Express: SettingsHolder, MountableMiddlewareObject, RouteKeeper {
   
   let router   = Router()
   var settings = [ String : Any ]()
@@ -20,9 +20,9 @@ open class Express: SettingsHolder, MiddlewareObject, RouteKeeper {
   
   // MARK: - MiddlewareObject
   
-  public func handle(request  req : IncomingMessage,
-                     response res : ServerResponse,
-                     next     cb  : @escaping Next) throws
+  open func handle(request  req : IncomingMessage,
+                   response res : ServerResponse,
+                   next         : @escaping Next) throws
   {
     let oldApp = req.app
     let oldReq = res.request
@@ -31,18 +31,26 @@ open class Express: SettingsHolder, MiddlewareObject, RouteKeeper {
     res.extra[reqKey] = req
     
     try router.handle(request: req, response: res) { _ in
+      // this is only called if no object in the sub-application called 'next'!
       req.extra[appKey] = oldApp
       res.extra[appKey] = oldApp
       res.extra[reqKey] = oldReq
       
-      // TODO: fixme
-      try! cb() // continue
+      try! next() // continue
     }
+  }
+  
+  open func clearAttachedState(request  req : IncomingMessage,
+                               response res : ServerResponse)
+  { // break cycles
+    req.extra[appKey] = nil
+    res.extra[appKey] = nil
+    res.extra[reqKey] = nil
   }
   
   // MARK: - Route Keeper
   
-  public func add(route e: Route) {
+  open func add(route e: Route) {
     router.add(route: e)
   }
   
@@ -83,6 +91,23 @@ open class Express: SettingsHolder, MiddlewareObject, RouteKeeper {
              //  ?? apacheRequest.pathRelativeToServerRoot(filename: "views")
                  ?? process.cwd()
     return viewsPath
+  }
+
+  
+  // MARK: - Event Handlers
+  
+  final var mountListeners = [ ( Express ) -> Void ]()
+  
+  @discardableResult
+  public func onMount(handler lcb: @escaping ( Express ) -> Void) -> Self {
+    mountListeners.append(lcb)
+    return self
+  }
+  
+  public func emitOnMount(parent: Express) {
+    for listener in mountListeners {
+      listener(parent)
+    }
   }
 }
 

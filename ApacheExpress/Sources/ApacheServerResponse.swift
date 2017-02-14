@@ -12,7 +12,16 @@ public class ApacheServerResponse : ApacheMessageBase,
                                     GWritableStreamType,
                                     CustomStringConvertible
 {
-  public var statusCode : Int? = nil
+  
+  public var statusCode : Int? = nil {
+    didSet {
+      guard let status = statusCode           else { return }
+      guard let h = apacheRequest.typedHandle else { return }
+      h.pointee.status = Int32(status)
+    }
+  }
+  
+  public var headersSent = false
   
   public func writeHead(_ statusCode: Int, _ headers: Dictionary<String, Any>) {
     self.statusCode = statusCode
@@ -56,11 +65,20 @@ public class ApacheServerResponse : ApacheMessageBase,
   
   // MARK: - Output Stream
   
+  open func _primaryWriteHTTPMessageHead() {
+    assert(!headersSent)
+    headersSent = true
+    
+    // This is primarily to block subsequent header edits
+  }
+  
   public func end() throws {
     guard let th = apacheRequest.typedHandle else {
       console.error("Could not end Apache request ...")
       throw(Error.ApacheHandleGone)
     }
+
+    if !headersSent { _primaryWriteHTTPMessageHead() }
     
     let brigade = apacheRequest.createBrigade()
     let eof = apr_bucket_eos_create(brigade?.pointee.bucket_alloc)
@@ -78,6 +96,8 @@ public class ApacheServerResponse : ApacheMessageBase,
     if statusCode == nil {
       writeHead(200)
     }
+    
+    if !headersSent { _primaryWriteHTTPMessageHead() }
     
     guard !chunks.isEmpty        else { return }
     guard !chunks.first!.isEmpty else { return }

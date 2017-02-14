@@ -14,13 +14,13 @@ public enum http { // namespace
   
   open class Server { // careful, this is multithreaded in Apache
     
-    // MARK: - Event Handlers
-    
-    final var requestListeners = [ RequestEventCB ]()
-    
     open var log : ConsoleType { return console.defaultConsole }
     
     public init() {}
+    
+    // MARK: - Event Handlers
+    
+    final var requestListeners = [ RequestEventCB ]()
     
     @discardableResult
     public func onRequest(handler lcb: @escaping RequestEventCB) -> Self {

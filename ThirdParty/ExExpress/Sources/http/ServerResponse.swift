@@ -9,7 +9,8 @@
 
 public protocol ServerResponse : HttpMessageBaseType, WritableByteStreamType {
   
-  var statusCode : Int? { get set }
+  var statusCode  : Int? { get set }
+  var headersSent : Bool { get }
   
   func writeHead(_ statusCode: Int, _ headers: Dictionary<String, Any>)
   

@@ -21,7 +21,7 @@ a [basic demo module](mods_baredemo/README.md),
 the [ApacheExpress](ApacheExpress/README.md) framework which provides an Express 
 like API for mod_swift,
 a [demo for ApacheExpress](mods_expressdemo/README.md),
-a [Todo MVC](mods_todomvc/README.md) backend,
+a [Todo MVC](mods_todomvc/README.md) backend (w/ CalDAV support!),
 and a few supporting libraries
 (such as Freddy or Noze.io [Mustache](ThirdParty/mustache/README.md)).
 
@@ -188,7 +188,8 @@ app.get("/express/") { req, res, _ in
 Yes. All that is running within Apache.
 The working example can be found here:
 [ExpressMain.swift](mods_expressdemo/Sources/ExpressMain.swift#L9).
-The [TodoMVC](mods_todomvc/Sources/TodoMVCMain.swift) is pretty neat too.
+The [TodoMVC](mods_todomvc/Sources/TodoMVCMain.swift) is pretty neat too
+(and comes with a demo CalDAV/CardDAV implementation).
 
 
 ### And how do I access MySQL/PostgreSQL/SQLite3?

@@ -57,6 +57,8 @@ public enum http_internal { // hm, public internal? :-)
       guard let status = response?.statusCode else { return DECLINED }
       
       // Hm. Is this quite right? :-)
+      // No: this is too late to set the content status. This is just what is
+      //     being logged.
       return status == 200 ? OK : Int32(status)
     }
     

@@ -34,7 +34,7 @@ public extension http_internal.ApacheServer {
     // teardown / finish up
     let result = context.handlerResult
     context.onHandlerDone()
-    return result
+    return result // Note: this is too late to set a different status!
   }
 }
 

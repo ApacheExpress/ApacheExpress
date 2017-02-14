@@ -23,6 +23,7 @@ module ApachePortableRuntime [system] [extern_c] {
   header "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/apr-1/apu.h"
   header "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/apr-1/apr_buckets.h"
   header "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/apr-1/apr_dbd.h"
+  header "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/apr-1/apr_xml.h"
 
   export *
   

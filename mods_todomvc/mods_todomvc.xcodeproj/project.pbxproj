@@ -11,6 +11,14 @@
 		E8896C1A1E3EA04F007839F1 /* mods_todomvc.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8896C161E3EA04F007839F1 /* mods_todomvc.swift */; };
 		E8896C1B1E3EA04F007839F1 /* VolatileStoreCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8896C171E3EA04F007839F1 /* VolatileStoreCollection.swift */; };
 		E8896C1C1E3EA04F007839F1 /* TodoMVCMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8896C181E3EA04F007839F1 /* TodoMVCMain.swift */; };
+		E8A4CAB71E4DFF9E003E60FA /* TodoMVC-CalDAV.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A4CAB61E4DFF9E003E60FA /* TodoMVC-CalDAV.swift */; };
+		E8A4CABC1E4DFFA8003E60FA /* ApacheXML.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A4CAB81E4DFFA8003E60FA /* ApacheXML.swift */; };
+		E8A4CABD1E4DFFA8003E60FA /* iCalUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A4CAB91E4DFFA8003E60FA /* iCalUtilities.swift */; };
+		E8A4CABE1E4DFFA8003E60FA /* WebDAVUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A4CABA1E4DFFA8003E60FA /* WebDAVUtilities.swift */; };
+		E8A4CABF1E4DFFA8003E60FA /* XMLUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A4CABB1E4DFFA8003E60FA /* XMLUtilities.swift */; };
+		E8A4CAC11E4DFFBD003E60FA /* DAVResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A4CAC01E4DFFBD003E60FA /* DAVResponse.swift */; };
+		E8A4CAC31E4DFFE7003E60FA /* DAVQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A4CAC21E4DFFE7003E60FA /* DAVQuery.swift */; };
+		E8A4CAC51E4E194A003E60FA /* CardDAV.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A4CAC41E4E194A003E60FA /* CardDAV.swift */; };
 		E8F8B6991E3E9DD400081FCE /* libApacheExpress.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E8F8B68E1E3E9DBD00081FCE /* libApacheExpress.dylib */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +58,15 @@
 		E8896C161E3EA04F007839F1 /* mods_todomvc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = mods_todomvc.swift; path = Sources/mods_todomvc.swift; sourceTree = "<group>"; };
 		E8896C171E3EA04F007839F1 /* VolatileStoreCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VolatileStoreCollection.swift; path = Sources/VolatileStoreCollection.swift; sourceTree = "<group>"; };
 		E8896C181E3EA04F007839F1 /* TodoMVCMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TodoMVCMain.swift; path = Sources/TodoMVCMain.swift; sourceTree = "<group>"; };
+		E8A4CAB31E4DE31B003E60FA /* GNUmakefile */ = {isa = PBXFileReference; lastKnownFileType = text; path = GNUmakefile; sourceTree = "<group>"; };
+		E8A4CAB61E4DFF9E003E60FA /* TodoMVC-CalDAV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "TodoMVC-CalDAV.swift"; path = "Sources/CalDAV/TodoMVC-CalDAV.swift"; sourceTree = "<group>"; };
+		E8A4CAB81E4DFFA8003E60FA /* ApacheXML.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApacheXML.swift; path = Sources/CalDAV/ApacheXML.swift; sourceTree = "<group>"; };
+		E8A4CAB91E4DFFA8003E60FA /* iCalUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = iCalUtilities.swift; path = Sources/CalDAV/iCalUtilities.swift; sourceTree = "<group>"; };
+		E8A4CABA1E4DFFA8003E60FA /* WebDAVUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WebDAVUtilities.swift; path = Sources/CalDAV/WebDAVUtilities.swift; sourceTree = "<group>"; };
+		E8A4CABB1E4DFFA8003E60FA /* XMLUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XMLUtilities.swift; path = Sources/CalDAV/XMLUtilities.swift; sourceTree = "<group>"; };
+		E8A4CAC01E4DFFBD003E60FA /* DAVResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DAVResponse.swift; path = Sources/CalDAV/DAVResponse.swift; sourceTree = "<group>"; };
+		E8A4CAC21E4DFFE7003E60FA /* DAVQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DAVQuery.swift; path = Sources/CalDAV/DAVQuery.swift; sourceTree = "<group>"; };
+		E8A4CAC41E4E194A003E60FA /* CardDAV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardDAV.swift; path = Sources/CalDAV/CardDAV.swift; sourceTree = "<group>"; };
 		E8F8B6781E3E9CD800081FCE /* mods_todomvc.so */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = mods_todomvc.so; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8F8B67F1E3E9CF700081FCE /* DocRoot */ = {isa = PBXFileReference; lastKnownFileType = folder; name = DocRoot; path = ../DocRoot; sourceTree = "<group>"; };
 		E8F8B6801E3E9D2200081FCE /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -72,6 +89,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E832265B1E4B853D00613EF8 /* CalDAV Support */ = {
+			isa = PBXGroup;
+			children = (
+				E8A4CAB91E4DFFA8003E60FA /* iCalUtilities.swift */,
+				E8A4CAC21E4DFFE7003E60FA /* DAVQuery.swift */,
+				E8A4CAC01E4DFFBD003E60FA /* DAVResponse.swift */,
+				E8A4CABA1E4DFFA8003E60FA /* WebDAVUtilities.swift */,
+				E8A4CABB1E4DFFA8003E60FA /* XMLUtilities.swift */,
+				E8A4CAB81E4DFFA8003E60FA /* ApacheXML.swift */,
+				E8A4CAC41E4E194A003E60FA /* CardDAV.swift */,
+			);
+			name = "CalDAV Support";
+			sourceTree = "<group>";
+		};
 		E8F8B66F1E3E9CD800081FCE = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +130,8 @@
 				E8896C181E3EA04F007839F1 /* TodoMVCMain.swift */,
 				E8896C151E3EA04F007839F1 /* Model.swift */,
 				E8896C171E3EA04F007839F1 /* VolatileStoreCollection.swift */,
+				E8A4CAB61E4DFF9E003E60FA /* TodoMVC-CalDAV.swift */,
+				E832265B1E4B853D00613EF8 /* CalDAV Support */,
 				E8896C161E3EA04F007839F1 /* mods_todomvc.swift */,
 			);
 			name = Sources;
@@ -117,6 +150,7 @@
 			children = (
 				E8F8B6851E3E9D7500081FCE /* ApacheSwiftModule.xcconfig */,
 				E8F8B6861E3E9D7500081FCE /* Base.xcconfig */,
+				E8A4CAB31E4DE31B003E60FA /* GNUmakefile */,
 			);
 			name = Configurations;
 			sourceTree = "<group>";
@@ -243,8 +277,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8A4CAC31E4DFFE7003E60FA /* DAVQuery.swift in Sources */,
+				E8A4CABF1E4DFFA8003E60FA /* XMLUtilities.swift in Sources */,
+				E8A4CABE1E4DFFA8003E60FA /* WebDAVUtilities.swift in Sources */,
+				E8A4CABD1E4DFFA8003E60FA /* iCalUtilities.swift in Sources */,
 				E8896C191E3EA04F007839F1 /* Model.swift in Sources */,
+				E8A4CAC51E4E194A003E60FA /* CardDAV.swift in Sources */,
+				E8A4CAC11E4DFFBD003E60FA /* DAVResponse.swift in Sources */,
+				E8A4CAB71E4DFF9E003E60FA /* TodoMVC-CalDAV.swift in Sources */,
 				E8896C1C1E3EA04F007839F1 /* TodoMVCMain.swift in Sources */,
+				E8A4CABC1E4DFFA8003E60FA /* ApacheXML.swift in Sources */,
 				E8896C1A1E3EA04F007839F1 /* mods_todomvc.swift in Sources */,
 				E8896C1B1E3EA04F007839F1 /* VolatileStoreCollection.swift in Sources */,
 			);

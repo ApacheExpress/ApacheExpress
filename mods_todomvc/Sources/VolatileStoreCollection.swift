@@ -15,7 +15,8 @@
 ///
 class VolatileStoreCollection<T> {
 
-  var sequence = 1337
+  var sequence      = 1337
+  var changeCounter = 0
 
   var objects = [ Int : T ]()
 
@@ -31,19 +32,32 @@ class VolatileStoreCollection<T> {
     return Array(objects.values)
   }
   
+  func get(ids keys: [ Int ]) -> [ T ] {
+    var matches = [T]()
+    for key in keys {
+      if let object = objects[key] {
+        matches.append(object)
+      }
+    }
+    return matches
+  }
+  
   func get(id key: Int) -> T? {
     return objects[key]
   }
   
   func delete(id key: Int) {
+    changeCounter += 1
     objects.removeValue(forKey: key)
   }
   
   func update(id key: Int, value v: T) {
+    changeCounter += 1
     objects[key] = v // value type!
   }
   
   func deleteAll() {
+    changeCounter += 1
     objects.removeAll()
   }
 }

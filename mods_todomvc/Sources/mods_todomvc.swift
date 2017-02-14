@@ -32,6 +32,9 @@ fileprivate func register_hooks(pool: OpaquePointer?) {
   // this is to support ApacheExpress
   ap_hook_handler    (ApacheExpressHandler,    nil, nil, APR_HOOK_MIDDLE)
   ap_hook_post_config(ApacheExpressPostConfig, nil, nil, APR_HOOK_LAST)
+  
+  // this is for .well-known URLs used to locate the CalDAV API entrypoint
+  ap_hook_handler(dotWellKnownHandler, nil, nil, APR_HOOK_FIRST)
 }
 
 

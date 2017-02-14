@@ -87,7 +87,7 @@ extension BodyParserBody : ExpressibleByStringLiteral {
 
 
 // Module holding the different variants of bodyParsers.
-public struct bodyParser {
+public enum bodyParser {
   
   public class Options {
     let inflate = false
@@ -150,7 +150,7 @@ public extension bodyParser {
   ///
   public static func json(options opts: Options = Options()) -> Middleware {
     return { req, res, next in
-      guard typeIs(req, [ "json" ]) != nil else { try next(); return }
+      guard typeIs(req, [ "json" ]) != nil else { return try next() }
       
       // lame, should be streaming
       let bytes = try req.readBody()
