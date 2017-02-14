@@ -58,7 +58,7 @@ func expressMain() {
     // app.use(logger("dev")) - no use in Apache
     app.use(bodyParser.urlencoded())
     app.use(cookieParser())
-    app.use(session())
+    app.use("/express", session())
     // app.use(serveStatic(__dirname + "/public"))
     // - TODO, kinda, makes less sense with Apache
     
