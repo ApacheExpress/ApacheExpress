@@ -16,8 +16,9 @@ func DatabaseHandler(p: UnsafeMutablePointer<request_rec>?) -> Int32 {
   guard req.method  == "GET"      else { return HTTP_METHOD_NOT_ALLOWED }
 
   req.contentType = "text/html; charset=ascii"
-  req.puts("<html><head><title>Hello</title></head>")
-  req.puts("<body><h3>Swift Apache DBD Module Demo Handler</h3>")
+  req.puts("<html><head><title>Hello DBD</title>\(semanticUI)</head>")
+  req.puts("<body><div class='ui main container' style='margin-top: 1em;'>")
+  req.puts("<h3>Swift Apache DBD Module Demo Handler</h3>")
   defer { req.puts("</body></html>") }
   
   req.puts("<a href='/'>[Server Root]</a>")
@@ -49,6 +50,8 @@ func DatabaseHandler(p: UnsafeMutablePointer<request_rec>?) -> Int32 {
     "dbd.select(\"SELECT * FROM pets\")</pre>"
   )
   
+  // MARK: - Raw Select
+  
   guard let res = dbd.select("SELECT * FROM pets") else {
     req.puts("<p>Query failed. No idea why, check the logs :-)</p>")
     return OK
@@ -59,18 +62,66 @@ func DatabaseHandler(p: UnsafeMutablePointer<request_rec>?) -> Int32 {
     "\(res.count) rows:</p>"
   )
   
-  req.puts("<ul>")
-  // TODO: make this a Swift Iterator
+  req.puts("<table class='ui sortable celled table'>")
+  req.puts("<thead><tr><th>Name</th></tr></thead><tbody>")
+  // TODO: make this a Swift Iterator (but then we can't use protocols)
   while let row = res.next() {
-    req.puts("<li>")
+    req.puts("<tr><td>")
     if let value = row[0] {
       req.puts(value)
       // req.puts(" name(\(row[name: 0]))") // fails
     }
-    req.puts("</li>")
+    req.puts("</td></tr>")
+  }
+  req.puts("</tbody></table>")
+  
+  
+  // MARK: - Wrapped Select - Strongly Typed!
+  
+  req.puts("<table class='ui sortable celled table'>")
+  req.puts("<thead>" +
+    "<tr><th colspan='2'>Callback typed fetch, with optionals</th></tr>" +
+    "<tr><th>Name</th><th>Count</th></tr></thead><tbody>"
+  )
+  dbd.select("SELECT * FROM pets") { (name : String, count : Int?) in
+    req.puts("<tr><td>\(name)</td><td>\(count)</td></tr>")
+  }
+  req.puts("</tbody></table>")
+
+  
+  // MARK: - Wrapped Select - with model-like access
+  
+  struct Model {
+    struct Pet {
+      static let name  = Attribute<String>(name: "name")
+      static let count = Attribute<Int>   (name: "count")
+    }
   }
   
-  req.puts("</ul>")
+  req.puts("<table class='ui sortable celled table'>")
+  req.puts("<thead>" +
+    "<tr><th colspan='2'>Model fetch</th></tr>" +
+    "<tr><th>Name</th><th>Count</th></tr></thead><tbody>"
+  )
+  dbd.select(Model.Pet.name, Model.Pet.count, from: "pets") { name, count in
+    req.puts("<tr><td>\(name)</td><td>\(count)</td></tr>")
+  }
+  req.puts("</tbody></table>")
   
+  
+  // MARK: - Smarter Model
+  
+  struct SmartModel {
+    struct Pet {
+      var name  : String
+      var count : Int
+    }
+  }
+  
+ 
+  
+  // MARK: - Finish up
+  
+  req.puts("</div></body></html>")
   return OK
 }
