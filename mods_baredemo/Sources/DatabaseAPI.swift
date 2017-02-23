@@ -43,6 +43,8 @@ protocol ZzDBDResults { // this does not fly: ": IteratorProtocol {"
   
   var columnCount : Int { get }
   var count       : Int { get }
+
+  subscript(name index: Int) -> String? { get }
 }
 
 protocol ZzDBDRow {
@@ -57,10 +59,6 @@ protocol ZzDBDRow {
    */
   subscript(index: Int) -> String? { get }
 
-  /**
-   * Lookup a column by name, return value as String.
-   */
-  subscript(name index: Int) -> String? { get }
 }
 
 
@@ -260,6 +258,12 @@ fileprivate class ZzApacheRequestDBDResults : ZzDBDResults {
   var count : Int {
     return Int(apr_dbd_num_tuples(con.pointee.driver, res))
   }
+  
+  subscript(name index: Int) -> String? {
+    guard let cstr = apr_dbd_get_name(con.pointee.driver, res, Int32(index))
+     else { return nil }
+    return String(cString: cstr)
+  }
 }
 
 fileprivate class ZzApacheRequestDBDRow : ZzDBDRow {
@@ -278,17 +282,6 @@ fileprivate class ZzApacheRequestDBDRow : ZzDBDRow {
   subscript(index: Int) -> String? {
     guard let cstr = self[raw: index] else { return nil }
     return String(cString: cstr)
-  }
-
-  subscript(name index: Int) -> String? {
-    /* this aborts with SQlite, instead of returning nil?
-    guard let cstr = apr_dbd_get_name(con.pointee.driver, row, Int32(index))
-     else { return nil }
-    print("cstr: \(cstr)")
-    Darwin.puts(cstr)
-    return String(cString: cstr)
-     */
-    return nil
   }
 }
 
