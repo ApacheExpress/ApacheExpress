@@ -8,7 +8,7 @@
       location = "group:LICENSE">
    </FileRef>
    <FileRef
-      location = "group:/Users/helge/dev/Swift/mod_swift-ari/mods_echo/mods_echo.xcodeproj">
+      location = "group:mods_echo/mods_echo.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:DocRoot">
