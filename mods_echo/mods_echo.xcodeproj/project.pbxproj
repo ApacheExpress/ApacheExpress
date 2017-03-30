@@ -11,6 +11,14 @@
 		E812A9961E3E4B4300F0F36F /* APIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E812A9921E3E4B4300F0F36F /* APIExtensions.swift */; };
 		E812A9971E3E4B4300F0F36F /* mods_echo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E812A9931E3E4B4300F0F36F /* mods_echo.swift */; };
 		E812A9991E3E4B4300F0F36F /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E812A9951E3E4B4300F0F36F /* Main.swift */; };
+		E8EB5BCF1E8D1DE7005DE354 /* HTTPHeaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EB5BC81E8D1DE7005DE354 /* HTTPHeaders.swift */; };
+		E8EB5BD01E8D1DE7005DE354 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EB5BC91E8D1DE7005DE354 /* HTTPMethod.swift */; };
+		E8EB5BD11E8D1DE7005DE354 /* HTTPRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EB5BCA1E8D1DE7005DE354 /* HTTPRequest.swift */; };
+		E8EB5BD21E8D1DE7005DE354 /* HTTPResponseStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EB5BCB1E8D1DE7005DE354 /* HTTPResponseStatus.swift */; };
+		E8EB5BD31E8D1DE7005DE354 /* HTTPResponseWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EB5BCC1E8D1DE7005DE354 /* HTTPResponseWriter.swift */; };
+		E8EB5BD41E8D1DE7005DE354 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = E8EB5BCD1E8D1DE7005DE354 /* README.md */; };
+		E8EB5BD51E8D1DE7005DE354 /* WebApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EB5BCE1E8D1DE7005DE354 /* WebApp.swift */; };
+		E8EB5BD71E8D1F17005DE354 /* HTTPBodyProcessing.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EB5BD61E8D1F17005DE354 /* HTTPBodyProcessing.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +64,14 @@
 		E85EF1841E3E4F21007A8C48 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		E8DBF3CF1E3E4BE1009A5EA2 /* mod_swift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = mod_swift.xcodeproj; path = ../mod_swift/mod_swift.xcodeproj; sourceTree = "<group>"; };
 		E8DBF3D61E3E4C74009A5EA2 /* apache.conf */ = {isa = PBXFileReference; lastKnownFileType = text; path = apache.conf; sourceTree = "<group>"; };
+		E8EB5BC81E8D1DE7005DE354 /* HTTPHeaders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPHeaders.swift; sourceTree = "<group>"; };
+		E8EB5BC91E8D1DE7005DE354 /* HTTPMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		E8EB5BCA1E8D1DE7005DE354 /* HTTPRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPRequest.swift; sourceTree = "<group>"; };
+		E8EB5BCB1E8D1DE7005DE354 /* HTTPResponseStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPResponseStatus.swift; sourceTree = "<group>"; };
+		E8EB5BCC1E8D1DE7005DE354 /* HTTPResponseWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPResponseWriter.swift; sourceTree = "<group>"; };
+		E8EB5BCD1E8D1DE7005DE354 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		E8EB5BCE1E8D1DE7005DE354 /* WebApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebApp.swift; sourceTree = "<group>"; };
+		E8EB5BD61E8D1F17005DE354 /* HTTPBodyProcessing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPBodyProcessing.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				E85EF1841E3E4F21007A8C48 /* README.md */,
+				E8EB5BC71E8D1DE7005DE354 /* S3WGAPIProposal1 */,
 				E8DBF3D51E3E4C61009A5EA2 /* Apache Configuration */,
 				E812A98E1E3E4B0A00F0F36F /* Sources */,
 				E812A98F1E3E4B1000F0F36F /* Configurations */,
@@ -149,6 +166,22 @@
 				E8DBF3D61E3E4C74009A5EA2 /* apache.conf */,
 			);
 			name = "Apache Configuration";
+			sourceTree = "<group>";
+		};
+		E8EB5BC71E8D1DE7005DE354 /* S3WGAPIProposal1 */ = {
+			isa = PBXGroup;
+			children = (
+				E8EB5BCD1E8D1DE7005DE354 /* README.md */,
+				E8EB5BC81E8D1DE7005DE354 /* HTTPHeaders.swift */,
+				E8EB5BC91E8D1DE7005DE354 /* HTTPMethod.swift */,
+				E8EB5BCA1E8D1DE7005DE354 /* HTTPRequest.swift */,
+				E8EB5BCB1E8D1DE7005DE354 /* HTTPResponseStatus.swift */,
+				E8EB5BCC1E8D1DE7005DE354 /* HTTPResponseWriter.swift */,
+				E8EB5BD61E8D1F17005DE354 /* HTTPBodyProcessing.swift */,
+				E8EB5BCE1E8D1DE7005DE354 /* WebApp.swift */,
+			);
+			name = S3WGAPIProposal1;
+			path = ../S3WGAPIProposal1;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,9 +282,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8EB5BCF1E8D1DE7005DE354 /* HTTPHeaders.swift in Sources */,
 				E812A9961E3E4B4300F0F36F /* APIExtensions.swift in Sources */,
+				E8EB5BD51E8D1DE7005DE354 /* WebApp.swift in Sources */,
 				E812A9971E3E4B4300F0F36F /* mods_echo.swift in Sources */,
+				E8EB5BD11E8D1DE7005DE354 /* HTTPRequest.swift in Sources */,
+				E8EB5BD01E8D1DE7005DE354 /* HTTPMethod.swift in Sources */,
+				E8EB5BD21E8D1DE7005DE354 /* HTTPResponseStatus.swift in Sources */,
+				E8EB5BD41E8D1DE7005DE354 /* README.md in Sources */,
+				E8EB5BD71E8D1F17005DE354 /* HTTPBodyProcessing.swift in Sources */,
 				E812A9991E3E4B4300F0F36F /* Main.swift in Sources */,
+				E8EB5BD31E8D1DE7005DE354 /* HTTPResponseWriter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,6 +8,14 @@
 import Apache2
 import ZzApache
 
+// MARK: - API hooks
+
+fileprivate var app : WebApp? = nil
+
+func serve(_ appArg: @escaping WebApp) {
+  app = appArg
+}
+
 // MARK: - Apache Hooks
 
 fileprivate func register_hooks(pool: OpaquePointer?) {
@@ -48,12 +56,12 @@ func S3WGAPIHandler(p: UnsafeMutablePointer<request_rec>?) -> Int32 {
   //   guard p != nil else { return DECLINED }
   
   var req = ZzApacheRequest(raw: p!) // var because we set the contentType
-  
-  req.log(level: APLOG_DEBUG,
-          "SWIFT \(#function): handler \(req.handler)" +
-    " (\(req.method) on \(req.uri)[\(req.unparsedURI)])")
-  
   guard req.handler == "echodemo" else { return DECLINED }
+  
+  if let app = app {
+    print("TODO: call app ...")
+  }
+  
   guard req.method  == "GET"      else { return HTTP_METHOD_NOT_ALLOWED }
   
   req.contentType = "text/html; charset=ascii"
