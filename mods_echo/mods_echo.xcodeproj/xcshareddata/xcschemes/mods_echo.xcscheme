@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E83AF8C71E3E3FC40039F300"
-               BuildableName = "mods_expressdemo.so"
-               BlueprintName = "mods_expressdemo"
-               ReferencedContainer = "container:mods_expressdemo.xcodeproj">
+               BlueprintIdentifier = "E83AF8B71E3E3FB30039F300"
+               BuildableName = "mods_echo.so"
+               BlueprintName = "mods_echo"
+               ReferencedContainer = "container:mods_echo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -49,33 +49,26 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E83AF8C71E3E3FC40039F300"
-            BuildableName = "mods_expressdemo.so"
-            BlueprintName = "mods_expressdemo"
-            ReferencedContainer = "container:mods_expressdemo.xcodeproj">
+            BlueprintIdentifier = "E83AF8B71E3E3FB30039F300"
+            BuildableName = "mods_echo.so"
+            BlueprintName = "mods_echo"
+            ReferencedContainer = "container:mods_echo.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <CommandLineArguments>
          <CommandLineArgument
             argument = "-X"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "-d $(SRCROOT)/.."
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "-f $(SRCROOT)/apache.conf"
+            argument = "-f $(SRCROOT)/../apache.conf"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
-      <EnvironmentVariables>
-         <EnvironmentVariable
-            key = "EXPRESS_VIEWS"
-            value = "$(SRCROOT)/views"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-      </EnvironmentVariables>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -88,10 +81,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E83AF8C71E3E3FC40039F300"
-            BuildableName = "mods_expressdemo.so"
-            BlueprintName = "mods_expressdemo"
-            ReferencedContainer = "container:mods_expressdemo.xcodeproj">
+            BlueprintIdentifier = "E83AF8B71E3E3FB30039F300"
+            BuildableName = "mods_echo.so"
+            BlueprintName = "mods_echo"
+            ReferencedContainer = "container:mods_echo.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

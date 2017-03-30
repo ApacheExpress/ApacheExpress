@@ -29,12 +29,6 @@
    <FileRef
       location = "group:mod_swift/mod_swift.xcodeproj">
    </FileRef>
-   <FileRef
-      location = "group:mods_expressdemo/mods_expressdemo.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:ApacheExpress/ApacheExpress.xcodeproj">
-   </FileRef>
    <Group
       location = "container:"
       name = "ThirdParty">
