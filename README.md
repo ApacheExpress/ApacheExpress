@@ -18,26 +18,26 @@ proposal.
 
 Checkout git repro, branch: s3wg-api-proposal-1
 
-``sh
+```sh
 git clone -b s3wg-api-proposal-1 git@github.com:AlwaysRightInstitute/mod_swift.git
-``
+```
 
 Build & Run:
 
-``sh
+```sh
 cd mod_swift
 xcodebuild -workspace UseMe.xcworkspace -scheme mods_echo && open UseMe.workspace
 httpd -X -D $PWD -f $PWD/apache.conf # or just run in Xcode
-``
+```
 
 Note: macOS 10.11 Apache is pretty crashy, use 10.12 or `brew install httpd24`.
 
 
 Test echo handler
 
-``sh
+```sh
 curl -X PUT --data-binary $'Hello\n  Swift\n' http://localhost:8042/echo
-``
+```
 
 ### Source Setup
 
