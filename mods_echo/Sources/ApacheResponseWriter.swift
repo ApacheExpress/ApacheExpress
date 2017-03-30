@@ -100,7 +100,8 @@ class ApacheResponseWriter : HTTPResponseWriter {
     
     data.withUnsafeBytes { ( ptr : UnsafePointer<UInt8> ) in
       let bp    = UnsafeBufferPointer(start: ptr, count: data.count)
-      let ddata = DispatchData(bytesNoCopy: bp)
+      let ddata = DispatchData(bytesNoCopy: bp,
+                               deallocator: .custom(DispatchQueue.main, {}))
       writeBody(data: ddata, completion: completion)
     }
   }

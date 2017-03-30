@@ -50,6 +50,8 @@ Test echo handler
 curl -X PUT --data-binary $'Hello\n  Swift\n' http://localhost:8042/echo
 ```
 
+Get a cow: [http://localhost:8042/moo](http://localhost:8042/moo)
+
 ### Source Setup
 
 - the proposal is contained in the (S3WGAPIProposal1)[S3WGAPIProposal1/] folder

@@ -99,9 +99,9 @@ func S3WGAPIHandler(p: UnsafeMutablePointer<request_rec>?) -> Int32 {
         // hm
         buffer.withMemoryRebound(to: UInt8.self, capacity: rc) { buffer in
           let bp   = UnsafeBufferPointer(start: buffer, count: rc)
-          //let data = DispatchData(bytesNoCopy: bp) - hm, dealloc error
-          let data = DispatchData(bytes: bp)
-          handler(HTTPBodyChunk.chunk(data: data))
+          let ddata = DispatchData(bytesNoCopy: bp,
+                                   deallocator: .custom(DispatchQueue.main, {}))
+          handler(HTTPBodyChunk.chunk(data: ddata))
         }
       }
       
