@@ -64,6 +64,8 @@ Get a cow: [http://localhost:8042/moo](http://localhost:8042/moo)
     [ApacheRequest.swift](mods_echo/Sources/ApacheRequest.swift)
   - response writer
     [ApacheResponseWriter.swift](mods_echo/Sources/ApacheResponseWriter.swift)
+- to build on Linux / via SPM, move the `S3WGAPIProposal1` folder
+  into `mods_echo/Sources`
 
 ### Notes
 
