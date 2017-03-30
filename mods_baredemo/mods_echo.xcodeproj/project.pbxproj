@@ -7,29 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E805867C1E8D179C0093FE7E /* libcows.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E805867B1E8D179C0093FE7E /* libcows.dylib */; };
 		E812A9961E3E4B4300F0F36F /* APIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E812A9921E3E4B4300F0F36F /* APIExtensions.swift */; };
-		E812A9971E3E4B4300F0F36F /* mods_baredemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E812A9931E3E4B4300F0F36F /* mods_baredemo.swift */; };
-		E812A9981E3E4B4300F0F36F /* MustacheHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E812A9941E3E4B4300F0F36F /* MustacheHandler.swift */; };
-		E812A9991E3E4B4300F0F36F /* RequestInfoHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E812A9951E3E4B4300F0F36F /* RequestInfoHandler.swift */; };
-		E812A9A21E3E4B6C00F0F36F /* libmustache.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E812A99F1E3E4B5900F0F36F /* libmustache.dylib */; };
-		E8AE4A481E4921FD005EC5D3 /* DatabaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AE4A471E4921FD005EC5D3 /* DatabaseAPI.swift */; };
-		E8AE4A4A1E492207005EC5D3 /* DatabaseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AE4A491E492206005EC5D3 /* DatabaseHandler.swift */; };
+		E812A9971E3E4B4300F0F36F /* mods_echo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E812A9931E3E4B4300F0F36F /* mods_echo.swift */; };
+		E812A9991E3E4B4300F0F36F /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E812A9951E3E4B4300F0F36F /* Main.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		E812A99E1E3E4B5900F0F36F /* PBXContainerItemProxy */ = {
+		E80586811E8D183F0093FE7E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = E812A99A1E3E4B5900F0F36F /* mustache.xcodeproj */;
+			containerPortal = E805867D1E8D183F0093FE7E /* cows.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = E83AF8F81E3E40500039F300;
-			remoteInfo = mustache;
-		};
-		E812A9A01E3E4B6700F0F36F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E812A99A1E3E4B5900F0F36F /* mustache.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = E83AF8F71E3E40500039F300;
-			remoteInfo = mustache;
+			remoteGlobalIDString = E83AF8D81E3E40370039F300;
+			remoteInfo = cows;
 		};
 		E8DBF3D31E3E4BE1009A5EA2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -48,18 +38,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E805867B1E8D179C0093FE7E /* libcows.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcows.dylib; path = ../.libs/libcows.dylib; sourceTree = "<group>"; };
+		E805867D1E8D183F0093FE7E /* cows.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = cows.xcodeproj; path = ../ThirdParty/cows/cows.xcodeproj; sourceTree = "<group>"; };
 		E812A9901E3E4B2F00F0F36F /* ApacheSwiftModule.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = ApacheSwiftModule.xcconfig; path = ../mod_swift/xcconfig/ApacheSwiftModule.xcconfig; sourceTree = "<group>"; };
 		E812A9911E3E4B3300F0F36F /* Base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Base.xcconfig; path = ../mod_swift/xcconfig/Base.xcconfig; sourceTree = "<group>"; };
 		E812A9921E3E4B4300F0F36F /* APIExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIExtensions.swift; path = Sources/APIExtensions.swift; sourceTree = "<group>"; };
-		E812A9931E3E4B4300F0F36F /* mods_baredemo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = mods_baredemo.swift; path = Sources/mods_baredemo.swift; sourceTree = "<group>"; };
-		E812A9941E3E4B4300F0F36F /* MustacheHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MustacheHandler.swift; path = Sources/MustacheHandler.swift; sourceTree = "<group>"; };
-		E812A9951E3E4B4300F0F36F /* RequestInfoHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RequestInfoHandler.swift; path = Sources/RequestInfoHandler.swift; sourceTree = "<group>"; };
-		E812A99A1E3E4B5900F0F36F /* mustache.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = mustache.xcodeproj; path = ../ThirdParty/mustache/mustache.xcodeproj; sourceTree = "<group>"; };
-		E81795031E3E864F00A3A6F3 /* DocRoot */ = {isa = PBXFileReference; lastKnownFileType = folder; name = DocRoot; path = ../DocRoot; sourceTree = "<group>"; };
-		E83AF8B81E3E3FB30039F300 /* mods_baredemo.so */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = mods_baredemo.so; sourceTree = BUILT_PRODUCTS_DIR; };
+		E812A9931E3E4B4300F0F36F /* mods_echo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = mods_echo.swift; path = Sources/mods_echo.swift; sourceTree = "<group>"; };
+		E812A9951E3E4B4300F0F36F /* Main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Main.swift; path = Sources/Main.swift; sourceTree = "<group>"; };
+		E83AF8B81E3E3FB30039F300 /* mods_echo.so */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = mods_echo.so; sourceTree = BUILT_PRODUCTS_DIR; };
 		E85EF1841E3E4F21007A8C48 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		E8AE4A471E4921FD005EC5D3 /* DatabaseAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DatabaseAPI.swift; path = Sources/DatabaseAPI.swift; sourceTree = "<group>"; };
-		E8AE4A491E492206005EC5D3 /* DatabaseHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DatabaseHandler.swift; path = Sources/DatabaseHandler.swift; sourceTree = "<group>"; };
 		E8DBF3CF1E3E4BE1009A5EA2 /* mod_swift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = mod_swift.xcodeproj; path = ../mod_swift/mod_swift.xcodeproj; sourceTree = "<group>"; };
 		E8DBF3D61E3E4C74009A5EA2 /* apache.conf */ = {isa = PBXFileReference; lastKnownFileType = text; path = apache.conf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -69,22 +56,35 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E812A9A21E3E4B6C00F0F36F /* libmustache.dylib in Frameworks */,
+				E805867C1E8D179C0093FE7E /* libcows.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E805867A1E8D179C0093FE7E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E805867B1E8D179C0093FE7E /* libcows.dylib */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E805867E1E8D183F0093FE7E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E80586821E8D183F0093FE7E /* libcows.dylib */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		E812A98E1E3E4B0A00F0F36F /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				E812A9931E3E4B4300F0F36F /* mods_baredemo.swift */,
-				E812A9941E3E4B4300F0F36F /* MustacheHandler.swift */,
-				E812A9951E3E4B4300F0F36F /* RequestInfoHandler.swift */,
-				E8AE4A491E492206005EC5D3 /* DatabaseHandler.swift */,
+				E812A9951E3E4B4300F0F36F /* Main.swift */,
+				E812A9931E3E4B4300F0F36F /* mods_echo.swift */,
 				E812A9921E3E4B4300F0F36F /* APIExtensions.swift */,
-				E8AE4A471E4921FD005EC5D3 /* DatabaseAPI.swift */,
 			);
 			name = Sources;
 			sourceTree = "<group>";
@@ -98,31 +98,23 @@
 			name = Configurations;
 			sourceTree = "<group>";
 		};
-		E812A99B1E3E4B5900F0F36F /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				E812A99F1E3E4B5900F0F36F /* libmustache.dylib */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		E83AF8AF1E3E3FB30039F300 = {
 			isa = PBXGroup;
 			children = (
 				E85EF1841E3E4F21007A8C48 /* README.md */,
-				E81795031E3E864F00A3A6F3 /* DocRoot */,
 				E8DBF3D51E3E4C61009A5EA2 /* Apache Configuration */,
 				E812A98E1E3E4B0A00F0F36F /* Sources */,
 				E812A98F1E3E4B1000F0F36F /* Configurations */,
 				E8DBF3CE1E3E4BCD009A5EA2 /* Dependencies */,
 				E83AF8B91E3E3FB30039F300 /* Products */,
+				E805867A1E8D179C0093FE7E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 		E83AF8B91E3E3FB30039F300 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E83AF8B81E3E3FB30039F300 /* mods_baredemo.so */,
+				E83AF8B81E3E3FB30039F300 /* mods_echo.so */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -130,8 +122,8 @@
 		E8DBF3CE1E3E4BCD009A5EA2 /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
+				E805867D1E8D183F0093FE7E /* cows.xcodeproj */,
 				E8DBF3CF1E3E4BE1009A5EA2 /* mod_swift.xcodeproj */,
-				E812A99A1E3E4B5900F0F36F /* mustache.xcodeproj */,
 			);
 			name = Dependencies;
 			sourceTree = "<group>";
@@ -165,9 +157,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		E83AF8B71E3E3FB30039F300 /* mods_baredemo */ = {
+		E83AF8B71E3E3FB30039F300 /* mods_echo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E83AF8BC1E3E3FB30039F300 /* Build configuration list for PBXNativeTarget "mods_baredemo" */;
+			buildConfigurationList = E83AF8BC1E3E3FB30039F300 /* Build configuration list for PBXNativeTarget "mods_echo" */;
 			buildPhases = (
 				E83AF8B41E3E3FB30039F300 /* Sources */,
 				E83AF8B51E3E3FB30039F300 /* Frameworks */,
@@ -177,11 +169,10 @@
 			);
 			dependencies = (
 				E8DBF3D81E3E4CF1009A5EA2 /* PBXTargetDependency */,
-				E812A9A11E3E4B6700F0F36F /* PBXTargetDependency */,
 			);
-			name = mods_baredemo;
+			name = mods_echo;
 			productName = mods_baredemo;
-			productReference = E83AF8B81E3E3FB30039F300 /* mods_baredemo.so */;
+			productReference = E83AF8B81E3E3FB30039F300 /* mods_echo.so */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 /* End PBXNativeTarget section */
@@ -201,7 +192,7 @@
 					};
 				};
 			};
-			buildConfigurationList = E83AF8B31E3E3FB30039F300 /* Build configuration list for PBXProject "mods_baredemo" */;
+			buildConfigurationList = E83AF8B31E3E3FB30039F300 /* Build configuration list for PBXProject "mods_echo" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -213,27 +204,27 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = E8DBF3D01E3E4BE1009A5EA2 /* Products */;
-					ProjectRef = E8DBF3CF1E3E4BE1009A5EA2 /* mod_swift.xcodeproj */;
+					ProductGroup = E805867E1E8D183F0093FE7E /* Products */;
+					ProjectRef = E805867D1E8D183F0093FE7E /* cows.xcodeproj */;
 				},
 				{
-					ProductGroup = E812A99B1E3E4B5900F0F36F /* Products */;
-					ProjectRef = E812A99A1E3E4B5900F0F36F /* mustache.xcodeproj */;
+					ProductGroup = E8DBF3D01E3E4BE1009A5EA2 /* Products */;
+					ProjectRef = E8DBF3CF1E3E4BE1009A5EA2 /* mod_swift.xcodeproj */;
 				},
 			);
 			projectRoot = "";
 			targets = (
-				E83AF8B71E3E3FB30039F300 /* mods_baredemo */,
+				E83AF8B71E3E3FB30039F300 /* mods_echo */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		E812A99F1E3E4B5900F0F36F /* libmustache.dylib */ = {
+		E80586821E8D183F0093FE7E /* libcows.dylib */ = {
 			isa = PBXReferenceProxy;
 			fileType = "compiled.mach-o.dylib";
-			path = libmustache.dylib;
-			remoteRef = E812A99E1E3E4B5900F0F36F /* PBXContainerItemProxy */;
+			path = libcows.dylib;
+			remoteRef = E80586811E8D183F0093FE7E /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		E8DBF3D41E3E4BE1009A5EA2 /* mod_swift.so */ = {
@@ -251,22 +242,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				E812A9961E3E4B4300F0F36F /* APIExtensions.swift in Sources */,
-				E812A9971E3E4B4300F0F36F /* mods_baredemo.swift in Sources */,
-				E812A9991E3E4B4300F0F36F /* RequestInfoHandler.swift in Sources */,
-				E8AE4A4A1E492207005EC5D3 /* DatabaseHandler.swift in Sources */,
-				E812A9981E3E4B4300F0F36F /* MustacheHandler.swift in Sources */,
-				E8AE4A481E4921FD005EC5D3 /* DatabaseAPI.swift in Sources */,
+				E812A9971E3E4B4300F0F36F /* mods_echo.swift in Sources */,
+				E812A9991E3E4B4300F0F36F /* Main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		E812A9A11E3E4B6700F0F36F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = mustache;
-			targetProxy = E812A9A01E3E4B6700F0F36F /* PBXContainerItemProxy */;
-		};
 		E8DBF3D81E3E4CF1009A5EA2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = mod_swift;
@@ -386,7 +369,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E83AF8B31E3E3FB30039F300 /* Build configuration list for PBXProject "mods_baredemo" */ = {
+		E83AF8B31E3E3FB30039F300 /* Build configuration list for PBXProject "mods_echo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E83AF8BA1E3E3FB30039F300 /* Debug */,
@@ -395,7 +378,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E83AF8BC1E3E3FB30039F300 /* Build configuration list for PBXNativeTarget "mods_baredemo" */ = {
+		E83AF8BC1E3E3FB30039F300 /* Build configuration list for PBXNativeTarget "mods_echo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E83AF8BD1E3E3FB30039F300 /* Debug */,

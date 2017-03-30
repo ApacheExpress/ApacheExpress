@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E83AF8B71E3E3FB30039F300"
-               BuildableName = "mods_baredemo.so"
-               BlueprintName = "mods_baredemo"
-               ReferencedContainer = "container:../mods_baredemo/mods_baredemo.xcodeproj">
+               BuildableName = "mods_echo.so"
+               BlueprintName = "mods_echo"
+               ReferencedContainer = "container:../mods_baredemo/mods_echo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -120,13 +120,6 @@
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
-      <EnvironmentVariables>
-         <EnvironmentVariable
-            key = "EXPRESS_VIEWS"
-            value = "$(SRCROOT)/../mods_expressdemo/views"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-      </EnvironmentVariables>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>

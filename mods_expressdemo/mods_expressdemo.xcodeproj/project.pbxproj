@@ -60,11 +60,9 @@
 
 /* Begin PBXFileReference section */
 		E801C4471E3E7EF900CA3AB1 /* cows.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = cows.xcodeproj; path = ../ThirdParty/cows/cows.xcodeproj; sourceTree = "<group>"; };
-		E81795041E3E865700A3A6F3 /* DocRoot */ = {isa = PBXFileReference; lastKnownFileType = folder; name = DocRoot; path = ../DocRoot; sourceTree = "<group>"; };
 		E83AF8C81E3E3FC40039F300 /* mods_expressdemo.so */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = mods_expressdemo.so; sourceTree = BUILT_PRODUCTS_DIR; };
 		E86AA6031E3E7CED003F6A97 /* ExpressMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpressMain.swift; sourceTree = "<group>"; };
 		E86AA6041E3E7CED003F6A97 /* mods_expressdemo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mods_expressdemo.swift; sourceTree = "<group>"; };
-		E86AA6071E3E7D00003F6A97 /* views */ = {isa = PBXFileReference; lastKnownFileType = folder; path = views; sourceTree = "<group>"; };
 		E86AA6081E3E7D09003F6A97 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		E86AA6091E3E7D1D003F6A97 /* apache.conf */ = {isa = PBXFileReference; lastKnownFileType = text; path = apache.conf; sourceTree = "<group>"; };
 		E86AA60D1E3E7D6E003F6A97 /* ApacheSwiftModule.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = ApacheSwiftModule.xcconfig; path = ../mod_swift/xcconfig/ApacheSwiftModule.xcconfig; sourceTree = "<group>"; };
@@ -98,8 +96,6 @@
 			isa = PBXGroup;
 			children = (
 				E86AA6081E3E7D09003F6A97 /* README.md */,
-				E81795041E3E865700A3A6F3 /* DocRoot */,
-				E86AA6071E3E7D00003F6A97 /* views */,
 				E86AA60A1E3E7D27003F6A97 /* Apache Configuration */,
 				E86AA6021E3E7CED003F6A97 /* Sources */,
 				E86AA60B1E3E7D44003F6A97 /* Configurations */,

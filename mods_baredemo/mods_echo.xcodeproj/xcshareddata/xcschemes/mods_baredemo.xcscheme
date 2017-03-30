@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E8F8B6771E3E9CD800081FCE"
-               BuildableName = "mods_todomvc.so"
-               BlueprintName = "mods_todomvc"
-               ReferencedContainer = "container:mods_todomvc.xcodeproj">
+               BlueprintIdentifier = "E83AF8B71E3E3FB30039F300"
+               BuildableName = "mods_echo.so"
+               BlueprintName = "mods_echo"
+               ReferencedContainer = "container:mods_echo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -49,10 +49,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E8F8B6771E3E9CD800081FCE"
-            BuildableName = "mods_todomvc.so"
-            BlueprintName = "mods_todomvc"
-            ReferencedContainer = "container:mods_todomvc.xcodeproj">
+            BlueprintIdentifier = "E83AF8B71E3E3FB30039F300"
+            BuildableName = "mods_echo.so"
+            BlueprintName = "mods_echo"
+            ReferencedContainer = "container:mods_echo.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <CommandLineArguments>
@@ -81,10 +81,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E8F8B6771E3E9CD800081FCE"
-            BuildableName = "mods_todomvc.so"
-            BlueprintName = "mods_todomvc"
-            ReferencedContainer = "container:mods_todomvc.xcodeproj">
+            BlueprintIdentifier = "E83AF8B71E3E3FB30039F300"
+            BuildableName = "mods_echo.so"
+            BlueprintName = "mods_echo"
+            ReferencedContainer = "container:mods_echo.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

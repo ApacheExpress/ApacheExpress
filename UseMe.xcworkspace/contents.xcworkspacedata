@@ -8,6 +8,9 @@
       location = "group:LICENSE">
    </FileRef>
    <FileRef
+      location = "group:/Users/helge/dev/Swift/mod_swift-ari/mods_baredemo/mods_echo.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:DocRoot">
    </FileRef>
    <Group
@@ -27,13 +30,7 @@
       location = "group:mod_swift/mod_swift.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:mods_baredemo/mods_baredemo.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:mods_expressdemo/mods_expressdemo.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:mods_todomvc/mods_todomvc.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:ApacheExpress/ApacheExpress.xcodeproj">
@@ -45,16 +42,7 @@
          location = "group:ThirdParty/GNUmakefile">
       </FileRef>
       <FileRef
-         location = "group:ThirdParty/ExExpress/ExExpress.xcodeproj">
-      </FileRef>
-      <FileRef
          location = "group:ThirdParty/cows/cows.xcodeproj">
-      </FileRef>
-      <FileRef
-         location = "group:ThirdParty/Freddy/freddy.xcodeproj">
-      </FileRef>
-      <FileRef
-         location = "group:ThirdParty/mustache/mustache.xcodeproj">
       </FileRef>
    </Group>
 </Workspace>
