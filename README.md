@@ -22,16 +22,27 @@ Checkout git repro, branch: s3wg-api-proposal-1
 git clone -b s3wg-api-proposal-1 git@github.com:AlwaysRightInstitute/mod_swift.git
 ```
 
-Build & Run:
+Build:
 
 ```sh
 cd mod_swift
 xcodebuild -workspace UseMe.xcworkspace -scheme mods_echo && open UseMe.workspace
-httpd -X -D $PWD -f $PWD/apache.conf # or just run in Xcode
 ```
 
-Note: macOS 10.11 Apache is pretty crashy, use 10.12 or `brew install httpd24`.
+Run with system httpd:
 
+```sh
+/usr/sbin/httpd -X -d $PWD -f $PWD/apache.conf # or just run in Xcode
+```
+(Note: macOS 10.11 Apache is pretty crashy, use 10.12 or `brew install httpd24`)
+
+Run with Homebrew httpd:
+
+```sh
+httpd -X -d $PWD -f $PWD/apache-brew.conf
+```
+
+Or just run in Xcode.
 
 Test echo handler
 
