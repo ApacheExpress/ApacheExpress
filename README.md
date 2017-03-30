@@ -22,17 +22,33 @@ Checkout git repro, branch: s3wg-api-proposal-1
 git clone -b s3wg-api-proposal-1 git@github.com:AlwaysRightInstitute/mod_swift.git
 ``
 
-Open Workspace:
+Build & Run:
 
 ``sh
 cd mod_swift
-open UseMe.workspace
+xcodebuild -workspace UseMe.xcworkspace -scheme mods_echo && open UseMe.workspace
+httpd -X -D $PWD -f $PWD/apache.conf # or just run in Xcode
 ``
 
-Build & Run in Xcode
-
-Trigger echo handler
+Test echo handler
 
 ``sh
 curl -X PUT --data-binary $'Hello\n  Swift\n' http://localhost:8042/echo
 ``
+
+### Source Setup
+
+- the proposal is contained in the (S3WGAPIProposal1)[S3WGAPIProposal1/] folder
+- Johannes demo echo service can be found in
+  (mods_echo/Sources/Main.swift)[mods_echo/Sources/Main.swift]
+- the Apache implementation of the API is in (mods_echo/Sources/)[mods_echo/Sources/]
+  - setup of the request (ApacheRequest.swift)[mods_echo/Sources/ApacheRequest.swift]
+  - response writer (ApacheResponseWriter.swift)[mods_echo/Sources/ApacheResponseWriter.swift]
+
+### Notes
+
+- the implementation does synchronous I/O
+  - a lot of `@escaping` could be dropped
+- it is pretty hacky ;->
+- doesn't implement all enum cases for method/status
+- no abort/trailers
