@@ -29,10 +29,10 @@ cd mod_swift
 xcodebuild -workspace UseMe.xcworkspace -scheme mods_echo && open UseMe.workspace
 ```
 
-Run with system httpd:
+Run with system httpd (or just press Run in Xcode):
 
 ```sh
-/usr/sbin/httpd -X -d $PWD -f $PWD/apache.conf # or just run in Xcode
+/usr/sbin/httpd -X -d $PWD -f $PWD/apache.conf
 ```
 (Note: macOS 10.11 Apache is pretty crashy, use 10.12 or `brew install httpd24`)
 
@@ -42,7 +42,10 @@ Run with Homebrew httpd:
 httpd -X -d $PWD -f $PWD/apache-brew.conf
 ```
 
-Or just run in Xcode.
+Ubuntu:
+```sh
+/usr/sbin/httpd -X -d $PWD -f $PWD/apache-ubuntu.conf
+```
 
 Test echo handler
 
@@ -54,12 +57,13 @@ Get a cow: [http://localhost:8042/moo](http://localhost:8042/moo)
 
 ### Source Setup
 
-- the proposal is contained in the (S3WGAPIProposal1)[S3WGAPIProposal1/] folder
-- Johannes demo echo service can be found in
-  (mods_echo/Sources/Main.swift)[mods_echo/Sources/Main.swift]
-- the Apache implementation of the API is in (mods_echo/Sources/)[mods_echo/Sources/]
-  - setup of the request (ApacheRequest.swift)[mods_echo/Sources/ApacheRequest.swift]
-  - response writer (ApacheResponseWriter.swift)[mods_echo/Sources/ApacheResponseWriter.swift]
+- the proposal is contained in the [S3WGAPIProposal1](S3WGAPIProposal1/) folder
+- Johannes demo echo service can be found in [mods_echo/Sources/Main.swift](mods_echo/Sources/Main.swift)
+- the Apache implementation of the API is in [mods_echo/Sources/](mods_echo/Sources/)
+  - setup of the request
+    [ApacheRequest.swift](mods_echo/Sources/ApacheRequest.swift)
+  - response writer
+    [ApacheResponseWriter.swift](mods_echo/Sources/ApacheResponseWriter.swift)
 
 ### Notes
 
