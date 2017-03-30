@@ -11,8 +11,14 @@ public enum HTTPTransferEncoding {
 
 public struct HTTPHeaders : Sequence, CustomStringConvertible {
   
-  private let storage     : [ String : [ String ] ]  // lower keys
-  private let original    : [ ( String, String ) ]   // original keys
+  private let storage  : [ String : [ String ] ]  // lower keys
+  private let original : [ ( String, String ) ]   // original keys
+  
+  init(storage: [ String : [ String ] ], original: [ ( String, String ) ]) {
+    self.storage  = storage
+    self.original = original
+  }
+  
   public  var description : String { return original.description }
   
   public subscript(key: String) -> [ String ] {
@@ -22,4 +28,5 @@ public struct HTTPHeaders : Sequence, CustomStringConvertible {
   public func makeIterator() -> IndexingIterator<Array<(String, String)>> {
     return original.makeIterator()
   }
+  
 }

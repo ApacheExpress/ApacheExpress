@@ -7,6 +7,7 @@
 
 import Apache2
 import ZzApache
+import Dispatch
 
 // MARK: - API hooks
 
@@ -55,89 +56,57 @@ func S3WGAPIHandler(p: UnsafeMutablePointer<request_rec>?) -> Int32 {
   // this too:
   //   guard p != nil else { return DECLINED }
   
-  var req = ZzApacheRequest(raw: p!) // var because we set the contentType
-  guard req.handler == "echodemo" else { return DECLINED }
+  guard strcmp(p?.pointee.handler, "echodemo") == 0 else { return DECLINED }
   
-  if let app = app {
-    print("TODO: call app ...")
-  }
+  guard let app = app else { return DECLINED }
   
-  guard req.method  == "GET"      else { return HTTP_METHOD_NOT_ALLOWED }
+  let request        = ApacheRequest(p!)
+  let responseWriter = ApacheResponseWriter(p!)
   
-  req.contentType = "text/html; charset=ascii"
-  req.puts("<html><head><title>Echhooooo</title></head>")
-  req.puts("<body><h3>Swift Apache Echo Handler</h3>")
+  let bodyHandler = app(request, responseWriter)
   
-  req.puts("<a href='/'>[Server Root]</a>")
-  
-  req.puts("<pre>")
-  
-  req.puts("Request line:   \(req.theRequest)\r\n")
-  req.puts("Protocol:       \(req.protocol)\r\n")
-  req.puts("Hostname:       \(req.hostname)\r\n")
-  req.puts("Method:         \(req.method)\r\n")
-  req.puts("Startstamp:     \(req.requestTime)\r\n")
-  req.puts("Handler:        \(req.handler)\r\n")
-  req.puts("Filename:       \(req.filename)\r\n")
-  req.puts("CanFilename:    \(req.canonicalFilename)\r\n")
-  req.puts("ContentType:    \(req.contentType)\r\n")
-  req.puts("ContentEnc:     \(req.contentEncoding)\r\n")
-  req.puts("User:           \(req.user)\r\n")
-  req.puts("AuthType:       \(req.apAuthType)\r\n")
-  req.puts("URI:            \(req.uri)\r\n")
-  req.puts("PathInfo:       \(req.pathInfo)\r\n")
-  req.puts("Args:           \(req.args)\r\n")
-  req.puts("User-Agent:     \(req.headersIn["User-agent"] ?? "-")\r\n")
-  req.puts("Depth:          \(req.headersIn["Depth"]      ?? "-")\r\n")
-  
-  
-  // TODO: need HTML escape here
-  // req.puts("Config:         \(p!.pointee.ourConfig)\r\n")
-  
-  if let fn = req.filename {
-    req.puts("  Valid:        \(req.finfo.valid)\r\n") // bitmask
-    if (req.finfo.valid & APR_FINFO_SIZE) != 0 {
-      req.puts("  Size:         \(req.finfo.size)\r\n")
-    }
-    if (req.finfo.valid & APR_FINFO_TYPE) != 0 {
-      req.puts("  Type:         \(req.finfo.filetype)\r\n")
-    }
-    if (req.finfo.valid & APR_FINFO_NAME) != 0 {
-      req.puts("  Name:         \(req.finfo.name)\r\n")
-    }
+  switch bodyHandler {
+    case .discardBody:
+      let rc = ap_discard_request_body(p)
+      return OK // we are done
     
-    if let cstr = req.finfo.fname {
-      req.puts("  FName:        \(String(cString: cstr))\r\n")
-    }
+    case .processBody(let handler):
+      let rc = ap_setup_client_block(p, REQUEST_CHUNKED_DECHUNK)
+      guard rc == OK else {
+        handler(HTTPBodyChunk.end)
+        return OK
+      }
+      
+      guard ap_should_client_block(p) != 0 else {
+        // There is no message to read, this is *fine*. Not an error.
+        handler(HTTPBodyChunk.end)
+        return OK // we are done
+      }
+      
+      let bufsize = 8092
+      let buffer  = UnsafeMutablePointer<Int8>.allocate(capacity: bufsize)
+      defer { buffer.deallocate(capacity: bufsize) }
+      
+      while true {
+        let rc = ap_get_client_block(p, buffer, bufsize)
+        guard rc != 0 else { break } // EOF
+        
+        guard rc >  0 else {
+          handler(HTTPBodyChunk.failed(error: HTTPParserError.SomeError))
+          return HTTP_BAD_REQUEST // no idea :-)
+        }
+        
+        // hm
+        buffer.withMemoryRebound(to: UInt8.self, capacity: rc) { buffer in
+          let bp   = UnsafeBufferPointer(start: buffer, count: rc)
+          //let data = DispatchData(bytesNoCopy: bp) - hm, dealloc error
+          let data = DispatchData(bytes: bp)
+          handler(HTTPBodyChunk.chunk(data: data))
+        }
+      }
+      
+      handler(HTTPBodyChunk.end)
+      return OK // we are done
   }
-  req.puts("</pre>")
-  
-  if let fn = req.filename, req.finfo.filetype.rawValue == 1 {
-    var fh : OpaquePointer? = nil
-    let rc = apr_file_open(&fh, fn,
-                           APR_READ | APR_SHARELOCK /*| APR_SENDFILE_ENABLED*/,
-      APR_OS_DEFAULT,
-      req.pool)
-    defer { if fh != nil { apr_file_close(fh) } }
-    
-    if rc == APR_SUCCESS {
-      req.puts("<h5>File below: \(fn)</h5><hr /")
-      var sentSize : apr_size_t = 0
-      let rc = ap_send_fd(fh, req.raw, 0, apr_size_t(req.finfo.size), &sentSize)
-      if rc != 0 { req.puts("<br />Error: \(rc)") }
-      req.puts("<hr />")
-    }
-    else {
-      req.puts("<h3>Could not open file: \(fn)</h3>")
-    }
-  }
-  
-  req.puts("</body></html>")
-  
-  // works, not needed here
-  //   func rqPoolDealloc(object: UnsafeMutableRawPointer?) -> apr_status_t
-  // apr_pool_cleanup_register(req.pointee.pool, req,
-  //                           rqPoolDealloc, rqPoolChildDealloc)
-  
-  return OK
+
 }

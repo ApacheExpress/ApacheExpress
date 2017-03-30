@@ -16,9 +16,10 @@
 		E8EB5BD11E8D1DE7005DE354 /* HTTPRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EB5BCA1E8D1DE7005DE354 /* HTTPRequest.swift */; };
 		E8EB5BD21E8D1DE7005DE354 /* HTTPResponseStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EB5BCB1E8D1DE7005DE354 /* HTTPResponseStatus.swift */; };
 		E8EB5BD31E8D1DE7005DE354 /* HTTPResponseWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EB5BCC1E8D1DE7005DE354 /* HTTPResponseWriter.swift */; };
-		E8EB5BD41E8D1DE7005DE354 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = E8EB5BCD1E8D1DE7005DE354 /* README.md */; };
 		E8EB5BD51E8D1DE7005DE354 /* WebApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EB5BCE1E8D1DE7005DE354 /* WebApp.swift */; };
 		E8EB5BD71E8D1F17005DE354 /* HTTPBodyProcessing.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EB5BD61E8D1F17005DE354 /* HTTPBodyProcessing.swift */; };
+		E8EB5BDF1E8D21DF005DE354 /* ApacheResponseWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EB5BDE1E8D21DF005DE354 /* ApacheResponseWriter.swift */; };
+		E8EB5BE11E8D23C0005DE354 /* ApacheRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EB5BE01E8D23C0005DE354 /* ApacheRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,9 +62,7 @@
 		E812A9931E3E4B4300F0F36F /* mods_echo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = mods_echo.swift; path = Sources/mods_echo.swift; sourceTree = "<group>"; };
 		E812A9951E3E4B4300F0F36F /* Main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Main.swift; path = Sources/Main.swift; sourceTree = "<group>"; };
 		E83AF8B81E3E3FB30039F300 /* mods_echo.so */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = mods_echo.so; sourceTree = BUILT_PRODUCTS_DIR; };
-		E85EF1841E3E4F21007A8C48 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		E8DBF3CF1E3E4BE1009A5EA2 /* mod_swift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = mod_swift.xcodeproj; path = ../mod_swift/mod_swift.xcodeproj; sourceTree = "<group>"; };
-		E8DBF3D61E3E4C74009A5EA2 /* apache.conf */ = {isa = PBXFileReference; lastKnownFileType = text; path = apache.conf; sourceTree = "<group>"; };
 		E8EB5BC81E8D1DE7005DE354 /* HTTPHeaders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPHeaders.swift; sourceTree = "<group>"; };
 		E8EB5BC91E8D1DE7005DE354 /* HTTPMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		E8EB5BCA1E8D1DE7005DE354 /* HTTPRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPRequest.swift; sourceTree = "<group>"; };
@@ -72,6 +71,8 @@
 		E8EB5BCD1E8D1DE7005DE354 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		E8EB5BCE1E8D1DE7005DE354 /* WebApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebApp.swift; sourceTree = "<group>"; };
 		E8EB5BD61E8D1F17005DE354 /* HTTPBodyProcessing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPBodyProcessing.swift; sourceTree = "<group>"; };
+		E8EB5BDE1E8D21DF005DE354 /* ApacheResponseWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApacheResponseWriter.swift; path = Sources/ApacheResponseWriter.swift; sourceTree = "<group>"; };
+		E8EB5BE01E8D23C0005DE354 /* ApacheRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApacheRequest.swift; path = Sources/ApacheRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +109,8 @@
 				E812A9951E3E4B4300F0F36F /* Main.swift */,
 				E812A9931E3E4B4300F0F36F /* mods_echo.swift */,
 				E812A9921E3E4B4300F0F36F /* APIExtensions.swift */,
+				E8EB5BDE1E8D21DF005DE354 /* ApacheResponseWriter.swift */,
+				E8EB5BE01E8D23C0005DE354 /* ApacheRequest.swift */,
 			);
 			name = Sources;
 			sourceTree = "<group>";
@@ -124,9 +127,7 @@
 		E83AF8AF1E3E3FB30039F300 = {
 			isa = PBXGroup;
 			children = (
-				E85EF1841E3E4F21007A8C48 /* README.md */,
 				E8EB5BC71E8D1DE7005DE354 /* S3WGAPIProposal1 */,
-				E8DBF3D51E3E4C61009A5EA2 /* Apache Configuration */,
 				E812A98E1E3E4B0A00F0F36F /* Sources */,
 				E812A98F1E3E4B1000F0F36F /* Configurations */,
 				E8DBF3CE1E3E4BCD009A5EA2 /* Dependencies */,
@@ -158,14 +159,6 @@
 				E8DBF3D41E3E4BE1009A5EA2 /* mod_swift.so */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		E8DBF3D51E3E4C61009A5EA2 /* Apache Configuration */ = {
-			isa = PBXGroup;
-			children = (
-				E8DBF3D61E3E4C74009A5EA2 /* apache.conf */,
-			);
-			name = "Apache Configuration";
 			sourceTree = "<group>";
 		};
 		E8EB5BC71E8D1DE7005DE354 /* S3WGAPIProposal1 */ = {
@@ -283,13 +276,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8EB5BCF1E8D1DE7005DE354 /* HTTPHeaders.swift in Sources */,
+				E8EB5BE11E8D23C0005DE354 /* ApacheRequest.swift in Sources */,
 				E812A9961E3E4B4300F0F36F /* APIExtensions.swift in Sources */,
 				E8EB5BD51E8D1DE7005DE354 /* WebApp.swift in Sources */,
 				E812A9971E3E4B4300F0F36F /* mods_echo.swift in Sources */,
 				E8EB5BD11E8D1DE7005DE354 /* HTTPRequest.swift in Sources */,
 				E8EB5BD01E8D1DE7005DE354 /* HTTPMethod.swift in Sources */,
 				E8EB5BD21E8D1DE7005DE354 /* HTTPResponseStatus.swift in Sources */,
-				E8EB5BD41E8D1DE7005DE354 /* README.md in Sources */,
+				E8EB5BDF1E8D21DF005DE354 /* ApacheResponseWriter.swift in Sources */,
 				E8EB5BD71E8D1F17005DE354 /* HTTPBodyProcessing.swift in Sources */,
 				E812A9991E3E4B4300F0F36F /* Main.swift in Sources */,
 				E8EB5BD31E8D1DE7005DE354 /* HTTPResponseWriter.swift in Sources */,

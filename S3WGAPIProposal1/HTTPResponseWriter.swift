@@ -6,9 +6,9 @@
 
 import Foundation
 
-public struct Result<ET, VT> {
-  let error : ET
-  let value : VT
+public enum Result<Error, Value> {
+  case success(Value)
+  case failure(Error)
 }
 
 public protocol HTTPResponseWriter: class {
@@ -18,12 +18,25 @@ public protocol HTTPResponseWriter: class {
   
   func writeTrailer(key: String, value: String)
   
-  func writeBody(data: DispatchData) /* convenience */
-  func writeBody(data: Data) /* convenience */
-  func writeBody(data: DispatchData, completion: @escaping (Result<POSIXError, ()>) -> Void)
-  func writeBody(data: Data, completion: @escaping (Result<POSIXError, ()>) -> Void)
+  func writeBody(data: DispatchData,
+                 completion: @escaping (Result<POSIXErrorCode, ()>) -> Void)
+  func writeBody(data: Data,
+                 completion: @escaping (Result<POSIXErrorCode, ()>) -> Void)
   
-  func done() /* convenience */
-  func done(completion: @escaping (Result<POSIXError, ()>) -> Void)
+  func done(completion: @escaping (Result<POSIXErrorCode, ()>) -> Void)
   func abort()
+}
+
+public extension HTTPResponseWriter {
+  
+  func writeBody(data: DispatchData) {
+    writeBody(data: data) { result in }
+  }
+  func writeBody(data: Data) {
+    writeBody(data: data) { result in }
+  }
+
+  func done() {
+    done() { result in }
+  }
 }

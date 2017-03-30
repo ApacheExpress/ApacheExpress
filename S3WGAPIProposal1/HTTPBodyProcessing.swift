@@ -21,4 +21,5 @@ public enum HTTPBodyChunk {
 }
 
 public enum HTTPParserError: Error {
+  case SomeError
 }

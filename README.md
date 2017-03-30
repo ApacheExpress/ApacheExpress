@@ -1,13 +1,8 @@
-<h2>mod_swift
-  <img src="http://zeezide.com/img/mod_swift.svg"
-       align="right" width="128" height="128" />
-</h2>
-
 ![Apache 2](https://img.shields.io/badge/apache-2-yellow.svg)
 ![Swift3](https://img.shields.io/badge/swift-3-blue.svg)
 ![macOS](https://img.shields.io/badge/os-macOS-green.svg?style=flat)
 ![tuxOS](https://img.shields.io/badge/os-tuxOS-green.svg?style=flat)
-![Travis](https://travis-ci.org/AlwaysRightInstitute/mod_swift.svg?branch=develop)
+![Travis](https://travis-ci.org/AlwaysRightInstitute/mod_swift.svg?s3wg-api-proposal-1)
 
 **mod_swift** is a technology demo which shows how to write native modules
 for the
@@ -16,27 +11,28 @@ in the
 [Swift 3](http://swift.org/)
 programming language.
 
+This `s3wg-api-proposal-1` branch contains an Apache implementation of the
+proposal.
 
 ### How to test
 
-- checkout git repro, branch: s3wg-api-proposal-1
-- open UseMe.workspace
-- run in Xcode
-- go to http://localhost:8042/echo/
+Checkout git repro, branch: s3wg-api-proposal-1
 
+``sh
+git clone -b s3wg-api-proposal-1 git@github.com:AlwaysRightInstitute/mod_swift.git
+``
 
-### Status
+Open Workspace:
 
-This is a demo. Do not use it for realz.
+``sh
+cd mod_swift
+open UseMe.workspace
+``
 
-### Who
+Build & Run in Xcode
 
-**mod_swift** is brought to you by
-[The Always Right Institute](http://www.alwaysrightinstitute.com)
-and
-[ZeeZide](http://zeezide.de).
-We like feedback, GitHub stars, cool contract work,
-presumably any form of praise you can think of.
-We don't like people who are wrong.
+Trigger echo handler
 
-There is a `#mod_swift` channel on the [Noze.io Slack](http://slack.noze.io).
+``sh
+curl -X PUT --data-binary $'Hello\n  Swift\n' http://localhost:8042/echo
+``

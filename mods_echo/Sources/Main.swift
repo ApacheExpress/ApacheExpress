@@ -4,11 +4,9 @@
 //
 
 func Main() { // Note: called twice, Apache 2-phase process setup
-  print("MAIN")
-
   serve { (req, res) in
     if req.target == "/echo" {
-      guard req.httpVersion == (1, 1) else {
+      guard req.httpVersion == ( 1, 1 ) else {
         /* HTTP/1.0 doesn't support chunked encoding */
         res.writeResponse(status: .httpVersionNotSupported,
                           transferEncoding: .identity(contentLength: 0))
