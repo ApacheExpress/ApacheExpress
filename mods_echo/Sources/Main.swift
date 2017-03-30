@@ -1,9 +1,8 @@
 //
-// Copyright (C) 2017 ZeeZide GmbH, All Rights Reserved
 // Created by Helge Hess on 23/01/2017.
 //
 
-func Main() { // Note: called twice, Apache 2-phase process setup
+func Main() {
   serve { (req, res) in
     if req.target == "/echo" {
       guard req.httpVersion == ( 1, 1 ) else {
@@ -26,6 +25,13 @@ func Main() { // Note: called twice, Apache 2-phase process setup
         }
       }
     }
+    else if req.target == "/moo" {
+      res.writeResponse(status: .ok, transferEncoding: .chunked)
+      res.writeHeader(key: "Content-Type", value: "text/plain")
+      res.writeBody(data: vaca().data(using: .utf8)!)
+      res.done()
+      return .discardBody
+    }
     else {
       print("not echo ...")
       res.writeResponse(status: .notFound,
@@ -35,3 +41,6 @@ func Main() { // Note: called twice, Apache 2-phase process setup
     }
   }
 }
+
+import Foundation
+import cows

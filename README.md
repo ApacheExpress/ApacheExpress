@@ -55,3 +55,4 @@ curl -X PUT --data-binary $'Hello\n  Swift\n' http://localhost:8042/echo
 - it is pretty hacky ;->
 - doesn't implement all enum cases for method/status
 - no abort/trailers
+- ignores TE
