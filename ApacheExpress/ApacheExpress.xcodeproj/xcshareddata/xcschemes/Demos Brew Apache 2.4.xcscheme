@@ -14,52 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E83AF8A71E3E3F820039F300"
-               BuildableName = "libApacheExpress.dylib"
-               BlueprintName = "ApacheExpress"
-               ReferencedContainer = "container:ApacheExpress.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "E83AF8B71E3E3FB30039F300"
                BuildableName = "mods_echo.so"
                BlueprintName = "mods_echo"
-               ReferencedContainer = "container:../mods_baredemo/mods_echo.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E83AF8C71E3E3FC40039F300"
-               BuildableName = "mods_expressdemo.so"
-               BlueprintName = "mods_expressdemo"
-               ReferencedContainer = "container:../mods_expressdemo/mods_expressdemo.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E8F8B6771E3E9CD800081FCE"
-               BuildableName = "mods_todomvc.so"
-               BlueprintName = "mods_todomvc"
-               ReferencedContainer = "container:../mods_todomvc/mods_todomvc.xcodeproj">
+               ReferencedContainer = "container:../mods_echo/mods_echo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -74,10 +32,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E83AF8A71E3E3F820039F300"
-            BuildableName = "libApacheExpress.dylib"
-            BlueprintName = "ApacheExpress"
-            ReferencedContainer = "container:ApacheExpress.xcodeproj">
+            BlueprintIdentifier = "E83AF8B71E3E3FB30039F300"
+            BuildableName = "mods_echo.so"
+            BlueprintName = "mods_echo"
+            ReferencedContainer = "container:../mods_echo/mods_echo.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -100,10 +58,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E83AF8A71E3E3F820039F300"
-            BuildableName = "libApacheExpress.dylib"
-            BlueprintName = "ApacheExpress"
-            ReferencedContainer = "container:ApacheExpress.xcodeproj">
+            BlueprintIdentifier = "E83AF8B71E3E3FB30039F300"
+            BuildableName = "mods_echo.so"
+            BlueprintName = "mods_echo"
+            ReferencedContainer = "container:../mods_echo/mods_echo.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <CommandLineArguments>
@@ -132,10 +90,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E83AF8A71E3E3F820039F300"
-            BuildableName = "libApacheExpress.dylib"
-            BlueprintName = "ApacheExpress"
-            ReferencedContainer = "container:ApacheExpress.xcodeproj">
+            BlueprintIdentifier = "E83AF8B71E3E3FB30039F300"
+            BuildableName = "mods_echo.so"
+            BlueprintName = "mods_echo"
+            ReferencedContainer = "container:../mods_echo/mods_echo.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

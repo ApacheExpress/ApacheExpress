@@ -35,6 +35,13 @@
 			remoteGlobalIDString = E83AF8971E3E3F5C0039F300;
 			remoteInfo = mod_swift;
 		};
+		E8EB5BB71E8D1A48005DE354 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E805867D1E8D183F0093FE7E /* cows.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = E83AF8D71E3E40370039F300;
+			remoteInfo = cows;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -168,10 +175,11 @@
 			buildRules = (
 			);
 			dependencies = (
+				E8EB5BB81E8D1A48005DE354 /* PBXTargetDependency */,
 				E8DBF3D81E3E4CF1009A5EA2 /* PBXTargetDependency */,
 			);
 			name = mods_echo;
-			productName = mods_baredemo;
+			productName = mods_echo;
 			productReference = E83AF8B81E3E3FB30039F300 /* mods_echo.so */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
@@ -254,6 +262,11 @@
 			isa = PBXTargetDependency;
 			name = mod_swift;
 			targetProxy = E8DBF3D71E3E4CF1009A5EA2 /* PBXContainerItemProxy */;
+		};
+		E8EB5BB81E8D1A48005DE354 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = cows;
+			targetProxy = E8EB5BB71E8D1A48005DE354 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

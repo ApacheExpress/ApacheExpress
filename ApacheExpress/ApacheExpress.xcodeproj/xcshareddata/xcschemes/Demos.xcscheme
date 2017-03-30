@@ -31,7 +31,7 @@
                BlueprintIdentifier = "E83AF8B71E3E3FB30039F300"
                BuildableName = "mods_echo.so"
                BlueprintName = "mods_echo"
-               ReferencedContainer = "container:../mods_baredemo/mods_echo.xcodeproj">
+               ReferencedContainer = "container:../mods_echo/mods_echo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry

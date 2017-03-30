@@ -1,4 +1,4 @@
-<h2>mod_swift - mods_baredemo
+<h2>mod_swift - mods_echo
   <img src="http://zeezide.com/img/mod_swift.svg"
        align="right" width="128" height="128" />
 </h2>
@@ -16,7 +16,7 @@ in the
 programming language.
 **Server Side Swift the [right](http://www.alwaysrightinstitute.com/) way**.
 
-## mods_baredemo
+## mods_echo
 
 This project contains two 'raw' Apache handlers written in Swift. They are very
 basic and only annotate the Apache API instead of wrapping it in some
