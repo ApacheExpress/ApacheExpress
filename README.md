@@ -30,6 +30,9 @@ xcodebuild -workspace UseMe.xcworkspace -scheme mods_echo && open UseMe.workspac
 httpd -X -D $PWD -f $PWD/apache.conf # or just run in Xcode
 ``
 
+Note: macOS 10.11 Apache is pretty crashy, use 10.12 or `brew install httpd24`.
+
+
 Test echo handler
 
 ``sh
