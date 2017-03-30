@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		E805867C1E8D179C0093FE7E /* libcows.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E805867B1E8D179C0093FE7E /* libcows.dylib */; };
-		E812A9961E3E4B4300F0F36F /* APIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E812A9921E3E4B4300F0F36F /* APIExtensions.swift */; };
 		E812A9971E3E4B4300F0F36F /* mods_echo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E812A9931E3E4B4300F0F36F /* mods_echo.swift */; };
 		E812A9991E3E4B4300F0F36F /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E812A9951E3E4B4300F0F36F /* Main.swift */; };
 		E8EB5BCF1E8D1DE7005DE354 /* HTTPHeaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EB5BC81E8D1DE7005DE354 /* HTTPHeaders.swift */; };
@@ -58,7 +57,6 @@
 		E805867D1E8D183F0093FE7E /* cows.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = cows.xcodeproj; path = ../ThirdParty/cows/cows.xcodeproj; sourceTree = "<group>"; };
 		E812A9901E3E4B2F00F0F36F /* ApacheSwiftModule.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = ApacheSwiftModule.xcconfig; path = ../mod_swift/xcconfig/ApacheSwiftModule.xcconfig; sourceTree = "<group>"; };
 		E812A9911E3E4B3300F0F36F /* Base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Base.xcconfig; path = ../mod_swift/xcconfig/Base.xcconfig; sourceTree = "<group>"; };
-		E812A9921E3E4B4300F0F36F /* APIExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIExtensions.swift; path = Sources/APIExtensions.swift; sourceTree = "<group>"; };
 		E812A9931E3E4B4300F0F36F /* mods_echo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = mods_echo.swift; path = Sources/mods_echo.swift; sourceTree = "<group>"; };
 		E812A9951E3E4B4300F0F36F /* Main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Main.swift; path = Sources/Main.swift; sourceTree = "<group>"; };
 		E83AF8B81E3E3FB30039F300 /* mods_echo.so */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = mods_echo.so; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,7 +106,6 @@
 			children = (
 				E812A9951E3E4B4300F0F36F /* Main.swift */,
 				E812A9931E3E4B4300F0F36F /* mods_echo.swift */,
-				E812A9921E3E4B4300F0F36F /* APIExtensions.swift */,
 				E8EB5BDE1E8D21DF005DE354 /* ApacheResponseWriter.swift */,
 				E8EB5BE01E8D23C0005DE354 /* ApacheRequest.swift */,
 			);
@@ -277,7 +274,6 @@
 			files = (
 				E8EB5BCF1E8D1DE7005DE354 /* HTTPHeaders.swift in Sources */,
 				E8EB5BE11E8D23C0005DE354 /* ApacheRequest.swift in Sources */,
-				E812A9961E3E4B4300F0F36F /* APIExtensions.swift in Sources */,
 				E8EB5BD51E8D1DE7005DE354 /* WebApp.swift in Sources */,
 				E812A9971E3E4B4300F0F36F /* mods_echo.swift in Sources */,
 				E8EB5BD11E8D1DE7005DE354 /* HTTPRequest.swift in Sources */,

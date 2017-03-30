@@ -110,3 +110,24 @@ func S3WGAPIHandler(p: UnsafeMutablePointer<request_rec>?) -> Int32 {
   }
 
 }
+
+
+// MARK: - Module
+
+extension module {
+  
+  init(name: String) {
+    self.init()
+    
+    // Replica of STANDARD20_MODULE_STUFF (could also live as a C support fn)
+    version       = ZzApache.MODULE_MAGIC_NUMBER_MAJOR
+    minor_version = Apache2.MODULE_MAGIC_NUMBER_MINOR
+    module_index  = -1
+    self.name     = UnsafePointer(strdup(name)) // leak
+    dynamic_load_handle = nil
+    next          = nil
+    magic         = MODULE_MAGIC_COOKIE
+    rewrite_args  = nil
+  }
+  
+}
