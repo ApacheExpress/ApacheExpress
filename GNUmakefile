@@ -8,7 +8,7 @@ include mod_swift/xcconfig/config.make
 ifeq ($(USE_XCODEBUILD),yes)
 
 all :
-	xcodebuild -scheme Demos -workspace UseMe.xcworkspace build
+	xcodebuild -scheme mods_echo -workspace UseMe.xcworkspace build
 
 clean-derived:
 	rm -rf $(HOME)/Library/Developer/Xcode/DerivedData
