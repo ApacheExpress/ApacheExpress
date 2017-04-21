@@ -1,6 +1,6 @@
 # Dockerfile
 #
-# docker run -p 8042:8042 -d modswift/mod_swift-demo
+# docker run --name mod_swift-demo -p 8042:8042 -d modswift/mod_swift-demo
 #
 #	time docker build -t modswift/mod_swift-demo:latest \
 #	                  -t modswift/mod_swift-demo:3.1.0  \
