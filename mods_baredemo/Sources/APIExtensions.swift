@@ -362,3 +362,16 @@ func APR_RETRIEVE_OPTIONAL_FN<T>(_ name: String) -> T? {
   guard let fn = apr_dynamic_fn_retrieve(name) else { return nil }
   return unsafeBitCast(fn, to: T.self) // TBD: is there a better way?
 }
+
+
+// MARK: - Semantic UI
+
+let semanticUI =
+  "<script" +
+  "  src='https://code.jquery.com/jquery-3.1.1.min.js'" +
+  "  integrity='sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8='" +
+  "  crossorigin='anonymous'></script>" +
+  "<link rel='stylesheet'" +
+  "  href='https://cdn.jsdelivr.net/semantic-ui/2.2.7/semantic.min.css' />" +
+  "<script" +
+  "  src='https://cdn.jsdelivr.net/semantic-ui/2.2.7/semantic.min.js'></script>"

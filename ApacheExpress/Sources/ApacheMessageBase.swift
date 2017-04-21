@@ -49,14 +49,14 @@ public class ApacheMessageBase : ExExpress.HttpMessageBaseType {
     let count = elements.pointee.nelts
     guard count > 0 else { return [:] }
     
-    let ptr = UnsafeRawPointer(elements.pointee.elts)!
+    let ptr  = UnsafeRawPointer(elements.pointee.elts)!
     var tptr = ptr.assumingMemoryBound(to: apr_table_entry_t.self)
     
     var headers = Dictionary<String, Any>()
     for _ in 0..<count {
       let key = String(cString: tptr.pointee.key)
       let val = String(cString: tptr.pointee.val)
-      headers[key] = val
+      headers[key] = val // Note: there can be dupes in a table!
       tptr = tptr.advanced(by: 1)
     }
     return headers

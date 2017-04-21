@@ -108,8 +108,8 @@
 				E8AF38871E4A0A3100CBF4CB /* ApacheExpressHandler.swift */,
 				E8AF388B1E4A0A3100CBF4CB /* ApacheServer.swift */,
 				E8AF38881E4A0A3100CBF4CB /* ApacheIncomingMessage.swift */,
-				E8AF38891E4A0A3100CBF4CB /* ApacheMessageBase.swift */,
 				E8AF388C1E4A0A3100CBF4CB /* ApacheServerResponse.swift */,
+				E8AF38891E4A0A3100CBF4CB /* ApacheMessageBase.swift */,
 			);
 			name = http;
 			path = Sources/http;
