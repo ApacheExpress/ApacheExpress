@@ -1,6 +1,6 @@
 # Dockerfile
 #
-# docker run -p 8042:8042 -d helje5/rpi-mod_swift-demo
+# docker run -p 8042:8042 -d modswift/mod_swift-demo
 #
 #	time docker build -t modswift/mod_swift-demo:latest \
 #	                  -t modswift/mod_swift-demo:3.1.0  \
@@ -16,6 +16,7 @@ USER root
 
 ENV DEBIAN_FRONTEND noninteractive
 
+RUN apt-get -q update
 RUN apt-get install -y wget curl \
        autoconf libtool pkg-config \
        apache2 apache2-dev
@@ -32,7 +33,16 @@ RUN bash -c "\
     mv /tmp/zz-apr.h /usr/include/apr-1.0/apr.h"
 
 
+# fixup Swift docker install, CoreFoundation lacks other-r flags
+#   https://github.com/swiftdocker/docker-swift/issues/70
+RUN chmod -R o+r /usr/lib/swift
+
+
+# create Swift user
+
+RUN useradd --create-home --shell /bin/bash swift
 USER swift
+WORKDIR /home/swift
 
 RUN bash -c "curl -L https://github.com/AlwaysRightInstitute/mod_swift/archive/$MOD_SWIFT_VERSION.tar.gz | tar zx"
 
