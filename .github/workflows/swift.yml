@@ -1,0 +1,54 @@
+name: Build and Test
+
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: "42 9 * * 1"
+
+jobs:
+  linux:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        image:
+          - swift:5.2.5-xenial
+          - swift:5.6.1-bionic
+    container: ${{ matrix.image }}
+    steps:
+      - name: Install Apache2-dev
+        run: |
+          apt-get update
+          apt-get -y install libc6-dev make autoconf libtool pkg-config libxml2 apache2-dev libaprutil1-dbd-sqlite3 libaprutil1-dbd-pgsql
+      - name: Install mod_swift via curl
+        run: |
+          curl -L -o mod_swift.tgz  https://github.com/modswift/mod_swift/archive/0.9.1.tar.gz
+          tar zxf mod_swift.tgz && cd mod_swift-0.9.1
+          make
+          make install
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - name: Build
+        run: make all
+  nextstep:
+    runs-on: macos-latest
+    steps:
+      - name: Select latest available Xcode
+        uses: maxim-lobanov/setup-xcode@v1.2.1
+        with:
+          xcode-version: 13
+      - name: Install Apache via Homebrew
+        run: |
+          brew tap homebrew/core
+          brew tap homebrew/services
+          brew update
+          brew install httpd
+      - name: Install mod_swift via Homebrew
+        run: |
+          brew tap modswift/mod_swift
+          brew install mod_swift
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - name: Build
+        run: make all
